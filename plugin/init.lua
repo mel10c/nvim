@@ -50,8 +50,8 @@ return require('packer').startup(function(use)
     -- Good COLOR SCHEME!
     use {
         "EdenEast/nightfox.nvim",
-        disable = false,
         config = function() require('plugins.nightfox') end,
+        disable = false,
     }
 
     -- nerd icons
@@ -66,7 +66,8 @@ return require('packer').startup(function(use)
         branch = 'main',
         requires = {'kyazdani42/nvim-web-devicons',},
         config = function() require('plugins.statusline') end,
-        after = "nvim-web-devicons"
+        after = "nvim-web-devicons",
+        ft = not "dashboard"
     }
 
     -- tabline
@@ -83,25 +84,22 @@ return require('packer').startup(function(use)
         disable = false,
         event = "BufEnter",
     }
-
     use {
         'goolord/alpha-nvim',
         requires = { 'kyazdani42/nvim-web-devicons' },
-        config = function ()
-            -- require'alpha'.setup(require'alpha.themes.startify'.opts)
-            require('plugins.alpha')
-        end,
-        disable = true
+        config = function () require('plugins.alpha') end,
+        event = "BufEnter",
+        disable = true,
     }
 
     -- git stuff
     use {
         "lewis6991/gitsigns.nvim",
         config = function() require('plugins.gitsigns') end,
-        disable = false,
         setup = function()
             require("util").packer_lazy_load "gitsigns.nvim"
         end,
+        disable = false,
     }
 
     -- file tree
@@ -173,9 +171,9 @@ return require('packer').startup(function(use)
     -- latex preview
     use {
         'lervag/vimtex',
-        disable = false,
-        ft = 'tex',
         config = function () require('plugins.misc').vimtex() end,
+        ft = 'tex',
+        disable = false,
     }
 
     -- ---------------------------- Editing Tools ------------------------------------
@@ -190,12 +188,6 @@ return require('packer').startup(function(use)
     use {
         "tpope/vim-surround",
         event = "BufRead",
-    }
-
-    -- zen mode
-    use {
-        "Pocco81/TrueZen.nvim",
-        cmd = {'TZMinimalist', 'TZFocus', 'TZAtaraxis' }
     }
 
     -- markdown bullets
@@ -224,7 +216,6 @@ return require('packer').startup(function(use)
         setup = function()
             require("util").packer_lazy_load "vim-matchup"
         end,
-        -- event = "BufRead",
         event = "BufEnter",
     }
 
@@ -249,7 +240,7 @@ return require('packer').startup(function(use)
         end,
     }
 
-    -- lsp hints
+    -- function hints
     use {
         "ray-x/lsp_signature.nvim",
         config = function() require('plugins.misc').signature() end,
@@ -332,8 +323,8 @@ return require('packer').startup(function(use)
     use {
         'glepnir/lspsaga.nvim',
         config = function() require('plugins.lspsaga') end,
-        cmd = "Lspsaga",
         after = "nvim-cmp",
+        cmd = "Lspsaga",
         disable = false,
     }
 
