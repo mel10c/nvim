@@ -33,10 +33,7 @@ cmp.setup {
                 path = "[PAT]",
                 ultisnips = "[SNI]",
                 calc = "[CAL]",
-                latex_symbols = "[TEX]",
-                eclim = "[JAVA]",
-                cmdline = "[CMD]",
-                spell = "[SPL]"
+                look = "[SPL]"
             })[entry.source.name]
 
             return vim_item
@@ -49,9 +46,19 @@ cmp.setup {
         ["<down>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
-        ["<CR>"] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
+        -- ["<CR>"] = cmp.mapping.confirm {
+        --     behavior = cmp.ConfirmBehavior.Replace,
+        --     select = true,
+        -- },
+        ['<CR>'] = cmp.mapping{
+            i = cmp.mapping.confirm{ behavior = cmp.ConfirmBehavior.Replace, select = false },
+            c = function(fallback)
+                if cmp.visible() then
+                    cmp.confirm{ behavior = cmp.ConfirmBehavior.Replace, select = true }
+                else
+                    fallback()
+                end
+            end
         },
         ["<Tab>"] = function(fallback)
             if vim.fn.pumvisible() == 1 then
@@ -95,7 +102,7 @@ cmp.setup {
             { name = "nvim_lua" },
             { name = "path" },
             { name = "buffer", keyword_length = 4 },
-            { name = "latex_symbols", max_item_count = 5},
+            { name = 'look', keyword_length=2, max_item_count = 3 },
         },
         experimental = {
             native_menu = false,

@@ -10,8 +10,9 @@ local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
-
 return require('packer').startup(function(use)
+
+
 -- --------------------------- Basic System Plugs---------------------------------
     -- lua plugin
     use {
@@ -47,7 +48,13 @@ return require('packer').startup(function(use)
         disable = false,
     }
 
-    -- Good COLOR SCHEME!
+    -- customized color scheme
+    use {
+        "mel10c/onenord.nvim",
+        disable = false,
+    }
+
+    -- alternative color scheme
     use {
         "EdenEast/nightfox.nvim",
         config = function() require('plugins.nightfox') end,
@@ -67,7 +74,6 @@ return require('packer').startup(function(use)
         requires = {'kyazdani42/nvim-web-devicons',},
         config = function() require('plugins.statusline') end,
         after = "nvim-web-devicons",
-        ft = not "dashboard"
     }
 
     -- tabline
@@ -75,6 +81,13 @@ return require('packer').startup(function(use)
         "akinsho/bufferline.nvim",
         config = function() require('plugins.bufferline') end,
         after = "nvim-web-devicons",
+    }
+
+    -- indent line
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        config = function() require('plugins.misc').indent() end,
+        event = "BufWinEnter",
     }
 
     -- dashboard
@@ -119,20 +132,13 @@ return require('packer').startup(function(use)
                 "nvim-telescope/telescope-fzf-native.nvim",
                 run = "make",
             },
-            {
+            -- {
                 -- view ultisnips
-                "fhill2/telescope-ultisnips.nvim",
-            }
+                -- "fhill2/telescope-ultisnips.nvim",
+            -- }
         },
         config = function() require('plugins.telescope') end,
         cmd = "Telescope",
-    }
-
-    -- indent line
-    use {
-        'lukas-reineke/indent-blankline.nvim',
-        config = function() require('plugins.misc').indent() end,
-        event = "BufWinEnter",
     }
 
     -- code outline
@@ -245,77 +251,6 @@ return require('packer').startup(function(use)
         "ray-x/lsp_signature.nvim",
         config = function() require('plugins.misc').signature() end,
         after = "nvim-lspconfig",
-    }
-
-    -- completion engine
-    use {
-        "hrsh7th/nvim-cmp",
-        config = function() require('plugins.cmp') end,
-    }
-
-    -- snips
-    -- use {
-    --     "L3MON4D3/LuaSnip",
-    --     wants = "friendly-snippets",
-    --     after = "nvim-cmp",
-    --     config = function() require('plugins.misc').luasnip() end,
-    -- }
-
-    -- luasnip completetion
-    -- use {
-    --     "saadparwaiz1/cmp_luasnip",
-    --     after = "LuaSnip",
-    -- }
-
-    -- snippets
-    use {
-        'SirVer/ultisnips',
-        config = function ()
-            vim.g.UltiSnipsRemoveSelectModeMappings = 0
-        end,
-        ft = {'tex', 'java', 'pandoc', 'markdown', 'snippets', 'lua'},
-    }
-
-    -- completion for snippets
-    use {
-        'quangnguyen30192/cmp-nvim-ultisnips',
-        after = 'ultisnips',
-    }
-
-    -- soruce for build-in lsp clients
-    use {
-        "hrsh7th/cmp-nvim-lsp",
-    }
-
-    -- source for lua api
-    use {
-        "hrsh7th/cmp-nvim-lua",
-        ft = "lua",
-        after = "nvim-cmp",
-    }
-
-    -- source for buffer words
-    use {
-        "hrsh7th/cmp-buffer",
-        event = "InsertEnter",
-        after = "nvim-cmp",
-    }
-
-    -- source for path
-    use {
-        "hrsh7th/cmp-path",
-        after = "cmp-buffer",
-    }
-    -- complete calculation
-    use {
-        "hrsh7th/cmp-calc",
-        after = "cmp-buffer",
-    }
-
-    -- dot completion
-    use {
-        'kristijanhusak/vim-dadbod-completion',
-        after = "cmp-buffer",
         disable = true,
     }
 
@@ -342,4 +277,83 @@ return require('packer').startup(function(use)
         cmd = "TroubleToggle"
     }
 
+
+    -- ---------------------------- Auto completion ----------------------------------
+    -- completion engine
+    use {
+        "hrsh7th/nvim-cmp",
+        config = function() require('plugins.cmp') end,
+    }
+
+    -- snips
+    use {
+        "L3MON4D3/LuaSnip",
+        after = "nvim-cmp",
+        config = function() require('plugins.misc').luasnip() end,
+    }
+    -- luasnip completetion
+    use {
+        "saadparwaiz1/cmp_luasnip",
+        after = "LuaSnip",
+    }
+
+    -- snippets
+    use {
+        'SirVer/ultisnips',
+        config = function ()
+            vim.g.UltiSnipsRemoveSelectModeMappings = 0
+        end,
+        ft = {'tex', 'java', 'pandoc', 'markdown', 'snippets', 'lua'},
+        disable = false,
+    }
+    -- completion for snippets
+    use {
+        'quangnguyen30192/cmp-nvim-ultisnips',
+        after = 'ultisnips',
+        disable = false,
+    }
+
+    -- soruce for build-in lsp clients
+    use {
+        "hrsh7th/cmp-nvim-lsp",
+    }
+
+    -- source for lua api
+    use {
+        "hrsh7th/cmp-nvim-lua",
+        ft = "lua",
+        after = "nvim-cmp",
+    }
+
+    -- source for buffer words
+    use {
+        "hrsh7th/cmp-buffer",
+        event = "InsertEnter",
+        after = "nvim-cmp",
+    }
+
+    -- source for path
+    use {
+        "hrsh7th/cmp-path",
+        after = "cmp-buffer",
+    }
+
+    -- complete calculation
+    use {
+        "hrsh7th/cmp-calc",
+        after = "cmp-buffer",
+    }
+
+    -- word suggestion
+    use {
+        "octaltree/cmp-look",
+        after = "cmp-buffer"
+    }
+
+    -- dot completion
+    use {
+        'kristijanhusak/vim-dadbod-completion',
+        after = "cmp-buffer",
+        disable = true,
+    }
 end)
