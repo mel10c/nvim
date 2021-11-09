@@ -5,7 +5,6 @@
 -- shortcuts
 local opt = vim.opt
 local cmd = vim.cmd
--- local g = vim.g
 
 cmd "colorscheme onenord"
 -- ------------------------------ Interface Settings -----------------------------
