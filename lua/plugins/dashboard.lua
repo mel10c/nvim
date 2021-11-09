@@ -35,5 +35,5 @@ g.dashboard_custom_section = {
     d = { description = { "  Change Color Scheme         ...  " }, command = "Telescope colorscheme" },
     e = { description = { "  Recents                   SPC f o" }, command = "Telescope oldfiles" },
     f = { description = { "  Find File                 SPC f f" }, command = "Telescope find_files" },
-    g = { description = { "  Change Config             SPC f c" }, command = "Telescope find_files cwd=~/dotfiles/contents/.config/" },
+    g = { description = { "  Change Config             SPC f c" }, command = "Telescope find_files cwd=~/.config/nvim" },
 }

@@ -8,7 +8,7 @@ require('util').disable()
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    Packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 return require('packer').startup(function(use)
 
@@ -20,8 +20,8 @@ return require('packer').startup(function(use)
     }
 
     -- packer can manage itself
-    use {
-        'wbthomason/packer.nvim',
+        use {
+            'wbthomason/packer.nvim',
     }
 
     -- faster start up time
@@ -51,13 +51,14 @@ return require('packer').startup(function(use)
     -- customized color scheme
     use {
         "mel10c/onenord.nvim",
+        config = function() require('plugins.misc').onenord() end,
         disable = false,
     }
 
     -- alternative color scheme
     use {
         "EdenEast/nightfox.nvim",
-        config = function() require('plugins.nightfox') end,
+        config = function() require('plugins.misc').nightfox() end,
         disable = false,
     }
 
@@ -290,11 +291,13 @@ return require('packer').startup(function(use)
         "L3MON4D3/LuaSnip",
         after = "nvim-cmp",
         config = function() require('plugins.misc').luasnip() end,
+        disable = true,
     }
     -- luasnip completetion
     use {
         "saadparwaiz1/cmp_luasnip",
         after = "LuaSnip",
+        disable = true,
     }
 
     -- snippets

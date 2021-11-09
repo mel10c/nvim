@@ -32,6 +32,7 @@ cmp.setup {
                 buffer = "[BUF]",
                 path = "[PAT]",
                 ultisnips = "[SNI]",
+                luasnip = "[LLL]",
                 calc = "[CAL]",
                 look = "[SPL]"
             })[entry.source.name]
@@ -46,20 +47,20 @@ cmp.setup {
         ["<down>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
-        -- ["<CR>"] = cmp.mapping.confirm {
-        --     behavior = cmp.ConfirmBehavior.Replace,
-        --     select = true,
-        -- },
-        ['<CR>'] = cmp.mapping{
-            i = cmp.mapping.confirm{ behavior = cmp.ConfirmBehavior.Replace, select = false },
-            c = function(fallback)
-                if cmp.visible() then
-                    cmp.confirm{ behavior = cmp.ConfirmBehavior.Replace, select = true }
-                else
-                    fallback()
-                end
-            end
+        ["<CR>"] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
         },
+        -- ['<CR>'] = cmp.mapping{
+        --     i = cmp.mapping.confirm{ behavior = cmp.ConfirmBehavior.Replace, select = false },
+        --     c = function(fallback)
+        --         if cmp.visible() then
+        --             cmp.confirm{ behavior = cmp.ConfirmBehavior.Replace, select = true }
+        --         else
+        --             fallback()
+        --         end
+        --     end
+        -- },
         ["<Tab>"] = function(fallback)
             if vim.fn.pumvisible() == 1 then
                 vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-n>", true, true, true), "n")
@@ -80,19 +81,6 @@ cmp.setup {
                 fallback()
             end
         end,
-        -- ["<Enter>"] = cmp.mapping(function(fallback)
-            --     if cmp.visible() then
-            --       if vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
-            --         return press("<C-R>=UltiSnips#ExpandSnippet()<CR>")
-            --       end
-            --       cmp.select_next_item()
-            --     else
-            --       fallback()
-            --     end
-            --   end, {
-            --     "i",
-            --     "s",
-            --   }),
         },
         sources = {
             { name = 'calc' },
@@ -114,3 +102,46 @@ cmp.setup {
 vim.api.nvim_exec([[
 autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
 ]], false)
+--
+-- local t = function(str)
+--     return vim.api.nvim_replace_termcodes(str, true, true, true)
+-- end
+--
+-- local check_back_space = function()
+--     local col = vim.fn.col('.') - 1
+--     if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+--         return true
+--     else
+--         return false
+--     end
+-- end
+--
+-- _G.tab_complete = function()
+--     if cmp and cmp.visible() then
+--         cmp.select_next_item()
+--     elseif luasnip and luasnip.expand_or_jumpable() then
+--         return t("<Plug>luasnip-expand-or-jump")
+--     elseif check_back_space() then
+--         return t "<Tab>"
+--     else
+--         cmp.complete()
+--     end
+--     return ""
+-- end
+-- _G.s_tab_complete = function()
+--     if cmp and cmp.visible() then
+--         cmp.select_prev_item()
+--     elseif luasnip and luasnip.jumpable(-1) then
+--         return t("<Plug>luasnip-jump-prev")
+--     else
+--         return t "<S-Tab>"
+--     end
+--     return ""
+-- end
+--
+-- vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+-- vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+-- vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+-- vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+-- vim.api.nvim_set_keymap("i", "<C-E>", "<Plug>luasnip-next-choice", {})
+-- vim.api.nvim_set_keymap("s", "<C-E>", "<Plug>luasnip-next-choice", {})

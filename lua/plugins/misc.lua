@@ -8,12 +8,16 @@ local g = vim.g
 M.nightfox = function()
     local present, theme = pcall(require, "nightfox")
     if not present then
-        return
+        theme.setup()
     end
-
-    local theme = require('nightfox')
 end
 
+M.onenord = function()
+    local present, theme = pcall(require, "onenord")
+    if not present then
+        theme.setup()
+    end
+end
 -- ----------------------------- Indentline Setup --------------------------------
 M.indent = function()
     require("indent_blankline").setup {
@@ -67,18 +71,14 @@ end
 -- ------------------------------- Autopair Setup --------------------------------
 M.autopairs = function()
     local present1, autopairs = pcall(require, "nvim-autopairs")
-    local present2, autopairs_completion = pcall(require, "nvim-autopairs.completion.cmp")
+    -- local present2, autopairs_completion = pcall(require, "nvim-autopairs.completion.cmp")
 
-    if not (present1 or present2) then
-        -- if not (present1) then
+    -- if not (present1 or present2) then
+    if not (present1) then
         return
     end
 
     autopairs.setup()
-    -- autopairs_completion.setup {
-        -- map_complete = true, -- insert () func completion
-        -- map_cr = true,
-        -- }
     end
 
 -- --------------------------- LSP Signature Setup -------------------------------
@@ -174,7 +174,7 @@ M.autopairs = function()
         g.vimtex_quickfix_mode = 0
         -- g.vimtex_view_general_viewer = 'zathura'
         -- g.vimtex_view_general_viewer = true
-        g.vimtex_view_general_viewer = open
+        g.vimtex_view_general_viewer = "open"
         g.tex_conceal = "abdmg"
         vim.opt.conceallevel=2
     end

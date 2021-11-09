@@ -14,13 +14,13 @@ key.setup {
         suggestions = 20,
     },
     presets = {
-        operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-        motions = false, -- adds help for motions
-        text_objects = false, -- help for text objects triggered after entering an operator
-        windows = false, -- default bindings on <c-w>
-        nav = false, -- misc bindings to work with windows
-        z = false, -- bindings for folds, spelling and others prefixed with z
-        g = false, -- bindings for prefixed with g
+        operators = false,
+        motions = false,
+        text_objects = false,
+        windows = false,
+        nav = false,
+        z = false,
+        g = false,
     },
     key_labels = {},
     icons = {
@@ -32,16 +32,16 @@ key.setup {
         border = "none", -- none, single, double, shadow
         position = "bottom", -- bottom, top
         margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-        padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+        padding = { 2, 2, 2, 2 },
     },
     layout = {
         -- height = { min = 4, max = 25 }, -- min and max height of the columns
         -- width = { min = 20, max = 50 }, -- min and max width of the columns
-        spacing = 5, -- spacing between columns
+        spacing = 5,
         align = "center", -- align columns left, center or right
     },
     ignore_missing = false,
-    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ ", "<C-W>"}, -- hide mapping boilerplate
+    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ ", "<C-W>"},
     show_help = false,
     triggers = "auto",
     -- triggers = {"<leader>"},
@@ -55,8 +55,6 @@ key.setup {
 -- ---------------------------- Telescope window ---------------------------------
 -- shortcuts
 local conf = " cwd=~/.config/nvim"
-local setting = " previewer=false prompt_title=false results_title=false"
-local config = "<cmd>Telescope find_files" .. conf .. setting .." <cr>"
 
 -- telescope
 key.register({
@@ -64,8 +62,7 @@ key.register({
         name = "telescope",
         a = { "<cmd>Telescope colorscheme<cr>",               'colorscheme'},
         b = { "<cmd>Telescope buffers<cr>",                   'buffers'},
-        c = { config,                                         'dotfile'},
-        --  d = { "<cmd>Telescope coc diagnostics theme=ivy", 'diagnostics'},
+        c = { "<cmd>Telescope find_files"..conf.." <cr>",     'dotfile'},
         e = { "<cmd>Telescope registers<cr>",                 'registers'},
         f = { "<cmd>Telescope find_files<cr>",                "Find File" },
         i = { "<cmd>Telescope file_browser<cr>",              "Find File" },
@@ -73,12 +70,10 @@ key.register({
         k = { "<cmd>Telescope keymaps<cr>",                   'keymaps'},
         z = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", 'buffer find'},
         o = { "<cmd>Telescope oldfiles<cr>",                  'recents'},
-        -- r = {':Telescope coc references theme=ivy',        'coc references'],
         r = { "<cmd>Telescope lsp_references<cr>",            'reference'},
         t = { "<cmd>Telescope treesitter theme=ivy<cr>",      'treesitter'},
         w = { "<cmd>Telescope live_grep<cr>",                 'search word'},
         s = { "<cmd>Telescope ultisnips<cr>",                 'ultisnips'},
-        -- u = { "<cmd>Telescope file_browser cwd=~/OneDrive - University of Toronto/2021-2022/<cr>" , 'dotfile'},
     },
 }, { prefix = "<leader>" })
 
