@@ -2,17 +2,15 @@
 -- ================================= PLUGINS =====================================
 -- ===============================================================================
 require("plugins.misc").packer()
-require('util').disable()
 
 -- -------------------------------- Auto Load ------------------------------------
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-    Packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-end
+-- local fn = vim.fn
+-- local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+-- if fn.empty(fn.glob(install_path)) > 0 then
+--     Packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+-- end
+
 return require('packer').startup(function(use)
-
-
 -- --------------------------- Basic System Plugs---------------------------------
     -- lua plugin
     use {
@@ -20,15 +18,15 @@ return require('packer').startup(function(use)
     }
 
     -- packer can manage itself
-        use {
-            'wbthomason/packer.nvim',
+    use {
+        'wbthomason/packer.nvim',
     }
 
     -- faster start up time
-    use({
+    use{
         'lewis6991/impatient.nvim',
         config = function() require('impatient') end,
-    })
+    }
 
     -- better code color
     use {
@@ -98,13 +96,13 @@ return require('packer').startup(function(use)
         disable = false,
         event = "BufEnter",
     }
-    use {
-        'goolord/alpha-nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' },
-        config = function () require('plugins.alpha') end,
-        event = "BufEnter",
-        disable = true,
-    }
+    -- use {
+    --     'goolord/alpha-nvim',
+    --     requires = { 'kyazdani42/nvim-web-devicons' },
+    --     config = function () require('plugins.alpha') end,
+    --     event = "BufEnter",
+    --     disable = true,
+    -- }
 
     -- git stuff
     use {
@@ -133,10 +131,6 @@ return require('packer').startup(function(use)
                 "nvim-telescope/telescope-fzf-native.nvim",
                 run = "make",
             },
-            -- {
-                -- view ultisnips
-                -- "fhill2/telescope-ultisnips.nvim",
-            -- }
         },
         config = function() require('plugins.telescope') end,
         cmd = "Telescope",
@@ -156,17 +150,17 @@ return require('packer').startup(function(use)
     }
 
     -- markdown requirement + highlight
-    use {
-        'vim-pandoc/vim-pandoc',
-        ft = {"markdown", "pandoc"},
-        disable = true
-    }
-    use {
-        'vim-pandoc/vim-pandoc-syntax',
-        requires = { 'vim-pandoc/vim-pandoc' },
-        ft = {"markdown", "pandoc"},
-        disable = true
-    }
+    -- use {
+    --     'vim-pandoc/vim-pandoc',
+    --     ft = {"markdown", "pandoc"},
+    --     disable = true
+    -- }
+    -- use {
+    --     'vim-pandoc/vim-pandoc-syntax',
+    --     requires = { 'vim-pandoc/vim-pandoc' },
+    --     ft = {"markdown", "pandoc"},
+    --     disable = true
+    -- }
 
     -- easy table vim
     use {
@@ -211,11 +205,11 @@ return require('packer').startup(function(use)
     }
 
     -- terminal
-    use {
-        "akinsho/toggleterm.nvim",
-        cmd = "ToggleTerm",
-        disable = true
-    }
+    -- use {
+    --     "akinsho/toggleterm.nvim",
+    --     cmd = "ToggleTerm",
+    --     disable = true
+    -- }
 
     -- match under cursor
     use {
@@ -248,12 +242,12 @@ return require('packer').startup(function(use)
     }
 
     -- function hints
-    use {
-        "ray-x/lsp_signature.nvim",
-        config = function() require('plugins.misc').signature() end,
-        after = "nvim-lspconfig",
-        disable = true,
-    }
+    -- use {
+    --     "ray-x/lsp_signature.nvim",
+    --     config = function() require('plugins.misc').signature() end,
+    --     after = "nvim-lspconfig",
+    --     disable = true,
+    -- }
 
     -- pretty rename and other lsp functions
     use {
@@ -287,18 +281,18 @@ return require('packer').startup(function(use)
     }
 
     -- snips
-    use {
-        "L3MON4D3/LuaSnip",
-        after = "nvim-cmp",
-        config = function() require('plugins.misc').luasnip() end,
-        disable = true,
-    }
+    -- use {
+    --     "L3MON4D3/LuaSnip",
+    --     after = "nvim-cmp",
+    --     config = function() require('plugins.misc').luasnip() end,
+    --     disable = true,
+    -- }
     -- luasnip completetion
-    use {
-        "saadparwaiz1/cmp_luasnip",
-        after = "LuaSnip",
-        disable = true,
-    }
+    -- use {
+    --     "saadparwaiz1/cmp_luasnip",
+    --     after = "LuaSnip",
+    --     disable = true,
+    -- }
 
     -- snippets
     use {
@@ -351,12 +345,5 @@ return require('packer').startup(function(use)
     use {
         "octaltree/cmp-look",
         after = "cmp-buffer"
-    }
-
-    -- dot completion
-    use {
-        'kristijanhusak/vim-dadbod-completion',
-        after = "cmp-buffer",
-        disable = true,
     }
 end)

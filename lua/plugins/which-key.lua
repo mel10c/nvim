@@ -1,6 +1,6 @@
 -- ---------------------------- Keymap helper config -----------------------------
--- ===============================================================================
 
+-- ===============================================================================
 local present, key = pcall(require, "which-key")
 if not present then
     return
@@ -99,8 +99,8 @@ key.register({
 
 key.register({ s = {
     name = "session",
-    s = { "<cmd><C-u>SessionSave<CR>"               , "save session"},
-    l = { "<cmd><C-u>SessionLoad<CR>"               , "load session"},
+    s = { "<cmd><C-u>SessionSave<CR>"                 , "save session"},
+    l = { "<cmd><C-u>SessionLoad<CR>"                 , "load session"},
 },
 }, { prefix = "<leader>" })
 
