@@ -37,9 +37,9 @@ g.dashboard_custom_header = {
 g.dashboard_custom_section = {
     a = { description = { "  Packer Update               ...  " }, command = "PackerSync" },
     b = { description = { "  Packer Status               ...  " }, command = "PackerStatus" },
-    c = { description = { "洛 New File                    ...  " }, command = "DashboardNewFile" },
-    d = { description = { "  Change Color Scheme       SPC f a" }, command = "Telescope colorscheme" },
-    e = { description = { "  Recents                   SPC f o" }, command = "Telescope oldfiles" },
-    f = { description = { "  Find File                 SPC f f" }, command = "Telescope find_files" },
+    c = { description = { "  LSP INFO                    ...  " }, command = "LspInstallInfo" },
+    d = { description = { "洛 New File                    ...  " }, command = "DashboardNewFile" },
+    e = { description = { "  Change Color Scheme       SPC f a" }, command = "Telescope colorscheme" },
+    f = { description = { "  Recents                   SPC f o" }, command = "Telescope oldfiles" },
     g = { description = { "  Change Config             SPC f c" }, command = "Telescope find_files cwd=~/.config/nvim" },
 }

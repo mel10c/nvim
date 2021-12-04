@@ -177,12 +177,6 @@ return require('packer').startup(function(use)
         disable = false,
     }
 
-    -- Better profiling output for startup.
-    use {
-      "dstein64/vim-startuptime",
-      cmd = "StartupTime",
-    }
-
     -- ---------------------------- Editing Tools ------------------------------------
     -- auto pair
     use {
@@ -231,6 +225,16 @@ return require('packer').startup(function(use)
         'junegunn/vim-easy-align',
         cmd = 'EasyAlign'
     }
+
+    -- better rename
+    use {
+        'stevearc/dressing.nvim',
+        config = function() require('plugins.misc').ui() end,
+        setup = function()
+            require("util").packer_lazy_load "dressing.nvim"
+        end,
+    }
+
 
     -- ------------------------------ Lsp configs ------------------------------------
     -- lsp config

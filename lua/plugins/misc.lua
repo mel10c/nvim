@@ -24,6 +24,7 @@ M.onenord = function()
         theme.setup()
     end
 end
+
 -- ----------------------------- Indentline Setup --------------------------------
 M.indent = function()
     require("indent_blankline").setup {
@@ -186,5 +187,12 @@ M.autopairs = function()
         vim.opt.conceallevel=2
     end
 
+-- ---------------------------- nvim UI interface --------------------------------
+M.ui = function()
+    local present, ui = pcall(require, "dressing")
+    if present then
+        ui.setup()
+    end
+end
 
-    return M
+return M

@@ -81,15 +81,14 @@ key.register({
 key.register({
     g = {
         name = "lsp",
-        a = { "<cmd>CodeActionMenu<CR>",                                    'code action'},
+        -- a = { "<cmd>CodeActionMenu<CR>",                                    'code action'},
+        a = { "<cmd>lua vim.lsp.buf.code_action()<CR>",                     'code action'},
         d = { "<cmd>lua vim.lsp.buf.definition()<CR>",                      'definition'},
         D = { "<cmd>lua vim.lsp.buf.declaration()<CR>",                     'declaration'},
         e = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",    'line diagn'},
-        -- h = { "<cmd>lua require'lspsaga.provider'.lsp_finder()<cr>", 'lsp finder'},
         i = { "<cmd>lua vim.lsp.buf.implementation()<CR>",                  'implementation'},
         k = { "<cmd>lua vim.lsp.buf.hover()<CR>",                           'hover doc'},
-        -- n = { "<cmd>Lspsaga rename<cr>",                                    'rename'},
-        n = { "<cmd>lua vim.lsp.buf.rename()<CR>",                                    'rename'},
+        n = { "<cmd>lua vim.lsp.buf.rename()<CR>",                          'rename'},
         r = { "<cmd>lua vim.lsp.buf.references()<CR>",                      'reference'},
         s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>",                  'signature help'},
         t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>",                 'type definition'},
