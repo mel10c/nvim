@@ -57,7 +57,7 @@ return require('packer').startup(function(use)
     use {
         "EdenEast/nightfox.nvim",
         config = function() require('plugins.misc').nightfox() end,
-        disable = false,
+        disable =false,
     }
 
     -- nerd icons
@@ -177,6 +177,12 @@ return require('packer').startup(function(use)
         disable = false,
     }
 
+    -- Better profiling output for startup.
+    use {
+      "dstein64/vim-startuptime",
+      cmd = "StartupTime",
+    }
+
     -- ---------------------------- Editing Tools ------------------------------------
     -- auto pair
     use {
@@ -230,7 +236,8 @@ return require('packer').startup(function(use)
     -- lsp config
     use {
         "neovim/nvim-lspconfig",
-        requires = {'kabouzeid/nvim-lspinstall'},
+        -- requires = {'kabouzeid/nvim-lspinstall'},
+        requires = {'williamboman/nvim-lsp-installer'},
         config = function() require('plugins.lspconfig') end,
         setup = function()
             require("util").packer_lazy_load "nvim-lspconfig"
@@ -250,13 +257,13 @@ return require('packer').startup(function(use)
     -- }
 
     -- pretty rename and other lsp functions
-    use {
-        'glepnir/lspsaga.nvim',
-        config = function() require('plugins.lspsaga') end,
-        after = "nvim-cmp",
-        cmd = "Lspsaga",
-        disable = false,
-    }
+    -- use {
+    --     'glepnir/lspsaga.nvim',
+    --     config = function() require('plugins.lspsaga') end,
+    --     after = "nvim-cmp",
+    --     cmd = "Lspsaga",
+    --     disable = false,
+    -- }
 
     -- good code action menu
     use {

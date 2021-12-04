@@ -30,7 +30,7 @@ opt.expandtab = true
 opt.smarttab = true
 opt.autoindent = true
 opt.ttyfast = true
---opt.tw=0
+-- opt.tw=0
 opt.indentexpr = ''
 opt.backspace = {'indent', 'eol', 'start'}
 opt.wrap = true
@@ -51,6 +51,6 @@ opt.list = true
 opt.shortmess = opt.shortmess + { I = true }
 opt.visualbell = true
 opt.updatetime = 100
-opt.timeoutlen=200
+opt.timeoutlen = 200
 opt.compatible = false
 opt.completeopt = {'menuone', 'noselect'}

@@ -1,5 +1,5 @@
--- ---------------------------- Buffer Line Config -------------------------------
 -- ===============================================================================
+-- ---------------------------- Buffer Line Config -------------------------------
 
 -- colors
 local nord_colors = {
@@ -60,6 +60,10 @@ bufferline.setup {
             guibg = nord_colors.bg
         },
 
+        tab = {
+            guibg = nord_colors.bg
+        },
+
         buffer_selected = {
             guifg = nord_colors.bg,
             guibg = nord_colors.darkblue,
@@ -77,6 +81,10 @@ bufferline.setup {
         close_button_selected = {
             guifg = nord_colors.bg,
             guibg = nord_colors.darkblue,
+        },
+
+        info = {
+            guifg = nord_colors.bg,
         },
 
         modified_selected = {

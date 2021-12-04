@@ -250,7 +250,7 @@ snippet brl "left{ \right}" iA
 endsnippet
 
 snippet brt "| |" iA
-\| $1 \|$0
+\left| $1 \right|$0
 endsnippet
 
 snippet << "langle" iA
@@ -351,15 +351,15 @@ snippet tag "Tags" iA
 \tag{$0}
 endsnippet
 
-snippet iff "iff" iA
+snippet iff "iff" i
 \iff
 endsnippet
 
-snippet im "impies" i
+snippet im; "impies" iA
 \quad \implies \quad
 endsnippet
 
-snippet inn "in" Ai
+snippet inn "in" iA
 \in
 endsnippet
 
@@ -388,14 +388,14 @@ emptyset
 endsnippet
 
 snippet == "equals" iA
-&= $0 \\\\
+&= $1 \\\\${0:[4px]}
 endsnippet
 
-snippet fa "for all" i
+snippet fa; "for all" iA
 \forall
 endsnippet
 
-snippet es "exist" i
+snippet es; "exist" iA
 \exists
 endsnippet
 
@@ -439,8 +439,12 @@ snippet al "alpha" i
 \alpha
 endsnippet
 
-snippet ep "epsilon" i
+snippet ep; "epsilon" iA
 \varepsilon
+endsnippet
+
+snippet del; "epsilon" iA
+\delta
 endsnippet
 
 snippet conj "conjungate" i
@@ -472,11 +476,15 @@ snippet dx "d/dx" w
 \frac{\mathrm{d}$1}{\mathrm{d} ${2:x}} \,$0
 endsnippet
 
+snippet pdx "d/dx" w
+\frac{\partial ${1:y}}{\partial ${2:x}} \,$0
+endsnippet
+
 snippet lim "limit" w
 \lim_{${1:n} \to ${2:\infty}} 
 endsnippet
 
-snippet intS "intergral" w
+snippet intS "intergral" wA
 \int${1:_{$2}^{$3}} \,$0
 endsnippet
 

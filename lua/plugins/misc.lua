@@ -6,10 +6,16 @@ local g = vim.g
 
 -- ------------------------------- Colorschemes ----------------------------------
 M.nightfox = function()
-    local present, theme = pcall(require, "nightfox")
+    local present, nightfox = pcall(require, "nightfox")
     if not present then
-        theme.setup()
+        nightfox.setup()
     end
+    nightfox.setup{
+        hlgroups = {
+            CursorLineNr = { fg = "${blue_br}", style = "bold" },
+        }
+    }
+
 end
 
 M.onenord = function()
@@ -30,6 +36,7 @@ M.indent = function()
             "alpha",
             "packer",
             "lspinfo",
+            "LspInstallInfo",
             "TelescopePrompt",
             "TelescopeResults",
         },

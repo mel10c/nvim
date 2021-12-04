@@ -14,3 +14,4 @@
 require('settings')
 require('mappings')
 require('util').disable()
+pcall(require, "impatient")

@@ -1,20 +1,17 @@
 -- ------------------------------ LSP Config -------------------------------------
 -- ===============================================================================
+local nvim_lsp = require('lspconfig')
 
-USER = vim.fn.expand('$USER')
-
--- local nvim_lsp = require('lspconfig')
+-- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-
--- replace the default lsp diagnostic symbols
-local function lspSymbol(name, icon)
-    vim.fn.sign_define("LspDiagnosticsSign" .. name, { text = icon, numhl = "LspDiagnosticsDefault" .. name })
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+-- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
-lspSymbol("Error", "")
-lspSymbol("Information", "")
-lspSymbol("Hint", "")
-lspSymbol("Warning", "")
+
 
 -- suppress error messages from lang servers
 vim.notify = function(msg, log_level, _opts)
@@ -29,32 +26,19 @@ vim.notify = function(msg, log_level, _opts)
 end
 
 
-local function setup_servers()
-    require'lspinstall'.setup()
-    local servers = require'lspinstall'.installed_servers()
-    -- for _, server in pairs(servers) do
-    --     require'lspconfig'[server].setup{}
-    -- end
-    local lspconfig = require'lspconfig'
-    for _, server in pairs(servers) do
-        lspconfig[server].setup{}
+-- ------------------------------ LSP Servers ------------------------------------
+local lsp_installer = require("nvim-lsp-installer")
+
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
+
+    for _, lsp in ipairs(server) do
+        nvim_lsp[lsp].setup {
+            -- on_attach = my_custom_on_attach,
+            capabilities = capabilities,
+        }
     end
 
-    lspconfig.lua.setup{
-        settings = {
-            Lua = {
-                diagnostics = {
-                    globals = { 'vim' }
-                }
-            }
-        }
-    }
-end
+    server:setup(opts)
+end)
 
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-    setup_servers() -- reload installed servers
-    vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end

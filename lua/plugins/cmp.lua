@@ -89,8 +89,10 @@ cmp.setup {
             { name = "luasnip" },
             { name = "nvim_lua" },
             { name = "path" },
-            { name = "buffer", keyword_length = 4 },
-            { name = 'look', keyword_length=2, max_item_count = 3 },
+            { name = "buffer", keyword_length = 5 },
+            { name = 'look', keyword_length=4, max_item_count = 3,
+                options={ convert_case=true, loud=true }
+            },
         },
         experimental = {
             native_menu = false,

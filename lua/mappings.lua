@@ -71,7 +71,7 @@ map('i', '<C-l>', '<c-g>u<Esc>[s1z=`]a<c-g>u')
 
 -- ------------------------ Insert Mode Emacs-style mapping ----------------------
 map('i', '<C-a>', '<Home>')
-map('i', '<C-e>', '<End>')
+map('i', '<C-e>', '<End><End>')
 map('i', '<C-p>', '<Up>')
 map('i', '<C-n>', '<Down>')
 map('i', '<C-b>', '<Left>')
