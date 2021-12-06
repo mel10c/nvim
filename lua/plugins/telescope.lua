@@ -1,6 +1,5 @@
 -- ------------------------------- Telescope config ------------------------------
 -- ===============================================================================
-
 --require("telescope").load_extension("fzy_native")
 --require('telescope').load_extension('coc')
 
@@ -45,7 +44,6 @@ telescope.setup {
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
         path_display = { "smart" },
         winblend = 0,
-        -- borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
         borderchars = {
             { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
             prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
@@ -66,7 +64,7 @@ telescope.setup {
     },
     pickers = {
         current_buffer_fuzzy_find = {
-            previewer = false,
+            -- previewer = false,
             layout_strategy = "horizontal",
             prompt_prefix = "   ",
             prompt_title = false,
@@ -102,10 +100,55 @@ telescope.setup {
                 preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
         },
         },
-        find_files = {
+        fd = {
+            -- theme = "dropdown",
+            -- prompt_prefix = "   ",
+            -- previewer = false,
             prompt_title = false,
             results_title = false,
             preview_title = false,
+        },
+        find_files = {
+            theme = "dropdown",
+            prompt_prefix = "   ",
+            previewer = false,
+            prompt_title = false,
+            results_title = false,
+            preview_title = false,
+            layout_config = {
+                width = 0.40,
+                height = 0.50,
+            },
+            borderchars = {
+                { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+                prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
+                results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
+            },
+        },
+        buffers = {
+            theme = "dropdown",
+            prompt_prefix = "   ",
+            previewer = false,
+            -- layout_strategy = "horizontal",
+            prompt_title = false,
+            results_title = false,
+            preview_title = false,
+            -- borderchars = {
+            --     { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+            --     prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
+            --     results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
+            -- }
+        },
+        colorscheme = {
+            prompt_title = false,
+            theme = "dropdown",
+            prompt_prefix = "   ",
+            borderchars = {
+                { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+                prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
+                results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
+                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+            }
         }
     },
     extensions = {

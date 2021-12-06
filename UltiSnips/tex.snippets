@@ -480,8 +480,16 @@ snippet pdx "d/dx" w
 \frac{\partial ${1:y}}{\partial ${2:x}} \,$0
 endsnippet
 
-snippet lim "limit" w
+snippet limM "limit" wA
 \lim_{${1:n} \to ${2:\infty}} 
+endsnippet
+
+snippet limD "limit" wA
+\lim_{h \to 0} \frac{f(${1:x + h}) - f(${2:x})}{h}
+endsnippet
+
+snippet limd "limit" wA
+\lim_{h \to 0} \left[ \frac{1}{h} \cdot $1 \right]
 endsnippet
 
 snippet intS "intergral" wA
