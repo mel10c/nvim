@@ -96,13 +96,6 @@ return require('packer').startup(function(use)
         disable = false,
         event = "BufEnter",
     }
-    -- use {
-    --     'goolord/alpha-nvim',
-    --     requires = { 'kyazdani42/nvim-web-devicons' },
-    --     config = function () require('plugins.alpha') end,
-    --     event = "BufEnter",
-    --     disable = true,
-    -- }
 
     -- git stuff
     use {
@@ -252,28 +245,11 @@ return require('packer').startup(function(use)
         end,
     }
 
-    -- function hints
-    -- use {
-    --     "ray-x/lsp_signature.nvim",
-    --     config = function() require('plugins.misc').signature() end,
-    --     after = "nvim-lspconfig",
-    --     disable = true,
-    -- }
-
-    -- pretty rename and other lsp functions
-    -- use {
-    --     'glepnir/lspsaga.nvim',
-    --     config = function() require('plugins.lspsaga') end,
-    --     after = "nvim-cmp",
-    --     cmd = "Lspsaga",
-    --     disable = false,
-    -- }
-
     -- good code action menu
-    use {
-        'weilbith/nvim-code-action-menu',
-        cmd = 'CodeActionMenu',
-    }
+    -- use {
+    --     'weilbith/nvim-code-action-menu',
+    --     cmd = 'CodeActionMenu',
+    -- }
 
     -- good bug display
     use {

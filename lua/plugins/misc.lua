@@ -87,105 +87,76 @@ M.autopairs = function()
     end
 
     autopairs.setup()
-    end
-
--- --------------------------- LSP Signature Setup -------------------------------
-    M.signature = function()
-        local present, lspsignature = pcall(require, "lsp_signature")
-        if present then
-            lspsignature.setup {
-                bind = true,
-                doc_lines = 5,
-                floating_window = false,
-                fix_pos = true,
-                hint_enable = true,
-                hint_prefix = " ",
-                hint_scheme = "String",
-                hi_parameter = "Search",
-                max_height = 22,
-                max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
-                handler_opts = {
-                    border = "none", -- double, single, shadow, none
-                },
-                zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
-                padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
-            }
-        end
-    end
+end
 
 -- -------------------------- LuaSnip Setup (unused) -----------------------------
-    M.luasnip = function()
-        local present, luasnip = pcall(require, "luasnip")
-        if not present then
-            return
-        end
-
-        luasnip.config.set_config {
-            history = true,
-            updateevents = "TextChanged,TextChangedI",
-        }
-        -- require("luasnip/loaders/from_vscode").load { path = { chadrc_config.plugins.options.luasnip.snippet_path } }
-        require("luasnip/loaders/from_vscode").load { path = { {} } }
+M.luasnip = function()
+    local present, luasnip = pcall(require, "luasnip")
+    if not present then
+        return
     end
+
+    luasnip.config.set_config {
+        history = true,
+        updateevents = "TextChanged,TextChangedI",
+    }
+    -- require("luasnip/loaders/from_vscode").load { path = { chadrc_config.plugins.options.luasnip.snippet_path } }
+    require("luasnip/loaders/from_vscode").load { path = { {} } }
+end
 
 -- ------------------------------- Packer Setup ----------------------------------
-    M.packer = function()
-        local present, packer = pcall(require, "packer")
-        if not present then
-            return
-        end
-
-        packer.init {
-            display = {
-                open_fn = function()
-                    return require("packer.util").float { border = "single" }
-                end,
-                prompt_border = "single",
-            },
-            git = {
-                clone_timeout = 600, -- Timeout, in seconds, for git clones
-            },
-            auto_clean = true,
-            compile_on_sync = true,
-            --    auto_reload_compiled = true
-        }
-
+M.packer = function()
+    local present, packer = pcall(require, "packer")
+    if not present then
+        return
     end
 
--- ------------------------------- Lspsaga Setup ---------------------------------
-    M.saga = function()
-        local present, saga  = pcall(require, "lspsaga")
-        if present then
-            saga.init_lsp_saga()
-        end
+    packer.init {
+        display = {
+            open_fn = function()
+                return require("packer.util").float { border = "single" }
+            end,
+            prompt_border = "single",
+        },
+        git = {
+            clone_timeout = 600, -- Timeout, in seconds, for git clones
+        },
+        auto_clean = true,
+        compile_on_sync = true,
+        --    auto_reload_compiled = true
+    }
+
+end
+
+-- ----------------------------- Lsp Error Display -------------------------------
+M.trouble = function()
+    local present, trouble = pcall(require, "trouble")
+    if not present then
+        return
     end
 
-    M.trouble = function()
-        local present, trouble = pcall(require, "trouble")
-        if not present then
-            return
-        end
+    trouble.setup {
+        height = 15,
+        -- "lsp_workspace_diagnostics", "lsp_document_diagnostics", "quickfix", "lsp_references", "loclist"
+        mode = "lsp_workspace_diagnostics",
+        action_keys = {
+            toggle_fold = {"zH", "zh"},
+        },
+        auto_fold = true,
+        use_lsp_diagnostic_signs = true
+    }
+end
 
-        trouble.setup {
-            height = 15, -- height of the trouble list when position is top or bottom
-            mode = "lsp_workspace_diagnostics", -- "lsp_workspace_diagnostics", "lsp_document_diagnostics", "quickfix", "lsp_references", "loclist"
-            action_keys = {
-                toggle_fold = {"zH", "zh"},
-            },
-            auto_fold = true,
-            use_lsp_diagnostic_signs = true
-        }
-    end
-
-    M.vimtex = function ()
-        g.vimtex_compiler_progname = 'nvr'
-        g.vimtex_quickfix_mode = 0
-        -- g.vimtex_view_general_viewer = 'zathura'
-        g.vimtex_view_general_viewer = true
-        -- g.vimtex_view_general_viewer = "open"
-        g.tex_conceal = "abdmg"
-        vim.opt.conceallevel=2
-    end
+-- ------------------------------- LaTex for Nvim --------------------------------
+M.vimtex = function ()
+    g.vimtex_compiler_progname = 'nvr'
+    g.vimtex_quickfix_mode = 0
+    -- g.vimtex_view_general_viewer = 'zathura'
+    g.vimtex_view_general_viewer = true
+    -- g.vimtex_view_general_viewer = "open"
+    g.tex_conceal = "abdmg"
+    vim.opt.conceallevel=2
+end
 
 -- ---------------------------- nvim UI interface --------------------------------
 M.ui = function()
