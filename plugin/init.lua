@@ -63,7 +63,7 @@ return require('packer').startup(function(use)
     -- nerd icons
     use {
         "kyazdani42/nvim-web-devicons",
-        config = function() require('plugins.icons') end,
+        config = function() require('plugins.misc').icon() end,
     }
 
     -- status line
@@ -146,13 +146,11 @@ return require('packer').startup(function(use)
     -- use {
     --     'vim-pandoc/vim-pandoc',
     --     ft = {"markdown", "pandoc"},
-    --     disable = true
     -- }
     -- use {
     --     'vim-pandoc/vim-pandoc-syntax',
     --     requires = { 'vim-pandoc/vim-pandoc' },
     --     ft = {"markdown", "pandoc"},
-    --     disable = true
     -- }
 
     -- easy table vim
