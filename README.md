@@ -1,5 +1,3 @@
-↖️ (View table to contents with the GitHub native button!)
-
 <h1 align="center"> Nordim </h1>
 
 A clean, and feature full nvim configuration template with nord colorscheme, written in lua
@@ -29,12 +27,13 @@ A clean, and feature full nvim configuration template with nord colorscheme, wri
 - Easy and fast changes for braces with [vim-surround](https://github.com/tpope/vim-surround).
 - Easy commentor with [Comment.nvim](https://github.com/numToStr/Comment.nvim).
 - Improved UI experience with [dressing.nvim](https://github.com/stevearc/dressing.nvim).
-- Pre-configed lsp for `python`, `java`, `json`, `vimL`, `lua`, `css`, `latex` with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) and [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer).
+- Pre-configed lsp for with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) and [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer).
+    * Comes with `python`, `java`, `json`, `vimL`, `lua`, `css`, `latex`, install more if you like!
 - Autocompletion with [nvim-cmp](https://github.com/hrsh7th/nvim-cmp).
 - Snippets with [ultisnips](https://github.com/SirVer/ultisnips).
 
 
-# Details
+## Details
 
 For more details regarding the configuration and the used plugins, view the wiki page.
 
