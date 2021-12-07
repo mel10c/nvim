@@ -1,6 +1,6 @@
 -- ------------------------------ LSP Config -------------------------------------
 -- ===============================================================================
-local nvim_lsp = require('lspconfig')
+local lspconfig = require('lspconfig')
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -26,7 +26,7 @@ lsp_installer.on_server_ready(function(server)
     local opts = {}
 
     for _, lsp in ipairs(server) do
-        nvim_lsp[lsp].setup {
+        lspconfig[lsp].setup {
             -- on_attach = my_custom_on_attach,
             capabilities = capabilities,
         }

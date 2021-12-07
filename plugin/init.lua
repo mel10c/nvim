@@ -12,15 +12,12 @@ require("plugins.misc").packer()
 
 return require('packer').startup(function(use)
 -- --------------------------- Basic System Plugs---------------------------------
-    -- lua plugin
-    use {
-        'nvim-lua/plenary.nvim',
-    }
-
     -- packer can manage itself
-    use {
-        'wbthomason/packer.nvim',
-    }
+    use { 'wbthomason/packer.nvim', }
+
+    -- lua plugin
+    use { 'nvim-lua/plenary.nvim', }
+    -- use { 'folke/lua-dev.nvim', }
 
     -- faster start up time
     use{
