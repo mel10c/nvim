@@ -4,7 +4,7 @@
 
 A clean, and feature full nvim configuration with nord colorscheme, written in lua
 
-![showcase](image/dashboard.png)
+![showcase](image/homepage.png)
 
 <details>
 <summary>More showcase pictures</summary>
