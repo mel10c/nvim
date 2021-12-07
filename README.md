@@ -2,9 +2,9 @@
 
 # Nordim
 
-A fast, clean, and figure full nvim configuration with nord colorscheme, written in lua
+A clean, and feature full nvim configuration with nord colorscheme, written in lua
 
-![showcase]()
+![showcase](image/dashboard.png)
 
 <details>
 <summary>More showcase pictures</summary>
