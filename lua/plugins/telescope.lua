@@ -101,9 +101,6 @@ telescope.setup {
         },
         },
         fd = {
-            -- theme = "dropdown",
-            -- prompt_prefix = "   ",
-            -- previewer = false,
             prompt_title = false,
             results_title = false,
             preview_title = false,
@@ -116,7 +113,7 @@ telescope.setup {
             results_title = false,
             preview_title = false,
             layout_config = {
-                width = 0.40,
+                width = 0.50,
                 height = 0.50,
             },
             borderchars = {
@@ -133,11 +130,12 @@ telescope.setup {
             prompt_title = false,
             results_title = false,
             preview_title = false,
-            -- borderchars = {
-            --     { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-            --     prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
-            --     results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
-            -- }
+            borderchars = {
+                { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+                prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
+                results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
+            },
+            layout_config = { width = 0.40, height = 0.30, },
         },
         colorscheme = {
             prompt_title = false,
@@ -148,7 +146,8 @@ telescope.setup {
                 prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
                 results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
                 preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-            }
+            },
+            layout_config = { width = 0.30, height = 0.30, },
         }
     },
     extensions = {

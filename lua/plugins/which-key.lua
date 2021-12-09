@@ -55,6 +55,7 @@ key.setup {
 -- ---------------------------- Telescope window ---------------------------------
 -- shortcuts
 local conf = " cwd=~/.config/nvim"
+local setting = " theme=dropdown prompt_title=false"
 
 -- telescope
 key.register({
@@ -62,14 +63,15 @@ key.register({
         name = "telescope",
         a = { "<cmd>Telescope colorscheme<cr>",                            'colorscheme'},
         b = { "<cmd>Telescope buffers<cr>",                                'buffers'},
-        c = { "<cmd>Telescope find_files"..conf.." <cr>",  'dotfile'},
+        c = { "<cmd>Telescope find_files"..conf.." <cr>",                  'dotfile'},
         e = { "<cmd>Telescope registers<cr>",                              'registers'},
-        f = { "<cmd>Telescope fd<cr>",                             "Find File" },
-        i = { "<cmd>Telescope file_browser<cr>",                           "Find browse" },
+        f = { "<cmd>Telescope fd<cr>",                                     'Find File' },
+        i = { "<cmd>Telescope file_browser<cr>",                           'Find browse' },
         g = { "<cmd>Telescope git_status<cr>",                             'git status'},
         k = { "<cmd>Telescope keymaps<cr>",                                'keymaps'},
         z = { "<cmd>Telescope current_buffer_fuzzy_find<cr>",              'buffer find'},
         o = { "<cmd>Telescope oldfiles<cr>",                               'recents'},
+        p = { "<cmd>Telescope neoclip a"..setting.."<cr>",               'recents'},
         r = { "<cmd>Telescope lsp_references<cr>",                         'reference'},
         t = { "<cmd>Telescope treesitter<cr>",                             'treesitter'},
         w = { "<cmd>Telescope live_grep<cr>",                              'search word'},

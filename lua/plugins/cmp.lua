@@ -7,8 +7,8 @@ if not present then
     return
 end
 
-vim.opt.completeopt = "menuone,noselect"
 
+vim.opt.completeopt = "menuone,noselect"
 -- nvim-cmp setup
 cmp.setup {
     snippet = {
@@ -16,6 +16,19 @@ cmp.setup {
             -- require("luasnip").lsp_expand(args.body)
             vim.fn["UltiSnips#Anon"](args.body)
         end,
+    },
+    sources = {
+        { name = 'calc' },
+        { name = "ultisnips" },
+        { name = "nvim_lsp", max_item_count = 10 },
+        { name = 'treesitter' },
+        { name = "luasnip" },
+        { name = "nvim_lua" },
+        { name = "path" },
+        { name = "buffer", keyword_length = 5 },
+        { name = 'look', keyword_length=4, max_item_count = 3,
+            options={ convert_case=true, loud=true }
+        },
     },
     formatting = {
         format = function(entry, vim_item)
@@ -34,7 +47,8 @@ cmp.setup {
                 ultisnips = "[SNI]",
                 luasnip = "[LLL]",
                 calc = "[CAL]",
-                look = "[SPL]"
+                look = "[SPL]",
+                treesitter = "[TRE]",
             })[entry.source.name]
 
             return vim_item
@@ -52,15 +66,15 @@ cmp.setup {
             select = true,
         },
         -- ['<CR>'] = cmp.mapping{
-        --     i = cmp.mapping.confirm{ behavior = cmp.ConfirmBehavior.Replace, select = false },
-        --     c = function(fallback)
-        --         if cmp.visible() then
-        --             cmp.confirm{ behavior = cmp.ConfirmBehavior.Replace, select = true }
-        --         else
-        --             fallback()
-        --         end
-        --     end
-        -- },
+            --     i = cmp.mapping.confirm{ behavior = cmp.ConfirmBehavior.Replace, select = false },
+            --     c = function(fallback)
+                --         if cmp.visible() then
+                --             cmp.confirm{ behavior = cmp.ConfirmBehavior.Replace, select = true }
+                --         else
+                --             fallback()
+                --         end
+                --     end
+                -- },
         ["<Tab>"] = function(fallback)
             if vim.fn.pumvisible() == 1 then
                 vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-n>", true, true, true), "n")
@@ -81,24 +95,12 @@ cmp.setup {
                 fallback()
             end
         end,
-        },
-        sources = {
-            { name = 'calc' },
-            { name = "ultisnips" },
-            { name = "nvim_lsp", max_item_count = 10 },
-            { name = "luasnip" },
-            { name = "nvim_lua" },
-            { name = "path" },
-            { name = "buffer", keyword_length = 5 },
-            { name = 'look', keyword_length=4, max_item_count = 3,
-                options={ convert_case=true, loud=true }
-            },
-        },
-        experimental = {
-            native_menu = false,
-            ghost_text = true,
-        }
+    },
+    experimental = {
+        native_menu = false,
+        ghost_text = true,
     }
+}
 
 -- Database completion
 vim.api.nvim_exec([[

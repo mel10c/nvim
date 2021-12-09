@@ -4,8 +4,8 @@
 require("plugins.misc").packer()
 
 -- -------------------------------- Auto Load ------------------------------------
--- local fn = vim.fn
 -- local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+-- local fn = vim.fn
 -- if fn.empty(fn.glob(install_path)) > 0 then
 --     Packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 -- end
@@ -17,7 +17,6 @@ return require('packer').startup(function(use)
 
     -- lua plugin
     use { 'nvim-lua/plenary.nvim', }
-    -- use { 'folke/lua-dev.nvim', }
 
     -- faster start up time
     use{
@@ -90,8 +89,8 @@ return require('packer').startup(function(use)
     use {
         "glepnir/dashboard-nvim",
         config = function() require('plugins.dashboard') end,
-        disable = false,
         event = "BufEnter",
+        disable = false,
     }
 
     -- git stuff
@@ -101,7 +100,6 @@ return require('packer').startup(function(use)
         setup = function()
             require("util").packer_lazy_load "gitsigns.nvim"
         end,
-        disable = false,
     }
 
     -- file tree
@@ -124,6 +122,15 @@ return require('packer').startup(function(use)
         },
         config = function() require('plugins.telescope') end,
         cmd = "Telescope",
+    }
+
+    -- clipboard
+    use {
+        "AckslD/nvim-neoclip.lua",
+        requires = "nvim-telescope/telescope.nvim",
+        config = function() require('plugins.misc').clip() end,
+        after = "telescope.nvim",
+        disable = false,
     }
 
     -- code outline
@@ -183,6 +190,7 @@ return require('packer').startup(function(use)
     use {
         'dkarter/bullets.vim',
         ft = {"markdown", "pandoc"},
+        disable = false,
     }
 
     -- easy comment
@@ -223,6 +231,15 @@ return require('packer').startup(function(use)
         end,
     }
 
+    -- search and replace
+    -- use {
+    --     'VonHeikemen/searchbox.nvim',
+    --     requires = { {'MunifTanjim/nui.nvim'}, },
+    --     config = function() require('plugins.misc').search() end,
+    --     cmd = {"SearchBoxMatchAll", "SearchBoxIncSearch", "SearchBoxReplace"},
+    --     disable = true
+    -- }
+
 
     -- ------------------------------ Lsp configs ------------------------------------
     -- lsp config
@@ -244,15 +261,17 @@ return require('packer').startup(function(use)
     -- use {
     --     'weilbith/nvim-code-action-menu',
     --     cmd = 'CodeActionMenu',
+    --     disable = true
     -- }
 
     -- good bug display
-    use {
-        "folke/trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
-        config = function() require('plugins.misc').trouble() end,
-        cmd = "TroubleToggle"
-    }
+    -- use {
+    --     "folke/trouble.nvim",
+    --     requires = "kyazdani42/nvim-web-devicons",
+    --     config = function() require('plugins.misc').trouble() end,
+    --     cmd = "TroubleToggle",
+    --     disable = true,
+    -- }
 
 
     -- ---------------------------- Auto completion ----------------------------------

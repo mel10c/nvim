@@ -187,4 +187,39 @@ M.icon = function()
     }
 end
 
+M.clip = function ()
+    local present, clip = pcall(require, "neoclip")
+    if not present then
+        return
+    end
+
+    clip.setup{
+        history = 20,
+        enable_persistant_history = false,
+        db_path = vim.fn.stdpath("data") .. "/databases/neoclip.sqlite3",
+        filter = nil,
+        preview = false,
+        default_register = '"',
+        content_spec_column = true,
+        on_paste = {
+            set_reg = false,
+        },
+        keys = {
+            i = {
+                select = '<cr>',
+                paste = 'p',
+                paste_behind = 'P',
+                custom = {},
+            },
+            n = {
+                select = '<cr>',
+                paste = 'p',
+                paste_behind = 'P',
+                custom = {},
+            },
+        },
+    }
+
+end
+
 return M

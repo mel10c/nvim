@@ -188,13 +188,13 @@ snippet frr "Fraction" iA
 \\frac{$1}{$2}
 endsnippet
 
-snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
-\\frac{`!p snip.rv = match.group(1)`}{$1}
-endsnippet
-
-snippet "(\\?\w+)(;\;|\;;)" "Vector postfix" riA
-\vec{`!p snip.rv=match.group(1)`}
-endsnippet
+# snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
+# \\frac{`!p snip.rv = match.group(1)`}{$1}
+# endsnippet
+#
+# snippet "(\\?\w+)(;\;|\;;)" "Vector postfix" riA
+# \vec{`!p snip.rv=match.group(1)`}
+# endsnippet
 
 snippet tt "code" i
 \text{$0}
