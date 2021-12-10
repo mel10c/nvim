@@ -19,7 +19,7 @@ end
 -- ------------------------ Disable unnecessary plugins --------------------------
 M.disable = function ()
     local disabled_built_ins = {
-        -- "netrw",
+        "netrw",
         "netrwPlugin",
         "netrwSettings",
         "netrwFileHandlers",

@@ -16,9 +16,10 @@ local nord_colors = {
     -- lbg = "#3B4252",
     fg_green = "#8FBCBB",
     yellow = "#EBCB8B",
-    cyan = "#A3BE8C",
     darkblue = "#81A1C1",
+    lightgray = "#6C7A96",
     green = "#8FBCBB",
+    cyan = "#A3BE8C",
     orange = "#D08770",
     purple = "#B48EAD",
     magenta = "#BF616A",
@@ -78,8 +79,9 @@ section.left[1] = {
     ViMode = {
         provider = function()
             cmd('hi GalaxyViMode guibg='..mode_color[fn.mode()])
-
-            return ' '--..mode_text[vim.fn.mode()]
+            -- return '   MEL10 '--..mode_text[vim.fn.mode()]
+            return '  גּ  '--..mode_text[vim.fn.mode()]
+            -- return ' '--..mode_text[vim.fn.mode()]
         end,
         condition = checkwidth,
         highlight = {nord_colors.bg, nord_colors.bg, "bold"}
@@ -93,7 +95,9 @@ section.left[2] = {
             return "  ".. " " .. dir_name .. " "
         end,
         condition = checkwidth_small,
-        highlight = {nord_colors.fg, nord_colors.line_bg,},
+        separator = " ",
+        separator_highlight = {nord_colors.blue, nord_colors.lightgray},
+        highlight = {nord_colors.bg, nord_colors.darkblue,},
     }
 }
 
@@ -101,7 +105,7 @@ section.left[3] = {
     FileIcon = {
         provider = "FileIcon",
         condition = buffer_not_empty,
-        highlight = {nord_colors.blue, nord_colors.line_bg}
+        highlight = {nord_colors.bg, nord_colors.lightgray}
     }
 }
 section.left[4] = {
@@ -110,7 +114,7 @@ section.left[4] = {
         condition = buffer_not_empty,
         separator = " ",
         separator_highlight = {nord_colors.blue, nord_colors.line_bg},
-        highlight = {nord_colors.blue, nord_colors.line_bgbg,},
+        highlight = {nord_colors.bg, nord_colors.lightgray,},
     }
 }
 
@@ -143,10 +147,10 @@ section.right[3] = {
 section.right[4] = {
     DiagnosticHint = {
         provider = "DiagnosticHint",
-        separator = " ",
         icon = " ",
         highlight = {nord_colors.blue, nord_colors.line_bg},
-        separator_highlight = {nord_colors.bg, nord_colors.line_bg}
+        -- separator = " ",
+        -- separator_highlight = {nord_colors.bg, nord_colors.lightgray}
     }
 }
 
@@ -155,17 +159,19 @@ section.right[5] = {
         provider = function()
             return " "
         end,
-        separator = " | ",
-        separator_highlight = {nord_colors.bg, nord_colors.line_bg},
+        separator = " ",
+        separator_highlight = {nord_colors.bg, nord_colors.purple},
         condition = require("galaxyline.provider_vcs").check_git_workspace,
-        highlight = {nord_colors.purple, nord_colors.line_bg}
+        -- highlight = {nord_colors.purple, nord_colors.dark_gray}
+        highlight = {nord_colors.bg, nord_colors.purple}
     }
 }
 section.right[6] = {
     GitBranch = {
         provider = "GitBranch",
         condition = checkwidth,
-        highlight = {nord_colors.purple, nord_colors.line_bg, "bold"}
+        -- highlight = {nord_colors.purple, nord_colors.dark_gray, "bold"}
+        highlight = {nord_colors.bg, nord_colors.purple}
     }
 }
 
@@ -175,6 +181,7 @@ section.right[7] = {
             return " "
         end,
         condition = checkwidth_small,
+        highlight = {nord_colors.purple, nord_colors.purple},
     }
 }
 
@@ -183,8 +190,10 @@ section.right[8] = {
         provider = "DiffAdd",
         condition = checkwidth_small,
         separator = "",
+        separator_highlight = {nord_colors.gray, nord_colors.purple},
         icon = " ",
-        highlight = {nord_colors.cyan, nord_colors.line_bg}
+        -- highlight = {nord_colors.cyan, nord_colors.dark_gray}
+        highlight = {nord_colors.bg, nord_colors.purple}
     }
 }
 section.right[9] = {
@@ -192,8 +201,10 @@ section.right[9] = {
         provider = "DiffModified",
         condition = checkwidth_small,
         separator = "",
+        separator_highlight = {nord_colors.gray, nord_colors.purple},
         icon = "柳",
-        highlight = {nord_colors.yellow, nord_colors.line_bg}
+        -- highlight = {nord_colors.yellow, nord_colors.dark_gray}
+        highlight = {nord_colors.bg, nord_colors.purple}
     }
 }
 section.right[10] = {
@@ -201,16 +212,18 @@ section.right[10] = {
         provider = "DiffRemove",
         condition = checkwidth_small,
         separator = "",
+        separator_highlight = {nord_colors.bg, nord_colors.gray},
         icon = " ",
-        highlight = {nord_colors.orange, nord_colors.line_bg}
+        -- highlight = {nord_colors.orange, nord_colors.dark_gray}
+        highlight = {nord_colors.bg, nord_colors.purple}
     }
 }
 
 section.right[11] = {
     LineInfo = {
         provider = 'LinePercent',
-        separator = " ",
-        separator_highlight = {nord_colors.gray, nord_colors.line_bg},
+        separator = " ",
+        separator_highlight = {nord_colors.gray, nord_colors.gray},
         condition = checkwidth,
         highlight = {nord_colors.bg, nord_colors.gray}
     }
@@ -223,14 +236,6 @@ section.right[12] = {
         end,
         condition = checkwidth_small,
         highlight = {nord_colors.bg, nord_colors.gray}
-    }
-}
-
-section.right[13] = {
-    ScrollBar = {
-        provider = 'ScrollBar',
-        condition = checkwidth_small,
-        highlight = {nord_colors.gray, nord_colors.line_bg}
     }
 }
 
