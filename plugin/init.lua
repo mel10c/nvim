@@ -90,6 +90,9 @@ return require('packer').startup(function(use)
         "glepnir/dashboard-nvim",
         config = function() require('plugins.dashboard') end,
         event = "BufEnter",
+        setup = function()
+            require("util").packer_lazy_load "dashboard-nvim"
+        end,
         disable = false,
     }
 
@@ -197,6 +200,9 @@ return require('packer').startup(function(use)
     use {
         'numToStr/Comment.nvim',
         config = function() require('plugins.misc').comment() end,
+        setup = function()
+            require("util").packer_lazy_load "Comment.nvim"
+        end,
         event = "BufRead",
     }
 
