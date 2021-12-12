@@ -81,6 +81,8 @@ section.left[1] = {
 
             return ' '--..mode_text[vim.fn.mode()]
         end,
+        separator = " ",
+        separator_highlight = {nord_colors.blue, nord_colors.line_bg},
         condition = checkwidth,
         highlight = {nord_colors.bg, nord_colors.bg, "bold"}
     }
@@ -90,7 +92,7 @@ section.left[2] = {
     Dir = {
         provider = function()
             local dir_name = fn.fnamemodify(fn.getcwd(), ":t")
-            return "  ".. " " .. dir_name .. " "
+            return "".. " " .. dir_name .. " "
         end,
         condition = checkwidth_small,
         highlight = {nord_colors.fg, nord_colors.line_bg,},

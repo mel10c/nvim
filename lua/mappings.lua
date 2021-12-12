@@ -66,7 +66,7 @@ map('i', '$', '$<C-g>u')
 map('i', '{', '{<C-g>u')
 map('i', '}', '}<C-g>u')
 map('n', '<leader>q', ':q<cr>')
-map('n', '<leader>Q', ':q!<cr>')
+map('n', 'Q', ':q!<cr>')
 map('n', '<leader>w', ':w<cr>')
 map('i', '<C-l>', '<c-g>u<Esc>[s1z=`]a<c-g>u')
 

@@ -220,7 +220,6 @@ M.clip = function ()
             },
         },
     }
-
 end
 
 return M

@@ -67,7 +67,7 @@ return require('packer').startup(function(use)
         'glepnir/galaxyline.nvim',
         branch = 'main',
         requires = {'kyazdani42/nvim-web-devicons',},
-        config = function() require('plugins.statusline_square') end,
+        config = function() require('plugins.statusline') end,
         after = "nvim-web-devicons",
     }
 
@@ -173,6 +173,14 @@ return require('packer').startup(function(use)
         config = function () require('plugins.misc').vimtex() end,
         ft = 'tex',
         disable = false,
+    }
+
+    -- Todo UI
+    use {
+        "folke/todo-comments.nvim",
+        requires = "nvim-lua/plenary.nvim",
+        config = function() require('plugins.todo') end,
+        cmd = {"TodoTelescope", "TodoQuickFix"}
     }
 
     -- ---------------------------- Editing Tools ------------------------------------
