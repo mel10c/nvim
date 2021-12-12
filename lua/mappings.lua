@@ -52,7 +52,7 @@ map("n", "<right>", "<cmd>vertical resize+5<cr>")
 
 -- -------------------------------- Edititng -------------------------------------
 map('v', 'y', "y`]")
-map('n', 'Y', 'y$')
+-- map('n', 'Y', 'y$') -- nvm 0.6 update made this default
 map('v', 'Y', '"+y')
 map('v', 'p', '"_dP')
 map('n', ',p', '"_diwP')

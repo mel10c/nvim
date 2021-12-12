@@ -152,8 +152,8 @@ M.vimtex = function ()
     g.vimtex_compiler_progname = 'nvr'
     g.vimtex_quickfix_mode = 0
     -- g.vimtex_view_general_viewer = 'zathura'
-    g.vimtex_view_general_viewer = true
-    -- g.vimtex_view_general_viewer = "open"
+    -- g.vimtex_view_general_viewer = true
+    g.vimtex_view_general_viewer = "open"
     g.tex_conceal = "abdmg"
     vim.opt.conceallevel=2
 end
@@ -187,6 +187,7 @@ M.icon = function()
     }
 end
 
+-- ----------------------------- Clipboard Helper --------------------------------
 M.clip = function ()
     local present, clip = pcall(require, "neoclip")
     if not present then
