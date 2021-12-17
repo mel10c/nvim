@@ -111,6 +111,7 @@ return require('packer').startup(function(use)
         requires = {'kyazdani42/nvim-web-devicons'},
         config = function() require('plugins.NvimTree') end,
         cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+        disable = true,
     }
 
     -- file finder
@@ -122,6 +123,7 @@ return require('packer').startup(function(use)
                 "nvim-telescope/telescope-fzf-native.nvim",
                 run = "make",
             },
+            { 'crispgm/telescope-heading.nvim', }
         },
         config = function() require('plugins.telescope') end,
         cmd = "Telescope",
@@ -180,7 +182,8 @@ return require('packer').startup(function(use)
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
         config = function() require('plugins.todo') end,
-        cmd = {"TodoTelescope", "TodoQuickFix"}
+        cmd = {"TodoTelescope", "TodoQuickFix"},
+        disable = false,
     }
 
     -- ---------------------------- Editing Tools ------------------------------------
@@ -198,11 +201,11 @@ return require('packer').startup(function(use)
     }
 
     -- markdown bullets
-    use {
-        'dkarter/bullets.vim',
-        ft = {"markdown", "pandoc"},
-        disable = false,
-    }
+    -- use {
+    --     'dkarter/bullets.vim',
+    --     ft = {"markdown", "pandoc"},
+    --     disable = false,
+    -- }
 
     -- easy comment
     use {
@@ -215,11 +218,12 @@ return require('packer').startup(function(use)
     }
 
     -- terminal
-    -- use {
-    --     "akinsho/toggleterm.nvim",
-    --     cmd = "ToggleTerm",
-    --     disable = true
-    -- }
+    use {
+        "akinsho/toggleterm.nvim",
+        config = function() require('plugins.misc').terminal() end,
+        cmd = {"ToggleTerm", "TermExec"},
+        disable = false,
+    }
 
     -- match under cursor
     use {
@@ -244,16 +248,6 @@ return require('packer').startup(function(use)
             require("util").packer_lazy_load "dressing.nvim"
         end,
     }
-
-    -- search and replace
-    -- use {
-    --     'VonHeikemen/searchbox.nvim',
-    --     requires = { {'MunifTanjim/nui.nvim'}, },
-    --     config = function() require('plugins.misc').search() end,
-    --     cmd = {"SearchBoxMatchAll", "SearchBoxIncSearch", "SearchBoxReplace"},
-    --     disable = true
-    -- }
-
 
     -- ------------------------------ Lsp configs ------------------------------------
     -- lsp config
@@ -284,7 +278,7 @@ return require('packer').startup(function(use)
     --     requires = "kyazdani42/nvim-web-devicons",
     --     config = function() require('plugins.misc').trouble() end,
     --     cmd = "TroubleToggle",
-    --     disable = true,
+    --     disable = false,
     -- }
 
 

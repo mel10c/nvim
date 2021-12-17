@@ -11,8 +11,8 @@ end
 telescope.setup {
     defaults = {
         vimgrep_arguments = {
-            "rg",
             "--color=never",
+            "rg",
             "--no-heading",
             "--with-filename",
             "--line-number",
@@ -113,7 +113,7 @@ telescope.setup {
             results_title = false,
             preview_title = false,
             layout_config = {
-                width = 0.50,
+                width = 0.60,
                 height = 0.50,
             },
             borderchars = {
@@ -166,17 +166,13 @@ telescope.setup {
 }
 
 -- local extensions = { "themes", "terms", "fzf", "coc", "ultisnips" }
-local extensions = { "ultisnips" }
-local packer_repos = [["extensions", "telescope-fzf-native.nvim"]]
+-- local extensions = { "heading" }
+-- local packer_repos = [["extensions", "telescope-fzf-native.nvim"]]
 
-if vim.fn.executable "ueberzug" == 1 then
-    table.insert(extensions, "media_files")
-    packer_repos = packer_repos .. ', "telescope-media-files.nvim"'
-end
+-- pcall(function()
+--     for _, ext in ipairs(extensions) do
+--         telescope.load_extension(ext)
+--     end
+-- end)
 
-pcall(function()
-    for _, ext in ipairs(extensions) do
-        telescope.load_extension(ext)
-    end
-end)
-
+telescope.load_extension('heading')

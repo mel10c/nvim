@@ -1,5 +1,4 @@
 -- ---------------------------- Keymap helper config -----------------------------
-
 -- ===============================================================================
 local present, key = pcall(require, "which-key")
 if not present then
@@ -56,29 +55,32 @@ key.setup {
 -- shortcuts
 local conf = " cwd=~/.config/nvim"
 local setting = " theme=dropdown prompt_title=false"
+local kb = " cwd=~/melaneyroot.github.io"
 
--- telescope
+-- shotcut
 key.register({
     f = {
         name = "telescope",
         a = { "<cmd>Telescope colorscheme<cr>",                            'colorscheme'},
         b = { "<cmd>Telescope buffers<cr>",                                'buffers'},
-        c = { "<cmd>Telescope find_files"..conf.." <cr>",                  'dotfile'},
+        c = { "<cmd>Telescope find_files"..conf.." <cr>",                  'config'},
+        d = { "<cmd>Telescope find_files"..kb.." <cr>",                    'knowledge base'},
         e = { "<cmd>Telescope registers<cr>",                              'registers'},
-        f = { "<cmd>Telescope fd<cr>",                                     'Find File' },
-        i = { "<cmd>Telescope file_browser<cr>",                           'Find browse' },
+        f = { "<cmd>Telescope fd<cr>",                                     'find file' },
+        h = { "<cmd>Telescope heading"..setting.."<cr>",                   'headings' },
+        i = { "<cmd>Telescope file_browser<cr>",                           'file browse' },
         g = { "<cmd>Telescope git_status<cr>",                             'git status'},
         k = { "<cmd>Telescope keymaps<cr>",                                'keymaps'},
         z = { "<cmd>Telescope current_buffer_fuzzy_find<cr>",              'buffer find'},
         o = { "<cmd>Telescope oldfiles<cr>",                               'recents'},
-        p = { "<cmd>Telescope neoclip a"..setting.."<cr>",               'recents'},
+        p = { "<cmd>Telescope neoclip a"..setting.."<cr>",                 'clipboard'},
         r = { "<cmd>Telescope lsp_references<cr>",                         'reference'},
         t = { "<cmd>Telescope treesitter<cr>",                             'treesitter'},
         w = { "<cmd>Telescope live_grep<cr>",                              'search word'},
     },
 }, { prefix = "<leader>" })
 
--- lsp mappings
+-- ------------------------------- LSP commands ----------------------------------
 key.register({
     g = {
         name = "lsp",
@@ -98,14 +100,21 @@ key.register({
 -- ,{ prefix = "<leader>" }
 )
 
-key.register({ s = {
-    name = "session",
-    s = { "<cmd><C-u>SessionSave<CR>"                 , "save session"},
-    l = { "<cmd><C-u>SessionLoad<CR>"                 , "load session"},
-},
+-- ---------------------------- Floating Terminals -------------------------------
+key.register({
+    s = {
+        name = "toggleTerm",
+        d = { ':TermExec cmd="trans <c-r><c-w>" dir="~/"<CR>exit', 'define'},
+        g = { '<cmd>TermExec cmd="g"<CR>',                         'lazygit'},
+        h = { '<cmd>ToggleTerm direction=horizontal<CR>',          'terminal below'},
+        l = { ':TermExec cmd="zh <c-r><c-w>" dir="~/"<CR>exit',    'translate'},
+        r = { '<cmd>TermExec cmd="r"<CR>',                         'ranger'},
+        s = { '<cmd>ToggleTerm<CR>',                               'terminal'},
+        w = { '<cmd>ToggleTerm direction=tab<CR>',                 'terminal window'},
+    },
 }, { prefix = "<leader>" })
 
--- ignore keys
+-- ------------------------------ Ignoring keys ----------------------------------
 key.register({
     ["<space>j"] = "which_key_ignore",
     ["<space>k"] = "which_key_ignore",

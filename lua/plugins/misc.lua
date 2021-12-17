@@ -137,13 +137,13 @@ M.trouble = function()
 
     trouble.setup {
         height = 15,
-        -- "lsp_workspace_diagnostics", "lsp_document_diagnostics", "quickfix", "lsp_references", "loclist"
-        mode = "lsp_workspace_diagnostics",
+        -- "workspace_diagnostics", "lsp_document_diagnostics", "quickfix", "lsp_references", "loclist"
+        mode = "workspace_diagnostics",
         action_keys = {
             toggle_fold = {"zH", "zh"},
         },
         auto_fold = true,
-        use_lsp_diagnostic_signs = true
+        use_diagnostic_signs = true
     }
 end
 
@@ -219,6 +219,48 @@ M.clip = function ()
                 custom = {},
             },
         },
+    }
+end
+
+-- ----------------------------- Terminal Setting --------------------------------
+M.terminal = function()
+    local present, terminal = pcall(require, "toggleterm")
+    if not present then
+        return
+    end
+
+    terminal.setup {
+        -- size can be a number or function which is passed the current terminal
+        function(term)
+            if term.direction == "horizontal" then
+                return 20
+            elseif term.direction == "vertical" then
+                return vim.o.columns * 0.4
+            end
+        end,
+        -- open_mapping = [[<leader>s]],
+        hide_numbers = true,
+        shade_filetypes = {},
+        shade_terminals = false,
+        shading_factor = '3', -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
+        start_in_insert = true,
+        insert_mappings = true, -- whether or not the open mapping applies in insert mode
+        persist_size = true,
+        -- direction = 'vertical' | 'horizontal' | 'window' | 'float',
+        direction = 'float',
+        shell = vim.o.shell, -- change the default shell
+        close_on_exit = true, -- close the terminal window when the process exits
+        float_opts = {
+            -- border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
+            border = 'single',
+            -- width = <value>,
+            -- height = <value>,
+            winblend = 3,
+            highlights = {
+                border = "ToggleTermBorder",
+                background = "ToggleTerm",
+            }
+        }
     }
 end
 
