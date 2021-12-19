@@ -111,7 +111,7 @@ return require('packer').startup(function(use)
         requires = {'kyazdani42/nvim-web-devicons'},
         config = function() require('plugins.NvimTree') end,
         cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-        disable = true,
+        disable = false,
     }
 
     -- file finder
@@ -123,7 +123,6 @@ return require('packer').startup(function(use)
                 "nvim-telescope/telescope-fzf-native.nvim",
                 run = "make",
             },
-            { 'crispgm/telescope-heading.nvim', }
         },
         config = function() require('plugins.telescope') end,
         cmd = "Telescope",

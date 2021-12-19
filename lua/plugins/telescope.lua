@@ -135,7 +135,7 @@ telescope.setup {
                 prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
                 results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
             },
-            layout_config = { width = 0.40, height = 0.30, },
+            layout_config = { width = 0.60, height = 0.30, },
         },
         colorscheme = {
             prompt_title = false,
@@ -166,13 +166,11 @@ telescope.setup {
 }
 
 -- local extensions = { "themes", "terms", "fzf", "coc", "ultisnips" }
--- local extensions = { "heading" }
--- local packer_repos = [["extensions", "telescope-fzf-native.nvim"]]
+local extensions = { "heading" }
+local packer_repos = [["extensions", "telescope-fzf-native.nvim"]]
 
--- pcall(function()
---     for _, ext in ipairs(extensions) do
---         telescope.load_extension(ext)
---     end
--- end)
-
-telescope.load_extension('heading')
+pcall(function()
+    for _, ext in ipairs(extensions) do
+        telescope.load_extension(ext)
+    end
+end)

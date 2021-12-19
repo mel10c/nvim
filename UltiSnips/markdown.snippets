@@ -8,7 +8,7 @@ snippet bff "bold" iA
 **$1**$0
 endsnippet
 
-snippet un "underline" i
+snippet un; "underline" iA
 <u>$1</u>$0
 endsnippet
 
@@ -41,10 +41,66 @@ $0
 endsnippet
 
 snippet template "template" b
-#${1:Knowledge/${2:Stats, MAT, CS, Psy}}
+#${1:Knowledge/${2:Stats, MAT, CS, Psych}}
 
 ---
 $0
+endsnippet
+
+snippet study "study page" b
+#Reflection/Study
+
+---
+`${1:Name}`
+
+- **${2:Purpose}**
+
+---
+
+# Method
+
+1. $0
+
+# Result
+# Reference
+>
+endsnippet
+
+snippet studies "study in line" b
+- <u>Method</u>
+	- $1
+- <u>Result</u>
+	- $2
+endsnippet
+
+snippet theory "theory page" b
+#Tool/Psych
+
+---
+==${1:Name}==
+
+- **${2:Purpose}**
+
+---
+
+# Overview
+
+# Detail
+
+# Application
+
+# Reference
+>
+endsnippet
+
+snippet theories "theory in line" b
+> ${1:who}
+- <u>Overview</u>
+	- $2
+- <u>Detail</u>
+	- $3
+- <u>Application</u>
+	- $4
 endsnippet
 
 snippet ;1 "h1" iA
