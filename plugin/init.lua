@@ -3,13 +3,6 @@
 -- ===============================================================================
 require("plugins.misc").packer()
 
--- -------------------------------- Auto Load ------------------------------------
--- local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
--- local fn = vim.fn
--- if fn.empty(fn.glob(install_path)) > 0 then
---     Packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
--- end
-
 return require('packer').startup(function(use)
 -- --------------------------- Basic System Plugs---------------------------------
     -- packer can manage itself
@@ -18,100 +11,115 @@ return require('packer').startup(function(use)
     -- lua plugin
     use { 'nvim-lua/plenary.nvim', }
 
+    -- startup time watcher
+    use { 'dstein64/vim-startuptime', }
+
     -- faster start up time
     use{
         'lewis6991/impatient.nvim',
         config = function() require('impatient') end,
     }
+    use { 'nathom/filetype.nvim' }
 
     -- better code color
     use {
         "nvim-treesitter/nvim-treesitter",
         run = ':TSUpdate',
-        branch = "0.5-compat",
-        config = function() require('plugins.treesitter') end,
         event = "BufRead",
+        cmd = {
+            "TSInstall",
+            "TSInstallSync",
+            "TSBufEnable",
+            "TSBufToggle",
+            "TSEnableAll",
+            "TSInstallFromGrammer",
+            "TSToggleAll",
+            "TSUpdate",
+            "TSUpdateSync"
+        },
+        config = function() require('plugins.treesitter') end,
     }
+
 
 -- ------------------------------- Appearance ------------------------------------
     -- key map reminder
     use {
         "folke/which-key.nvim",
+        event = "BufEnter",
         config = function() require('plugins.which-key') end,
-        event = "BufWinEnter",
-        disable = false,
     }
 
     -- customized color scheme
     use {
         "mel10c/onenord.nvim",
         config = function() require('plugins.misc').onenord() end,
-        disable = false,
     }
 
     -- alternative color scheme
     use {
         "EdenEast/nightfox.nvim",
         config = function() require('plugins.misc').nightfox() end,
-        disable =false,
     }
 
     -- nerd icons
     use {
         "kyazdani42/nvim-web-devicons",
+        event = "BufEnter",
         config = function() require('plugins.misc').icon() end,
     }
 
     -- status line
     use {
         'glepnir/galaxyline.nvim',
-        branch = 'main',
         requires = {'kyazdani42/nvim-web-devicons',},
-        config = function() require('plugins.statusline') end,
         after = "nvim-web-devicons",
+        config = function() require('plugins.statusline') end,
     }
 
     -- tabline
     use {
         "akinsho/bufferline.nvim",
-        config = function() require('plugins.bufferline') end,
         after = "nvim-web-devicons",
+        config = function() require('plugins.bufferline') end,
     }
 
     -- indent line
     use {
         'lukas-reineke/indent-blankline.nvim',
+        event = "BufEnter",
         config = function() require('plugins.misc').indent() end,
-        event = "BufWinEnter",
     }
 
     -- dashboard
     use {
         "glepnir/dashboard-nvim",
+        cmd = {
+            "Dashboard",
+            "DashboardChangeColorscheme",
+            "DashboardFindFile",
+            "DashboardFindHistory",
+            "DashboardFindWord",
+            "DashboardNewFile",
+            "DashboardJumpMarks",
+            "SessionLoad",
+            "SessionSave"
+        },
         config = function() require('plugins.dashboard') end,
-        event = "BufEnter",
-        setup = function()
-            require("util").packer_lazy_load "dashboard-nvim"
-        end,
-        disable = false,
     }
 
     -- git stuff
     use {
         "lewis6991/gitsigns.nvim",
+        event = "BufRead",
         config = function() require('plugins.gitsigns') end,
-        setup = function()
-            require("util").packer_lazy_load "gitsigns.nvim"
-        end,
     }
 
     -- file tree
     use {
         'kyazdani42/nvim-tree.lua',
         requires = {'kyazdani42/nvim-web-devicons'},
-        config = function() require('plugins.NvimTree') end,
         cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-        disable = false,
+        config = function() require('plugins.NvimTree') end,
     }
 
     -- file finder
@@ -124,17 +132,16 @@ return require('packer').startup(function(use)
                 run = "make",
             },
         },
-        config = function() require('plugins.telescope') end,
         cmd = "Telescope",
+        config = function() require('plugins.telescope') end,
     }
 
     -- clipboard
     use {
         "AckslD/nvim-neoclip.lua",
         requires = "nvim-telescope/telescope.nvim",
-        config = function() require('plugins.misc').clip() end,
         after = "telescope.nvim",
-        disable = false,
+        config = function() require('plugins.misc').clip() end,
     }
 
     -- code outline
@@ -146,20 +153,9 @@ return require('packer').startup(function(use)
     -- preview colors
     use {
         "norcalli/nvim-colorizer.lua",
-        config = function() require('plugins.misc').colorizer() end,
         cmd = "ColorizerToggle",
+        config = function() require('plugins.misc').colorizer() end,
     }
-
-    -- markdown requirement + highlight
-    -- use {
-    --     'vim-pandoc/vim-pandoc',
-    --     ft = {"markdown", "pandoc"},
-    -- }
-    -- use {
-    --     'vim-pandoc/vim-pandoc-syntax',
-    --     requires = { 'vim-pandoc/vim-pandoc' },
-    --     ft = {"markdown", "pandoc"},
-    -- }
 
     -- easy table vim
     use {
@@ -171,26 +167,24 @@ return require('packer').startup(function(use)
     -- latex preview
     use {
         'lervag/vimtex',
-        config = function () require('plugins.misc').vimtex() end,
         ft = 'tex',
-        disable = false,
+        config = function () require('plugins.misc').vimtex() end,
     }
 
     -- Todo UI
     use {
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
-        config = function() require('plugins.todo') end,
         cmd = {"TodoTelescope", "TodoQuickFix"},
-        disable = false,
+        config = function() require('plugins.todo') end,
     }
 
     -- ---------------------------- Editing Tools ------------------------------------
     -- auto pair
     use {
         "windwp/nvim-autopairs",
+        after = "nvim-cmp",
         config = function() require('plugins.misc').autopairs() end,
-        after = "nvim-cmp"
     }
 
     -- change surrand types
@@ -209,28 +203,21 @@ return require('packer').startup(function(use)
     -- easy comment
     use {
         'numToStr/Comment.nvim',
+        event = "BufEnter",
         config = function() require('plugins.misc').comment() end,
-        setup = function()
-            require("util").packer_lazy_load "Comment.nvim"
-        end,
-        event = "BufRead",
     }
 
     -- terminal
     use {
         "akinsho/toggleterm.nvim",
-        config = function() require('plugins.misc').terminal() end,
         cmd = {"ToggleTerm", "TermExec"},
-        disable = false,
+        config = function() require('plugins.misc').terminal() end,
     }
 
     -- match under cursor
     use {
         "andymass/vim-matchup",
-        setup = function()
-            require("util").packer_lazy_load "vim-matchup"
-        end,
-        event = "BufEnter",
+        event = "BufRead",
     }
 
     -- easier alignment
@@ -242,10 +229,8 @@ return require('packer').startup(function(use)
     -- better rename
     use {
         'stevearc/dressing.nvim',
+        event = "BufRead",
         config = function() require('plugins.misc').ui() end,
-        setup = function()
-            require("util").packer_lazy_load "dressing.nvim"
-        end,
     }
 
     -- ------------------------------ Lsp configs ------------------------------------
@@ -255,13 +240,7 @@ return require('packer').startup(function(use)
         -- requires = {'kabouzeid/nvim-lspinstall'},
         requires = {'williamboman/nvim-lsp-installer'},
         config = function() require('plugins.lspconfig') end,
-        setup = function()
-            require("util").packer_lazy_load "nvim-lspconfig"
-            -- reload the current file so lsp actually starts for it
-            vim.defer_fn(function()
-                vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-            end, 0)
-        end,
+        event = "BufEnter"
     }
 
     -- good code action menu
@@ -309,13 +288,11 @@ return require('packer').startup(function(use)
             vim.g.UltiSnipsRemoveSelectModeMappings = 0
         end,
         ft = {'tex', 'java', 'pandoc', 'markdown', 'snippets', 'lua'},
-        disable = false,
     }
     -- completion for snippets
     use {
         'quangnguyen30192/cmp-nvim-ultisnips',
         after = 'ultisnips',
-        disable = false,
     }
 
     -- soruce for build-in lsp clients

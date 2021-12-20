@@ -8,7 +8,7 @@ local exec = vim.api.nvim_exec
 
 vim.cmd "colorscheme onenord"
 -- ------------------------------ Interface Settings -----------------------------
--- opt.syntax = 'on'
+opt.syntax = 'on'
 opt.mouse = 'a'
 opt.number = true
 opt.numberwidth = 2
@@ -36,21 +36,20 @@ opt.smartcase= true
 opt.hlsearch = true
 opt.incsearch = true
 opt.conceallevel = 2
-opt.spell = true
-opt.spelllang = 'en_us'
+vim.cmd("autocmd FileType markdown setlocal spell setlocal spelllang='en_us'")
 
--- ---------------------------------- Files Settings -----------------------------
+-- -- ---------------------------------- Files Settings -----------------------------
 opt.hidden = true
 opt.list = true
 opt.shortmess = opt.shortmess + { I = true }
 opt.timeoutlen = 200
 opt.compatible = false
 opt.completeopt = {'menuone', 'noselect'}
--- opt.visualbell = true
--- opt.autochdir = true
--- opt.exrc = true
--- opt.secure = true
--- opt.updatetime = 100
+opt.visualbell = true
+opt.autochdir = true
+opt.exrc = true
+opt.secure = true
+opt.updatetime = 100
 
 -- ----------------------------------- Auto Commands -----------------------------
 local NoWhitespace = exec(
