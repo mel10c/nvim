@@ -206,17 +206,19 @@ M.clip = function ()
             set_reg = false,
         },
         keys = {
-            i = {
-                select = '<cr>',
-                paste = 'p',
-                paste_behind = 'P',
-                custom = {},
-            },
-            n = {
-                select = '<cr>',
-                paste = 'p',
-                paste_behind = 'P',
-                custom = {},
+            telescope = {
+                i = {
+                    select = '<cr>',
+                    paste = 'p',
+                    paste_behind = 'P',
+                    custom = {},
+                },
+                n = {
+                    select = '<cr>',
+                    paste = 'p',
+                    paste_behind = 'P',
+                    custom = {},
+                },
             },
         },
     }

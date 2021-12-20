@@ -4,15 +4,15 @@
 
 -- shortcuts
 local opt = vim.opt
-local cmd = vim.cmd
+local exec = vim.api.nvim_exec
 
-cmd "colorscheme onenord"
+vim.cmd "colorscheme onenord"
 -- ------------------------------ Interface Settings -----------------------------
-opt.syntax = 'on'
+-- opt.syntax = 'on'
 opt.mouse = 'a'
 opt.number = true
+opt.numberwidth = 2
 opt.relativenumber = true
--- opt.cursorcolumn = true
 opt.cursorline = true
 opt.scrolloff = 5
 opt.showmode = false
@@ -22,15 +22,12 @@ opt.foldenable = false
 opt.signcolumn = 'number'
 
 -- --------------------------------- Editor Settings -----------------------------
-local tabwidth = 4
-opt.tabstop = tabwidth
-opt.shiftwidth = tabwidth
-opt.softtabstop = tabwidth
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.softtabstop = 4
 opt.expandtab = true
 opt.smarttab = true
 opt.autoindent = true
-opt.ttyfast = true
--- opt.tw=0
 opt.indentexpr = ''
 opt.backspace = {'indent', 'eol', 'start'}
 opt.wrap = true
@@ -43,14 +40,40 @@ opt.spell = true
 opt.spelllang = 'en_us'
 
 -- ---------------------------------- Files Settings -----------------------------
-opt.autochdir = true
-opt.exrc = true
-opt.secure = true
 opt.hidden = true
 opt.list = true
 opt.shortmess = opt.shortmess + { I = true }
-opt.visualbell = true
-opt.updatetime = 100
 opt.timeoutlen = 200
 opt.compatible = false
 opt.completeopt = {'menuone', 'noselect'}
+-- opt.visualbell = true
+-- opt.autochdir = true
+-- opt.exrc = true
+-- opt.secure = true
+-- opt.updatetime = 100
+
+-- ----------------------------------- Auto Commands -----------------------------
+local NoWhitespace = exec(
+    [[
+    function! NoWhitespace()
+        let l:save = winsaveview()
+        keeppatterns %s/\s\+$//e
+        call winrestview(l:save)
+    endfunction
+    call NoWhitespace()
+    ]],
+    true
+)
+
+exec([[au BufWritePre * call NoWhitespace()]], false)
+
+vim.cmd
+[[
+if index(argv(), ".") >= 0
+  autocmd VimEnter * NvimTreeOpen
+  bd1
+elseif len(argv()) == 0
+  autocmd VimEnter * Dashboard
+endif
+]]
+
