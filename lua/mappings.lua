@@ -91,6 +91,12 @@ map('n', ',3', '<cmd>BufferLineGoToBuffer 3 <cr>zz')
 map('n', ',4', '<cmd>BufferLineGoToBuffer 4 <cr>zz')
 map('n', ',x', '<cmd>BufferLinePickClose <cr>')
 
--- --------------------------------- Lsp mappings --------------------------------
+-- ------------------------------ Lsp mappings -----------------------------------
 map('n', '<C-n>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
 map('n', '<C-p>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+
+-- ---------------------------- Surround Shortcuts ------------------------------
+vim.cmd[[xmap <leader>i <Plug>VSurround*E]]
+vim.cmd[[xmap <leader>b <Plug>VSurround*gv<Plug>VSurround*E]]
+vim.cmd[[xmap <leader>u <Plug>VSurround<u>E]]
+vim.cmd[[xmap <leader>l <Plug>VSurround]gv<Plug>VSurround]E]]

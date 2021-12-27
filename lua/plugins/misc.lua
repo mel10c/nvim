@@ -27,7 +27,12 @@ end
 
 -- ----------------------------- Indentline Setup --------------------------------
 M.indent = function()
-    require("indent_blankline").setup {
+    local present, indent = pcall(require, "indent_blankline")
+    if not present then
+        return
+    end
+
+    indent.setup {
         indentLine_enabled = 1,
         char = "|",
         filetype_exclude = {
@@ -264,6 +269,14 @@ M.terminal = function()
             }
         }
     }
+end
+
+-- -------------------------- Impatient Safe Call --------------------------------
+M.imp = function()
+    local present, imp = pcall(require, "impatient")
+    if present then
+        imp.setup()
+    end
 end
 
 return M

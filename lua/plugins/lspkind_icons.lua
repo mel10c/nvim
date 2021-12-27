@@ -11,11 +11,11 @@ M.icons = {
     Variable = "",
     Class = "ﴯ",
     Interface = "",
-    Module = "",
-    Property = "ﰠ",
+    Module = "",
+    Property = "",
     Unit = "塞",
     Value = "",
-    Enum = "",
+    Enum = "了",
     Keyword = "",
     Snippet = "",
     Color = "",
@@ -25,9 +25,9 @@ M.icons = {
     EnumMember = "",
     Constant = "",
     Struct = "פּ",
-    Event = "",
+    Event = "鬒",
     Operator = "",
-    TypeParameter = "",
+    TypeParameter = "",
 }
 
 return M

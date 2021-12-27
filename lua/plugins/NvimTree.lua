@@ -70,6 +70,11 @@ nvimtree.setup {
         enable = true,
         update_cwd = false,
     },
+    git = {
+        enable = false,
+        ignore = true,
+        timeout = 500,
+    },
     view = {
         allow_resize = true,
         side = "left",

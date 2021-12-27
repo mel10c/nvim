@@ -11,13 +11,10 @@ return require('packer').startup(function(use)
     -- lua plugin
     use { 'nvim-lua/plenary.nvim', }
 
-    -- startup time watcher
-    use { 'dstein64/vim-startuptime', }
-
     -- faster start up time
     use{
         'lewis6991/impatient.nvim',
-        config = function() require('impatient') end,
+        config = function() require('plugins.misc').imp() end,
     }
     use { 'nathom/filetype.nvim' }
 
@@ -118,7 +115,7 @@ return require('packer').startup(function(use)
     use {
         'kyazdani42/nvim-tree.lua',
         requires = {'kyazdani42/nvim-web-devicons'},
-        cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+        cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen" },
         config = function() require('plugins.NvimTree') end,
     }
 

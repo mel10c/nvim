@@ -25,7 +25,7 @@ cmp.setup {
         { name = "luasnip" },
         { name = "nvim_lua" },
         { name = "path" },
-        { name = "buffer", keyword_length = 5 },
+        { name = "buffer", keyword_length = 3, max_item_count = 3, },
         { name = 'look', keyword_length=4, max_item_count = 3,
             options={ convert_case=true, loud=true }
         },
@@ -65,16 +65,6 @@ cmp.setup {
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         },
-        -- ['<CR>'] = cmp.mapping{
-            --     i = cmp.mapping.confirm{ behavior = cmp.ConfirmBehavior.Replace, select = false },
-            --     c = function(fallback)
-                --         if cmp.visible() then
-                --             cmp.confirm{ behavior = cmp.ConfirmBehavior.Replace, select = true }
-                --         else
-                --             fallback()
-                --         end
-                --     end
-                -- },
         ["<Tab>"] = function(fallback)
             if vim.fn.pumvisible() == 1 then
                 vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-n>", true, true, true), "n")
@@ -96,13 +86,11 @@ cmp.setup {
             end
         end,
     },
+    documentation = {
+        border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+    },
     experimental = {
         native_menu = false,
         ghost_text = true,
     }
 }
-
--- Database completion
-vim.api.nvim_exec([[
-autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
-]], false)

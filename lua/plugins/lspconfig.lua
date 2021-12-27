@@ -1,6 +1,9 @@
 -- ------------------------------ LSP Config -------------------------------------
 -- ===============================================================================
-local lspconfig = require('lspconfig')
+local present, lspconfig = pcall(require, "lspconfig")
+if not present then
+    return
+end
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -20,7 +23,10 @@ end
 
 
 -- ------------------------------ LSP Servers ------------------------------------
-local lsp_installer = require("nvim-lsp-installer")
+local status, lsp_installer = pcall(require, "nvim-lsp-installer")
+if not status then
+    return
+end
 
 lsp_installer.on_server_ready(function(server)
     local opts = {}

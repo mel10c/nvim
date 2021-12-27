@@ -18,7 +18,7 @@ endsnippet
 
 snippet code "code" b
 \`\`\`${1:language}
-$2
+$0
 \`\`\`
 endsnippet
 
@@ -51,7 +51,7 @@ snippet study "study page" b
 #Reflection/Study
 
 ---
-`${1:Name}`
+\`${1:Name}\`
 
 - **${2:Purpose}**
 
@@ -83,8 +83,6 @@ snippet theory "theory page" b
 
 ---
 
-# Overview
-
 # Detail
 
 # Application
@@ -103,20 +101,28 @@ snippet theories "theory in line" b
 	- $4
 endsnippet
 
+snippet ==T "h1" iA
+==Theory==: [[$1]]
+endsnippet
+
 snippet ;1 "h1" iA
-# 
+# $0
 endsnippet
 
 snippet ;2 "h2" iA
-## 
+## $0
 endsnippet
 
 snippet ;3 "h3" iA
-### 
+### $0
 endsnippet
 
 snippet ;4 "h4" iA
-#### 
+#### $0
+endsnippet
+
+snippet ;5 "h4" iA
+##### $0
 endsnippet
 
 snippet pic "picture" b
@@ -131,17 +137,17 @@ endsnippet
 # ----------------------------- Math Shortcuts -------------------------------
 
 snippet cross "cross product" b
-\begin{vmatrix} 
+\begin{vmatrix}
 	i&j&k\\\\
-	${1:a}_1&${1:a}_2&${1:a}_3\\\\ 
-	${2:b}_1&${2:b}_2&${2:b}_3\\\\ 
+	${1:a}_1&${1:a}_2&${1:a}_3\\\\
+	${2:b}_1&${2:b}_2&${2:b}_3\\\\
 \end{vmatrix}
 endsnippet
 
 snippet vmat "vmatrix" b
-\begin{vmatrix} 
-	${1:a}&${2:b}\\\\ 
-	${3:c}&${4:d}\\\\ 
+\begin{vmatrix}
+	${1:a}&${2:b}\\\\
+	${3:c}&${4:d}\\\\
 \end{vmatrix}
 endsnippet
 
@@ -159,15 +165,15 @@ endsnippet
 
 snippet bmatb "square bmat" w
 \begin{bmatrix}
-$1 & $2 \\ 
-$3 & $4 
-\end{bmatrix} 
+$1 & $2 \\
+$3 & $4
+\end{bmatrix}
 $0
 endsnippet
 
 snippet eq "equation" b
 \left\{\begin{matrix}
-${1:y_1} & =${2:x} \\ 
+${1:y_1} & =${2:x} \\
 ${3:y_2} & =${4:x}
 \end{matrix}\right.
 endsnippet
@@ -175,7 +181,7 @@ endsnippet
 
 #context "math()"
 #snippet limsup "limsup" w
-#\limsup_{${1:n} \to ${2:\infty}} 
+#\limsup_{${1:n} \to ${2:\infty}}
 #endsnippet
 
 #context "math()"
@@ -222,7 +228,7 @@ endsnippet
 
 snippet dm "Math" wA
 $$ $0 $$
-endsnippet	
+endsnippet
 
 snippet '([A-Za-z])(\d)' "auto subscript" wrA
 `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
@@ -346,7 +352,7 @@ snippet qq "quad" iA
 endsnippet
 
 snippet ,, "space" iA
-\, 
+\,
 endsnippet
 
 snippet floor "floor" i
@@ -383,18 +389,18 @@ endsnippet
 
 snippet mcal "mathcal" i
 \mathcal{$1}
-endsnippet 
+endsnippet
 
 snippet mbb "mathbb" i
 \mathbb{$1}
-endsnippet 
+endsnippet
 
 snippet func "function" i
 ${1:f}: \\${2:R^${3:2}} \to \\${4:R^${0:2}}
 endsnippet
 
 snippet *** "cdot" iA
-\cdot 
+\cdot
 endsnippet
 
 snippet norm "norm" i
@@ -406,7 +412,7 @@ snippet dx "d/dx" w
 endsnippet
 
 snippet lim "limit" w
-\lim_{${1:n} \to ${2:\infty}} 
+\lim_{${1:n} \to ${2:\infty}}
 endsnippet
 
 snippet intS "intergral" w

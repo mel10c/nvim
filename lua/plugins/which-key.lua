@@ -107,8 +107,8 @@ key.register({
         g = { '<cmd>TermExec cmd="g"<CR>',                         'lazygit'},
         h = { '<cmd>ToggleTerm direction=horizontal<CR>',          'terminal below'},
         l = { ':TermExec cmd="zh <c-r><c-w>" dir="~/"<CR>exit',    'translate'},
-        -- r = { '<cmd>TermExec cmd="r"<CR>',                         'ranger'},
         s = { '<cmd>ToggleTerm<CR>',                               'terminal'},
+        t = { ':TermExec cmd="zh" dir="~/"<CR>',                   'translation'},
         w = { '<cmd>ToggleTerm direction=tab<CR>',                 'terminal window'},
     },
 }, { prefix = "<leader>" })
