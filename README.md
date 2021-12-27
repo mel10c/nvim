@@ -37,7 +37,6 @@ For video demo of the setup, view this:
 
 For more details regarding the configuration and setup, view the wiki page.
 
-
 # TODO
 
 - Change to snippets to [LuaSnip](https://github.com/L3MON4D3/LuaSnip)

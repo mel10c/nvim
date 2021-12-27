@@ -4,7 +4,9 @@
 require("plugins.misc").packer()
 
 return require('packer').startup(function(use)
+
 -- --------------------------- Basic System Plugs---------------------------------
+
     -- packer can manage itself
     use { 'wbthomason/packer.nvim', }
 
@@ -190,13 +192,6 @@ return require('packer').startup(function(use)
         event = "BufRead",
     }
 
-    -- markdown bullets
-    -- use {
-    --     'dkarter/bullets.vim',
-    --     ft = {"markdown", "pandoc"},
-    --     disable = false,
-    -- }
-
     -- easy comment
     use {
         'numToStr/Comment.nvim',
@@ -235,7 +230,6 @@ return require('packer').startup(function(use)
     use {
         "neovim/nvim-lspconfig",
         requires = {'williamboman/nvim-lsp-installer'},
-        -- config = function() require('plugins.lspconfig') end,
         config = function() require('lsp') end,
         event = "BufEnter"
     }
