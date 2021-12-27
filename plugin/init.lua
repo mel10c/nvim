@@ -12,7 +12,7 @@ return require('packer').startup(function(use)
     use { 'nvim-lua/plenary.nvim', }
 
     -- faster start up time
-    use{
+    use {
         'lewis6991/impatient.nvim',
         config = function() require('plugins.misc').imp() end,
     }
@@ -234,9 +234,9 @@ return require('packer').startup(function(use)
     -- lsp config
     use {
         "neovim/nvim-lspconfig",
-        -- requires = {'kabouzeid/nvim-lspinstall'},
         requires = {'williamboman/nvim-lsp-installer'},
-        config = function() require('plugins.lspconfig') end,
+        -- config = function() require('plugins.lspconfig') end,
+        config = function() require('lsp') end,
         event = "BufEnter"
     }
 

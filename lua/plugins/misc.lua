@@ -274,8 +274,8 @@ end
 -- -------------------------- Impatient Safe Call --------------------------------
 M.imp = function()
     local present, imp = pcall(require, "impatient")
-    if present then
-        imp.setup()
+    if not present then
+        return
     end
 end
 

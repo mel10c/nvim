@@ -4,14 +4,14 @@ local M = {}
 
 M.icons = {
     Text = "",
-    Method = "",
+    Method = "m",
     Function = "",
     Constructor = "",
     Field = "ﰠ",
     Variable = "",
-    Class = "ﴯ",
+    Class = "",
     Interface = "",
-    Module = "",
+    Module = "",
     Property = "",
     Unit = "塞",
     Value = "",
@@ -27,7 +27,7 @@ M.icons = {
     Struct = "פּ",
     Event = "鬒",
     Operator = "",
-    TypeParameter = "",
+    TypeParameter = "",
 }
 
 return M

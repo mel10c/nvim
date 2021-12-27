@@ -88,7 +88,7 @@ key.register({
         d = { "<cmd>lua vim.lsp.buf.definition()<CR>",                      'definition'},
         D = { "<cmd>lua vim.lsp.buf.declaration()<CR>",                     'declaration'},
         e = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",    'line diagn'},
-        i = { "<cmd>lua vim.lsp.buf.implementation()<CR>",                  'implementation'},
+        -- i = { "<cmd>lua vim.lsp.buf.implementation()<CR>",                  'implementation'},
         k = { "<cmd>lua vim.lsp.buf.hover()<CR>",                           'hover doc'},
         n = { "<cmd>lua vim.lsp.buf.rename()<CR>",                          'rename'},
         r = { "<cmd>lua vim.lsp.buf.references()<CR>",                      'reference'},

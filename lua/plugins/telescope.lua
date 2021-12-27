@@ -1,7 +1,5 @@
 -- ------------------------------- Telescope config ------------------------------
 -- ===============================================================================
---require("telescope").load_extension("fzy_native")
---require('telescope').load_extension('coc')
 
 local present, telescope = pcall(require, "telescope")
 if not present then
@@ -10,22 +8,10 @@ end
 
 telescope.setup {
     defaults = {
-        vimgrep_arguments = {
-            "--color=never",
-            "rg",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-        },
+
         prompt_prefix = "   ",
         selection_caret = " ",
-        -- entry_prefix = "  ",
-        initial_mode = "insert",
-        selection_strategy = "reset",
-        sorting_strategy = "ascending",
-        layout_strategy = "horizontal",
+
         layout_config = {
             horizontal = {
                 prompt_position = "top",
@@ -39,17 +25,20 @@ telescope.setup {
             height = 0.75,
             preview_cutoff = 120,
         },
+
         file_sorter = require("telescope.sorters").get_fuzzy_file,
         file_ignore_patterns = { "node_modules" },
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
         path_display = { "smart" },
         winblend = 0,
+
         borderchars = {
             { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
             prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
             results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
             preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
         },
+
         prompt_title = false,
         results_title = false,
         preview_title = false,
@@ -62,7 +51,9 @@ telescope.setup {
         -- Developer configurations: Not meant for general override
         buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
     },
+
     pickers = {
+
         current_buffer_fuzzy_find = {
             -- previewer = false,
             layout_strategy = "horizontal",
@@ -75,8 +66,9 @@ telescope.setup {
                 prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
                 results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
                 preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+            },
         },
-        },
+
         treesitter = {
             theme = "ivy",
             prompt_prefix = "   ",
@@ -88,6 +80,7 @@ telescope.setup {
                 preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
             }
         },
+
         oldfiles = {
             prompt_prefix = " 羽  ",
             prompt_title = false,
@@ -98,13 +91,15 @@ telescope.setup {
                 prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
                 results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
                 preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+            },
         },
-        },
+
         fd = {
             prompt_title = false,
             results_title = false,
             preview_title = false,
         },
+
         find_files = {
             theme = "dropdown",
             prompt_prefix = "   ",
@@ -122,6 +117,7 @@ telescope.setup {
                 results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
             },
         },
+
         buffers = {
             theme = "dropdown",
             prompt_prefix = "   ",
@@ -137,6 +133,7 @@ telescope.setup {
             },
             layout_config = { width = 0.60, height = 0.30, },
         },
+
         colorscheme = {
             prompt_title = false,
             theme = "dropdown",
@@ -148,7 +145,21 @@ telescope.setup {
                 preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
             },
             layout_config = { width = 0.30, height = 0.30, },
+        },
+
+        lsp_references = {
+            prompt_title = false,
+            theme = "dropdown",
+            prompt_prefix = "   ",
+            borderchars = {
+                { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+                prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
+                results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
+                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+            },
+            layout_config = { width = 0.60, height = 0.50, },
         }
+
     },
     extensions = {
         fzf = {
