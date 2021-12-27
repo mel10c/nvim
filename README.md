@@ -1,9 +1,18 @@
 <h1 align="center"> &#9961 nvim &#9961 </h1>
 
-A clean, and feature full nvim configuration template with nord colorscheme, written in lua
+A nvim configuration template with nord colorscheme, written in lua
 
-![showcase](image/homepage.png)
+![java](image/show_java.png)
 
+![markdown](image/show_markdown.png)
+
+<details>
+<summary>Click to See More Showcases</summary>
+    <img src="image/show_files.png" alt="show_files" width="500">
+    <img src="image/show_reference.png" alt="Reference" width="500">
+    <img src="image/show_markdownSimple.png" alt="markdown" width="500">
+    <img src="image/show_plugins.png" alt="Plugins" width="500">
+</details>
 
 
 # Key Features
@@ -11,7 +20,7 @@ A clean, and feature full nvim configuration template with nord colorscheme, wri
 - Contrasting while still Nordic colorscheme!
     - Supported with customized colorscheme inspired by [onenord.nvim](https://github.com/rmehri01/onenord.nvim).
     - Plus an additional REALLY good colorscheme: [nightfox.nvim](https://github.com/EdenEast/nightfox.nvim).
-- Relatively fast startup time with lazy loading (approximately under 160msec startup time).
+- Lazy loading (Under 100 msec startup time).
 - Syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 - Keymap reminder with [which-key.nvim](https://github.com/folke/which-key.nvim).
 - Pretty icons with [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons).
@@ -26,7 +35,6 @@ A clean, and feature full nvim configuration template with nord colorscheme, wri
 - Easy commentor with [Comment.nvim](https://github.com/numToStr/Comment.nvim).
 - Improved UI experience with [dressing.nvim](https://github.com/stevearc/dressing.nvim).
 - Pre-configed lsp for with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) and [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer).
-    * Comes with `python`, `java`, `json`, `vimL`, `lua`, `css`, `latex` configs, install more if you like!
 - Autocompletion with [nvim-cmp](https://github.com/hrsh7th/nvim-cmp).
 - Snippets with [ultisnips](https://github.com/SirVer/ultisnips).
 
