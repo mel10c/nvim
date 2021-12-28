@@ -35,8 +35,7 @@ opt.smartcase= true
 opt.hlsearch = true
 opt.incsearch = true
 opt.conceallevel = 2
-opt.clipboard = "unnamedplus"
--- vim.cmd("autocmd FileType markdown set spell")
+vim.cmd [[autocmd FileType markdown,tex set spell]]
 vim.cmd [[set whichwrap+=<,>,[,],h,l]]
 
 -- -- ---------------------------------- Files Settings -----------------------------

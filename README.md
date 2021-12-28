@@ -2,6 +2,8 @@
 
 A nvim configuration template with nord colorscheme, written in lua
 
+![home](image/homepage.png)
+
 ![java](image/show_java.png)
 
 ![markdown](image/show_markdown.png)

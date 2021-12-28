@@ -39,8 +39,8 @@ return require('packer').startup(function(use)
         config = function() require('plugins.treesitter') end,
     }
 
-
 -- ------------------------------- Appearance ------------------------------------
+
     -- key map reminder
     use {
         "folke/which-key.nvim",
@@ -179,6 +179,7 @@ return require('packer').startup(function(use)
     }
 
     -- ---------------------------- Editing Tools ------------------------------------
+
     -- auto pair
     use {
         "windwp/nvim-autopairs",
@@ -226,6 +227,7 @@ return require('packer').startup(function(use)
     }
 
     -- ------------------------------ Lsp configs ------------------------------------
+
     -- lsp config
     use {
         "neovim/nvim-lspconfig",
@@ -252,6 +254,7 @@ return require('packer').startup(function(use)
 
 
     -- ---------------------------- Auto completion ----------------------------------
+
     -- completion engine
     use {
         "hrsh7th/nvim-cmp",
@@ -322,4 +325,5 @@ return require('packer').startup(function(use)
         "octaltree/cmp-look",
         after = "cmp-buffer"
     }
+
 end)
