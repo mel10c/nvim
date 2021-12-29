@@ -1,9 +1,17 @@
 -- ===============================================================================
 -- ================================= PLUGINS =====================================
 -- ===============================================================================
-require("plugins.misc").packer()
 
-return require('packer').startup(function(use)
+-- safe call
+local present, packer = pcall(require, "packer")
+if not present then
+   return false
+end
+
+require("plugins.misc").packer()
+vim.cmd [[packadd packer.nvim]]
+
+return packer.startup(function(use)
 
 -- --------------------------- Basic System Plugs---------------------------------
 
@@ -44,26 +52,28 @@ return require('packer').startup(function(use)
     -- key map reminder
     use {
         "folke/which-key.nvim",
-        event = "BufEnter",
+        event = "VimEnter",
         config = function() require('plugins.which-key') end,
     }
 
     -- customized color scheme
     use {
         "mel10c/onenord.nvim",
+        event = "VimEnter",
         config = function() require('plugins.misc').onenord() end,
     }
 
     -- alternative color scheme
     use {
         "EdenEast/nightfox.nvim",
+        event = "VimEnter",
         config = function() require('plugins.misc').nightfox() end,
     }
 
     -- nerd icons
     use {
         "kyazdani42/nvim-web-devicons",
-        event = "BufEnter",
+        after = "onenord.nvim",
         config = function() require('plugins.misc').icon() end,
     }
 
@@ -85,7 +95,7 @@ return require('packer').startup(function(use)
     -- indent line
     use {
         'lukas-reineke/indent-blankline.nvim',
-        event = "BufEnter",
+        event = "VimEnter",
         config = function() require('plugins.misc').indent() end,
     }
 
@@ -166,16 +176,8 @@ return require('packer').startup(function(use)
     -- latex preview
     use {
         'lervag/vimtex',
-        ft = 'tex',
+        cmd = "VimtexCompile",
         config = function () require('plugins.misc').vimtex() end,
-    }
-
-    -- Todo UI
-    use {
-        "folke/todo-comments.nvim",
-        requires = "nvim-lua/plenary.nvim",
-        cmd = {"TodoTelescope", "TodoQuickFix"},
-        config = function() require('plugins.todo') end,
     }
 
     -- ---------------------------- Editing Tools ------------------------------------
@@ -196,7 +198,7 @@ return require('packer').startup(function(use)
     -- easy comment
     use {
         'numToStr/Comment.nvim',
-        event = "BufEnter",
+        event = "BufRead",
         config = function() require('plugins.misc').comment() end,
     }
 
@@ -219,13 +221,6 @@ return require('packer').startup(function(use)
         cmd = 'EasyAlign'
     }
 
-    -- better rename
-    use {
-        'stevearc/dressing.nvim',
-        event = "BufRead",
-        config = function() require('plugins.misc').ui() end,
-    }
-
     -- ------------------------------ Lsp configs ------------------------------------
 
     -- lsp config
@@ -233,25 +228,21 @@ return require('packer').startup(function(use)
         "neovim/nvim-lspconfig",
         requires = {'williamboman/nvim-lsp-installer'},
         config = function() require('lsp') end,
-        event = "BufEnter"
+        event = "BufRead",
     }
 
     -- good code action menu
-    -- use {
-    --     'weilbith/nvim-code-action-menu',
-    --     cmd = 'CodeActionMenu',
-    --     disable = true
-    -- }
+    use {
+        'weilbith/nvim-code-action-menu',
+        cmd = 'CodeActionMenu',
+    }
 
-    -- good bug display
-    -- use {
-    --     "folke/trouble.nvim",
-    --     requires = "kyazdani42/nvim-web-devicons",
-    --     config = function() require('plugins.misc').trouble() end,
-    --     cmd = "TroubleToggle",
-    --     disable = false,
-    -- }
-
+    -- better rename
+    use {
+        'stevearc/dressing.nvim',
+        event = "BufRead",
+        config = function() require('plugins.misc').ui() end,
+    }
 
     -- ---------------------------- Auto completion ----------------------------------
 
@@ -259,29 +250,30 @@ return require('packer').startup(function(use)
     use {
         "hrsh7th/nvim-cmp",
         config = function() require('plugins.cmp') end,
+        event = "BufRead",
     }
 
-    -- snips
+    -- -- snips
     -- use {
     --     "L3MON4D3/LuaSnip",
     --     after = "nvim-cmp",
     --     config = function() require('plugins.misc').luasnip() end,
-    --     disable = true,
+    --     disable = false,
     -- }
-    -- luasnip completetion
+    -- -- luasnip completetion
     -- use {
     --     "saadparwaiz1/cmp_luasnip",
     --     after = "LuaSnip",
-    --     disable = true,
+    --     disable = false,
     -- }
 
     -- snippets
     use {
         'SirVer/ultisnips',
+        event = "InsertEnter",
         config = function ()
             vim.g.UltiSnipsRemoveSelectModeMappings = 0
         end,
-        ft = {'tex', 'java', 'pandoc', 'markdown', 'snippets', 'lua'},
     }
     -- completion for snippets
     use {
@@ -292,6 +284,7 @@ return require('packer').startup(function(use)
     -- soruce for build-in lsp clients
     use {
         "hrsh7th/cmp-nvim-lsp",
+        event = "InsertEnter",
     }
 
     -- source for lua api

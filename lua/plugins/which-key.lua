@@ -83,8 +83,8 @@ key.register({
 key.register({
     g = {
         name = "lsp",
-        -- a = { "<cmd>CodeActionMenu<CR>",                                    'code action'},
-        a = { "<cmd>lua vim.lsp.buf.code_action()<CR>",                     'code action'},
+        a = { "<cmd>CodeActionMenu<CR>",                                    'code action'},
+        -- a = { "<cmd>lua vim.lsp.buf.code_action()<CR>",                     'code action'},
         d = { "<cmd>lua vim.lsp.buf.definition()<CR>",                      'definition'},
         D = { "<cmd>lua vim.lsp.buf.declaration()<CR>",                     'declaration'},
         e = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",    'line diagn'},

@@ -13,16 +13,24 @@ M.nightfox = function()
     nightfox.setup{
         hlgroups = {
             CursorLineNr = { fg = "${blue_br}", style = "bold" },
+            TabLine = { bg = "${bg}", fg = "${fg}" },
+            TabLineFill = { bg = "${bg}" },
+            TabLineSel = { fg = "${bg}", bg = "${blue}" },
+
+            TelescopeSelection = { fg = "${cyan}", bg = "${bg}"},
         }
     }
 
 end
 
 M.onenord = function()
-    local present, theme = pcall(require, "onenord")
-    if not present then
-        theme.setup()
+    local colorscheme = "onenord"
+    local status, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+    if not status then
+        vim.notify("colorscheme" .. colorscheme .. " not found!")
+        return
     end
+
 end
 
 -- ----------------------------- Indentline Setup --------------------------------
@@ -34,21 +42,20 @@ M.indent = function()
 
     indent.setup {
         indentLine_enabled = 1,
-        char = "|",
+        char = "│",
+        use_treesitter = true,
         filetype_exclude = {
             "help",
-            "terminal",
-            "dashboard",
-            "alpha",
-            "packer",
-            "lspinfo",
-            "LspInstallInfo",
-            "TelescopePrompt",
-            "TelescopeResults",
+            "packer", "terminal",
+            "dashboard", "alpha",
+            "lspinfo", "LspInstallInfo",
+            "TelescopePrompt", "TelescopeResults",
         },
-        buftype_exclude = { "terminal" },
-        show_trailing_blankline_indent = false,
+        buftype_exclude = {
+            "terminal", "prompt", "nofile", "help"
+        },
         show_first_indent_level = false,
+        show_trailing_blankline_indent = false,
     }
 end
 

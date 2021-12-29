@@ -1,13 +1,6 @@
 -- ===============================================================================
 -- ---------------------------- Buffer Line Config -------------------------------
 
--- colors
-local nord_colors = {
-    bg = "#2E3440",
-    darkblue = "#81A1C1",
-    red = "#BF616A"
-}
-
 -- initialize
 local present, bufferline = pcall(require, "bufferline")
 if not present then
@@ -17,14 +10,15 @@ end
 bufferline.setup {
     options = {
         offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
+        indicator_icon = '▎',
         buffer_close_icon = "·",
         modified_icon = "",
         show_close_icon = false,
+        close_icon = '',
         left_trunc_marker = "",
         right_trunc_marker = "",
         max_name_length = 14,
         max_prefix_length = 0,
-        tab_size = 18,
         show_tab_indicators = false,
         enforce_regular_tabs = false,
         view = "multiwindow",
@@ -52,81 +46,81 @@ bufferline.setup {
             end
         end,
     },
+
     highlights = {
         fill = {
-            guibg = nord_colors.bg
+            guibg = {attribute='bg',highlight='TabLine'}
         },
         background = {
-            guibg = nord_colors.bg
+            guibg = {attribute='bg',highlight='TabLine'}
         },
 
         tab = {
-            guibg = nord_colors.bg
+            guibg = {attribute='bg',highlight='TabLine'}
         },
 
         buffer_selected = {
-            guifg = nord_colors.bg,
-            guibg = nord_colors.darkblue,
+            guifg = {attribute='fg',highlight='TabLineSel'},
+            guibg = {attribute='bg',highlight='TabLineSel'},
             gui = 'none'
         },
         buffer_visible = {
             guifg = {attribute='fg',highlight='TabLine'},
-            guibg = nord_colors.bg
+            guibg = {attribute='bg',highlight='TabLine'},
         },
 
         close_button_visible = {
             guifg = {attribute='fg',highlight='TabLine'},
-            guibg = nord_colors.bg
+            guibg = {attribute='bg',highlight='TabLine'}
         },
         close_button_selected = {
-            guifg = nord_colors.bg,
-            guibg = nord_colors.darkblue,
+            guifg = {attribute='fg',highlight='TabLineSel'},
+            guibg = {attribute='bg',highlight='TabLineSel'},
         },
 
         info = {
-            guifg = nord_colors.bg,
+            guifg = {attribute='fg',highlight='TabLineSel'},
         },
 
         modified_selected = {
-            guifg = nord_colors.bg,
-            guibg = nord_colors.darkblue,
+            guifg = {attribute='fg',highlight='TabLineSel'},
+            guibg = {attribute='bg',highlight='TabLineSel'},
         },
         modified_visible = {
             guifg = {attribute='fg',highlight='TabLine'},
-            guibg = nord_colors.bg
+            guibg = {attribute='bg',highlight='TabLine'}
         },
+
         modified = {
             guifg = {attribute='fg',highlight='TabLine'},
-            guibg = nord_colors.bg
+            guibg = {attribute='bg',highlight='TabLine'}
         },
 
         separator = {
-            guibg = nord_colors.bg
+            guibg = {attribute='bg',highlight='TabLine'}
         },
         separator_selected = {
-            guibg = nord_colors.bg
+            guifg = {attribute='fg',highlight='TabLineSel'},
+            guibg = {attribute='bg',highlight='TabLineSel'},
         },
         separator_visible = {
-            guibg = nord_colors.bg
+            guibg = {attribute='bg',highlight='TabLine'}
         },
         indicator_selected = {
-            guibg = nord_colors.bg
+            guibg = {attribute='bg',highlight='TabLine'}
         },
 
         pick_selected = {
-            guifg = nord_colors.red,
-            guibg = nord_colors.darkblue,
+            guibg = {attribute='bg',highlight='TabLineSel'},
             gui = "bold"
         },
         pick_visible = {
-            guifg = nord_colors.red,
-            guibg = nord_colors.bg,
+            guibg = {attribute='bg',highlight='TabLine'},
             gui = "bold,italic"
         },
         pick = {
-            guifg = nord_colors.red,
-            guibg = nord_colors.bg,
+            guibg = {attribute='bg',highlight='TabLine'},
             gui = "bold,italic"
-        }
-    },
+        },
+    }
 }

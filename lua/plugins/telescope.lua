@@ -106,7 +106,7 @@ telescope.setup {
 
         find_files = {
             theme = "dropdown",
-            prompt_prefix = "   ",
+            prompt_prefix = "   ",
             previewer = false,
             prompt_title = false,
             results_title = false,
