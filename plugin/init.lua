@@ -2,31 +2,33 @@
 -- ================================= PLUGINS =====================================
 -- ===============================================================================
 
--- safe call
-local present, packer = pcall(require, "packer")
-if not present then
-   return false
-end
-
 require("plugins.misc").packer()
-vim.cmd [[packadd packer.nvim]]
 
-return packer.startup(function(use)
+return require('packer').startup(function(use)
 
 -- --------------------------- Basic System Plugs---------------------------------
-
-    -- packer can manage itself
-    use { 'wbthomason/packer.nvim', }
 
     -- lua plugin
     use { 'nvim-lua/plenary.nvim', }
 
+    -- packer can manage itself
+    use {
+        'wbthomason/packer.nvim',
+        event = "VimEnter",
+    }
+
     -- faster start up time
+    use {
+        'nathom/filetype.nvim',
+        config = function()
+            vim.g.did_load_filetypes = 1
+        end,
+    }
     use {
         'lewis6991/impatient.nvim',
         config = function() require('plugins.misc').imp() end,
+        after = 'filetype.nvim',
     }
-    use { 'nathom/filetype.nvim' }
 
     -- better code color
     use {
@@ -83,6 +85,7 @@ return packer.startup(function(use)
         requires = {'kyazdani42/nvim-web-devicons',},
         after = "nvim-web-devicons",
         config = function() require('plugins.statusline') end,
+        -- config = function() require('plugins.statusline_square') end,
     }
 
     -- tabline
@@ -180,6 +183,13 @@ return packer.startup(function(use)
         config = function () require('plugins.misc').vimtex() end,
     }
 
+    -- zettelkasten note taking
+    use {
+        'mel10c/telekasten.nvim',
+        cmd = "Telekasten",
+        config = function () require('plugins.note') end,
+    }
+
     -- ---------------------------- Editing Tools ------------------------------------
 
     -- auto pair
@@ -212,7 +222,7 @@ return packer.startup(function(use)
     -- match under cursor
     use {
         "andymass/vim-matchup",
-        event = "BufRead",
+        event = "VimEnter",
     }
 
     -- easier alignment
@@ -229,12 +239,6 @@ return packer.startup(function(use)
         requires = {'williamboman/nvim-lsp-installer'},
         config = function() require('lsp') end,
         event = "BufRead",
-    }
-
-    -- good code action menu
-    use {
-        'weilbith/nvim-code-action-menu',
-        cmd = 'CodeActionMenu',
     }
 
     -- better rename

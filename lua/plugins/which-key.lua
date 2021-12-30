@@ -83,8 +83,7 @@ key.register({
 key.register({
     g = {
         name = "lsp",
-        a = { "<cmd>CodeActionMenu<CR>",                                    'code action'},
-        -- a = { "<cmd>lua vim.lsp.buf.code_action()<CR>",                     'code action'},
+        a = { "<cmd>lua vim.lsp.buf.code_action()<CR>",                     'code action'},
         d = { "<cmd>lua vim.lsp.buf.definition()<CR>",                      'definition'},
         D = { "<cmd>lua vim.lsp.buf.declaration()<CR>",                     'declaration'},
         e = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",    'line diagn'},
@@ -110,6 +109,21 @@ key.register({
         s = { '<cmd>ToggleTerm<CR>',                               'terminal'},
         t = { ':TermExec cmd="zh" dir="~/"<CR>',                   'translation'},
         w = { '<cmd>ToggleTerm direction=tab<CR>',                 'terminal window'},
+    },
+}, { prefix = "<leader>" })
+
+-- ---------------------------- Zettelkasten Note -------------------------------
+key.register({
+    z = {
+        name = "zettelkasten",
+        c = { '<cmd>Telekasten find_COG_notes<cr>',   'COG'},
+        d = { '<cmd>Telekasten find_daily_notes<cr>', 'journal'},
+        f = { '<cmd>Telekasten find_friends<cr>',     'related'},
+        i = { '<cmd>Telekasten insert_link<cr>',      'insert link'},
+        n = { '<cmd>Telekasten find_notes<cr>',       'find notes'},
+        p = { '<cmd>Telekasten preview_img<cr>',      'view image'},
+        s = { '<cmd>Telekasten show_tags<cr>',        'tags'},
+        z = { '<cmd>Telekasten follow_link<cr>',      'follow link'},
     },
 }, { prefix = "<leader>" })
 

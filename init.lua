@@ -12,5 +12,6 @@
 
 require('settings')
 require('mappings')
+require('autocmd')
 require('util').disable()
 pcall(require, "impatient")

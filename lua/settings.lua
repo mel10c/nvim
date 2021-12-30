@@ -4,7 +4,6 @@
 
 -- shortcuts
 local opt = vim.opt
-local exec = vim.api.nvim_exec
 
 -- ------------------------------ Interface Settings -----------------------------
 opt.syntax = 'on'
@@ -51,31 +50,6 @@ opt.exrc = true
 opt.secure = true
 opt.updatetime = 100
 opt.swapfile = false
-
--- ----------------------------------- Auto Commands -----------------------------
-local NoWhitespace = exec(
-    [[
-    function! NoWhitespace()
-        let l:save = winsaveview()
-        keeppatterns %s/\s\+$//e
-        call winrestview(l:save)
-    endfunction
-    call NoWhitespace()
-    ]],
-    true
-)
-exec([[au BufWritePre * call NoWhitespace()]], false)
-
-vim.cmd
-[[
-if index(argv(), ".") >= 0
-  autocmd VimEnter * NvimTreeOpen
-  bd1
-elseif len(argv()) == 0
-  autocmd VimEnter * Dashboard
-endif
-]]
-
 
 -- ---------------------------- Colorscheme Save Call ----------------------------
 -- local colorscheme = "onenord"
