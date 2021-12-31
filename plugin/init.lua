@@ -172,7 +172,7 @@ return require('packer').startup(function(use)
     -- easy table vim
     use {
         'dhruvasagar/vim-table-mode',
-        ft = {"markdown", "pandoc"},
+        ft = {"markdown", "pandoc", "telekasten"},
         cmd = "TableModeEnable",
     }
 
@@ -254,7 +254,7 @@ return require('packer').startup(function(use)
     use {
         "hrsh7th/nvim-cmp",
         config = function() require('plugins.cmp') end,
-        event = "BufRead",
+        event = "InsertEnter",
     }
 
     -- -- snips
