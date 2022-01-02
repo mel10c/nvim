@@ -100,8 +100,8 @@ bufferline.setup {
             guibg = {attribute='bg',highlight='TabLine'}
         },
         separator_selected = {
-            guifg = {attribute='fg',highlight='TabLineSel'},
-            guibg = {attribute='bg',highlight='TabLineSel'},
+            guifg = {attribute='fg',highlight='TabLine'},
+            guibg = {attribute='bg',highlight='TabLine'},
         },
         separator_visible = {
             guibg = {attribute='bg',highlight='TabLine'}
