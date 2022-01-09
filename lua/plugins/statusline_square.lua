@@ -1,4 +1,4 @@
--- ------------------------------ Statusline Config ------------------------------
+kk-- ------------------------------ Statusline Config ------------------------------
 -- -------------------------------------------------------------------------------
 
 local cmd = vim.cmd
@@ -211,7 +211,7 @@ section.right[9] = {
         condition = checkwidth,
         icon = " ",
         separator = "",
-        separator_highlight = {nord_colors.purple, nord_colors.bg},
+        separator_highlight = {nord_colors.purple, nord_colors.line_bg},
         -- highlight = {nord_colors.purple, nord_colors.dark_gray, "bold"}
         highlight = {nord_colors.bg, nord_colors.purple,}
     }

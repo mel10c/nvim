@@ -79,13 +79,11 @@ return require('packer').startup(function(use)
         config = function() require('plugins.misc').icon() end,
     }
 
-    -- status line
     use {
-        'glepnir/galaxyline.nvim',
+        'nvim-lualine/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons',},
         after = "nvim-web-devicons",
-        -- config = function() require('plugins.statusline') end,
-        config = function() require('plugins.statusline_square') end,
+        config = function() require('plugins.statusline') end,
     }
 
     -- tabline

@@ -1,270 +1,242 @@
 -- ------------------------------ Statusline Config ------------------------------
+
+-- initialize
 -- -------------------------------------------------------------------------------
+local present, lualine = pcall(require, "lualine")
+if not present then
+    return
 
-local cmd = vim.cmd
-local fn = vim.fn
-local gl = require("galaxyline")
-local section = gl.section
-gl.short_line_list = {"LuaTree", "packager", "Floaterm", "coc-explorer", "vista"}
+end
+-- ----------------------------------- Set Up ------------------------------------
 
-local nord_colors = {
-    --bg = "NONE",
-    bg = "#2E3440",
-    fg = "#81A1C1",
-    line_bg = "NONE",
-    lbg = "NONE",
-    -- lbg = "#3B4252",
-    fg_green = "#8FBCBB",
-    yellow = "#EBCB8B",
-    cyan = "#A3BE8C",
-    darkblue = "#81A1C1",
-    green = "#8FBCBB",
-    orange = "#D08770",
-    purple = "#B48EAD",
-    magenta = "#BF616A",
-    gray = "#616E88",
-    dark_gray = "#3B4252",
-    blue = "#5E81AC",
-    red = "#BF616A"
+local colors = {
+    -- bg        = '#2E3440',
+    bg        = 'NONE',
+    fg        = '#C8D0E0',
+    yellow    = '#EBCB8B',
+    cyan      = '#8FBCBB',
+    darkblue  = '#5E81AC',
+    green     = '#A3BE8C',
+    orange    = '#D08770',
+    violet    = '#B48EAD',
+    magenta   = '#BF616A',
+    blue      = '#81A1C1',
+    red       = '#BF616A',
+    lightgray = "#6C7A96",
 }
 
-local buffer_not_empty = function()
-    if fn.empty(fn.expand("%:t")) ~= 1 then
-        return true
-    end
-    return false
+local conditions = {
+    buffer_not_empty = function()
+        return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
+    end,
+    hide_in_width = function()
+        return vim.fn.winwidth(0) > 80
+    end,
+    check_git_workspace = function()
+        local filepath = vim.fn.expand('%:p:h')
+        local gitdir = vim.fn.finddir('.git', filepath .. ';')
+        return gitdir and #gitdir > 0 and #gitdir < #filepath
+    end,
+}
+
+-- Config
+local config = {
+    options = {
+        -- Disable sections and component separators
+        component_separators = '',
+        section_separators = '',
+        theme = {
+            normal = { c = { fg = colors.fg, bg = colors.bg } },
+            inactive = { c = { fg = colors.fg, bg = colors.bg } },
+        },
+        disabled_filetypes = {"packager", "Floaterm", "dashboard", "NvimTree", "TelescopePrompt"},
+    },
+    sections = {
+        -- these are to remove the defaults
+        lualine_a = {},
+        lualine_b = {},
+        lualine_y = {},
+        lualine_z = {},
+        -- These will be filled later
+        lualine_c = {},
+        lualine_x = {},
+    },
+    inactive_sections = {
+        -- these are to remove the defaults
+        lualine_a = {},
+        lualine_b = {},
+        lualine_y = {},
+        lualine_z = {},
+        lualine_c = {},
+        lualine_x = {},
+    },
+}
+
+-- Inserts a component in lualine_c at left section
+local function ins_left(component)
+    table.insert(config.sections.lualine_c, component)
 end
 
-local checkwidth = function()
-    local squeeze_width = fn.winwidth(0) / 2
-    if squeeze_width > 40 then
-        return true
-    end
-    return false
+-- Inserts a component in lualine_x ot right section
+local function ins_right(component)
+    table.insert(config.sections.lualine_x, component)
 end
 
-local checkwidth_small = function()
-    local squeeze_width = fn.winwidth(0) / 2
-    if squeeze_width > 60 then
-        return true
-    end
-    return false
-end
+-- ------------------------------------ Left -------------------------------------
 
-local mode_color = {
-    n = nord_colors.blue,
-    i = nord_colors.cyan,
-    v = nord_colors.yellow,
-    [""] = nord_colors.orange,
-    V = nord_colors.blue,
-    c = nord_colors.red,
-    no = nord_colors.magenta,
-    s = nord_colors.orange,
-    S = nord_colors.orange,
-    [""] = nord_colors.orange,
-    ic = nord_colors.yellow,
-    R = nord_colors.purple,
-    Rv = nord_colors.purple,
-    cv = nord_colors.red,
-    ce = nord_colors.red,
-    r = nord_colors.green,
-    rm = nord_colors.green,
-    ["r?"] = nord_colors.green,
-    ["!"] = nord_colors.red,
-    t = nord_colors.red
-}
+ins_left({
+    function()
+        return '▊'
+    end,
+    color = { fg = colors.lightgray },
+    padding = { left = 0, right = 0 },
+})
 
-section.left[1] = {
-    ViMode = {
-        provider = function()
-            cmd('hi GalaxyViMode guibg='..mode_color[fn.mode()])
+ins_left({
+    -- mode component
+    function()
+        -- auto change color according to neovims mode
+        local mode_color = {
+            n = colors.blue,
+            i = colors.green,
+            v = colors.yellow,
+            ["^V"] = colors.orange,
+            V = colors.blue,
+            c = colors.red,
+            no = colors.magenta,
+            s = colors.orange,
+            S = colors.orange,
+            ["^S"] = colors.orange,
+            ic = colors.yellow,
+            R = colors.violet,
+            Rv = colors.violet,
+            cv = colors.red,
+            ce = colors.red,
+            r = colors.cyan,
+            rm = colors.cyan,
+            ['r?'] = colors.cyan,
+            ['!'] = colors.red,
+            t = colors.red,
+        }
+        vim.api.nvim_command('hi! LualineMode guifg=' .. mode_color[vim.fn.mode()] .. ' guibg=' .. colors.bg)
+        return ''
+    end,
+    color = 'LualineMode',
+})
 
-            return ' '--..mode_text[vim.fn.mode()]
-        end,
-        separator = " ",
-        separator_highlight = {nord_colors.blue, nord_colors.line_bg},
-        condition = checkwidth,
-        highlight = {nord_colors.bg, nord_colors.bg, "bold"}
-    }
-}
 
-section.left[2] = {
-    Dir = {
-        provider = function()
-            local dir_name = fn.fnamemodify(fn.getcwd(), ":t")
-            return "".. " " .. dir_name .. " "
-        end,
-        condition = checkwidth_small,
-        highlight = {nord_colors.fg, nord_colors.line_bg,},
-    }
-}
+ins_left({
+    function()
+        local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+        return " ".. " " .. dir_name .. " "
+    end,
+    color = { fg = colors.lightgray, gui = 'bold' },
+    cond = conditions.hide_in_width,
+    padding = { left = 0, right = 0 },
+})
 
-section.left[3] = {
-    FileIcon = {
-        provider = "FileIcon",
-        condition = buffer_not_empty,
-        highlight = {nord_colors.blue, nord_colors.line_bg}
-    }
-}
-section.left[4] = {
-    FileName = {
-        provider = "FileName",
-        condition = buffer_not_empty,
-        separator = " ",
-        separator_highlight = {nord_colors.blue, nord_colors.line_bg},
-        highlight = {nord_colors.blue, nord_colors.line_bgbg,},
-    }
-}
+ins_left({
+    'filetype',
+    cond = conditions.buffer_not_empty,
+    color = { fg = colors.darkblue, gui = 'bold' },
+    icon_only = true,
+    padding = { left = 1, right = 0 },
+})
 
-section.right[1] = {
-    DiagnosticError = {
-        provider = "DiagnosticError",
-        icon = "   ",
-        highlight = {nord_colors.red, nord_colors.line_bg},
-        separator_highlight = {nord_colors.bg, nord_colors.line_bg}
-    }
-}
-section.right[2] = {
-    DiagnosticWarn = {
-        provider = "DiagnosticWarn",
-        icon = "   ",
-        highlight = {nord_colors.yellow, nord_colors.line_bg},
-        separator_highlight = {nord_colors.bg, nord_colors.line_bg}
-    }
-}
+ins_left({
+    'filename',
+    cond = conditions.buffer_not_empty,
+    color = { fg = colors.darkblue, gui = 'bold' },
+    padding = { left = 1, right = 0 },
+})
 
-section.right[3] = {
-    DiagnosticInfo = {
-        provider = "DiagnosticInfo",
-        icon = "   ",
-        highlight = {nord_colors.purple, nord_colors.line_bg},
-        separator_highlight = {nord_colors.bg, nord_colors.line_bg}
-    }
-}
 
-section.right[4] = {
-    DiagnosticHint = {
-        provider = "DiagnosticHint",
-        separator = " ",
-        icon = " ",
-        highlight = {nord_colors.blue, nord_colors.line_bg},
-        separator_highlight = {nord_colors.bg, nord_colors.line_bg}
-    }
-}
+ins_left({
+    'diagnostics',
+    sources = { 'nvim_diagnostic' },
+    symbols = { error = ' ', warn = ' ', info = ' ' },
+    diagnostics_color = {
+        color_error = { fg = colors.red },
+        color_warn = { fg = colors.yellow },
+        color_info = { fg = colors.cyan },
+    },
+})
 
-section.right[5] = {
-    GitIcon = {
-        provider = function()
-            return " "
-        end,
-        separator = " | ",
-        separator_highlight = {nord_colors.bg, nord_colors.line_bg},
-        condition = require("galaxyline.provider_vcs").check_git_workspace,
-        highlight = {nord_colors.purple, nord_colors.line_bg}
-    }
-}
-section.right[6] = {
-    GitBranch = {
-        provider = "GitBranch",
-        condition = checkwidth,
-        highlight = {nord_colors.purple, nord_colors.line_bg, "bold"}
-    }
-}
+-- ---------------------------------- Middle -------------------------------------
 
-section.right[7] = {
-    Sep = {
-        provider = function()
-            return " "
-        end,
-        condition = checkwidth_small,
-    }
-}
+-- ins_left({
+--     function()
+--         return '%='
+--     end,
+-- })
+--
+-- ins_left({
+--     -- Lsp server name .
+--     function()
+--         local msg = 'No Active Lsp'
+--         local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+--         local clients = vim.lsp.get_active_clients()
+--         if next(clients) == nil then
+--             return msg
+--         end
+--         for _, client in ipairs(clients) do
+--             local filetypes = client.config.filetypes
+--             if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+--                 return client.name
+--             end
+--         end
+--         return msg
+--     end,
+--     icon = ' LSP:',
+--     color = { fg = colors.fg, },
+--     cond = conditions.hide_in_width,
+-- })
 
-section.right[8] = {
-    DiffAdd = {
-        provider = "DiffAdd",
-        condition = checkwidth_small,
-        separator = "",
-        icon = " ",
-        highlight = {nord_colors.cyan, nord_colors.line_bg}
-    }
-}
-section.right[9] = {
-    DiffModified = {
-        provider = "DiffModified",
-        condition = checkwidth_small,
-        separator = "",
-        icon = "柳",
-        highlight = {nord_colors.yellow, nord_colors.line_bg}
-    }
-}
-section.right[10] = {
-    DiffRemove = {
-        provider = "DiffRemove",
-        condition = checkwidth_small,
-        separator = "",
-        icon = " ",
-        highlight = {nord_colors.orange, nord_colors.line_bg}
-    }
-}
+-- ----------------------------------- Right -------------------------------------
 
-section.right[11] = {
-    LineInfo = {
-        provider = 'LinePercent',
-        separator = " ",
-        separator_highlight = {nord_colors.gray, nord_colors.line_bg},
-        condition = checkwidth,
-        highlight = {nord_colors.bg, nord_colors.gray}
-    }
-}
+ins_right({
+    'branch',
+    icon = '',
+    color = { fg = colors.violet, gui = 'bold' },
+})
 
-section.right[12] = {
-    WordCount = {
-        provider = function()
-            return ' ω:' ..fn.wordcount().words ..' '
-        end,
-        condition = checkwidth_small,
-        highlight = {nord_colors.bg, nord_colors.gray}
-    }
-}
+ins_right({
+    'diff',
+    -- Is it me or the symbol for modified us really weird
+    symbols = { added = ' ', modified = '柳', removed = ' ' },
+    diff_color = {
+        added = { fg = colors.green },
+        modified = { fg = colors.orange },
+        removed = { fg = colors.red },
+    },
+    cond = conditions.hide_in_width,
+    padding = { left = 0, right = 1 },
+})
 
-section.right[13] = {
-    ScrollBar = {
-        provider = 'ScrollBar',
-        condition = checkwidth_small,
-        highlight = {nord_colors.gray, nord_colors.line_bg}
-    }
-}
+ins_right({
+    'progress',
+    color = { fg = colors.lightgray, gui = 'bold' },
+    icon = "",
+    padding = { left = 1, right = 0 },
+})
 
-section.short_line_left[1] = {
-    BufferType = {
-        provider = "FileIcon",
-        separator = " ",
-        separator_highlight = {"NONE", nord_colors.lbg},
-        highlight = {nord_colors.blue, nord_colors.lbg, "bold"}
-    }
-}
+ins_right({
+    function()
+        return 'ω:' ..vim.fn.wordcount().words
+    end,
+    color = { fg = colors.lightgray, gui = "bold" },
+    cond = conditions.hide_in_width,
+    padding = { left = 1, right = 1 },
+})
 
-section.short_line_left[2] = {
-    SFileName = {
-        provider = function()
-            local fileinfo = require("galaxyline.provider_fileinfo")
-            local fname = fileinfo.get_current_file_name()
-            for _, v in ipairs(gl.short_line_list) do
-                if v == vim.bo.filetype then
-                    return ""
-                end
-            end
-            return fname
-        end,
-        condition = buffer_not_empty,
-        highlight = {nord_colors.white, nord_colors.lbg, "bold"}
-    }
-}
+-- ins_right({
+--     function()
+--         return '▊'
+--     end,
+--     color = { fg = colors.lightgray },
+--     padding = { left = 1, right = 0 },
+-- })
 
-section.short_line_right[1] = {
-    BufferIcon = {
-        provider = "BufferIcon",
-        highlight = {nord_colors.fg, nord_colors.lbg}
-    }
-}
+
+-- Now don't forget to initialize lualine
+lualine.setup(config)

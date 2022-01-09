@@ -13,8 +13,8 @@ bufferline.setup {
         indicator_icon = '▎',
         buffer_close_icon = "·",
         modified_icon = "",
-        show_close_icon = false,
         close_icon = '',
+        show_close_icon = false,
         left_trunc_marker = "",
         right_trunc_marker = "",
         max_name_length = 14,
@@ -121,6 +121,16 @@ bufferline.setup {
         pick = {
             guibg = {attribute='bg',highlight='TabLine'},
             gui = "bold,italic"
+        },
+
+        duplicate_selected = {
+            guifg = {attribute='fg',highlight='TabLineSel'},
+            guibg = {attribute='bg',highlight='TabLineSel'},
+            gui = 'none'
+        },
+        duplicate_visible = {
+            guifg = {attribute='fg',highlight='TabLine'},
+            guibg = {attribute='bg',highlight='TabLine'},
         },
     }
 }
