@@ -54,7 +54,7 @@ key.setup {
 -- ---------------------------- Telescope window ---------------------------------
 -- shortcuts
 local conf = " cwd=~/.config/nvim"
-local setting = " theme=dropdown prompt_title=false"
+local setting = " theme=dropdow n prompt_title=false"
 local kb = " cwd=~/melaneyroot.github.io"
 
 -- shotcut
@@ -72,7 +72,7 @@ key.register({
         k = { "<cmd>Telescope keymaps<cr>",                                'keymaps'},
         z = { "<cmd>Telescope current_buffer_fuzzy_find<cr>",              'buffer find'},
         o = { "<cmd>Telescope oldfiles<cr>",                               'recents'},
-        p = { "<cmd>Telescope neoclip a"..setting.."<cr>",                 'clipboard'},
+        p = { "<cmd>Telescope neoclip"..setting.."<cr>",                 'clipboard'},
         r = { "<cmd>Telescope lsp_references<cr>",                         'reference'},
         t = { "<cmd>Telescope treesitter<cr>",                             'treesitter'},
         w = { "<cmd>Telescope live_grep<cr>",                              'search word'},
@@ -116,14 +116,29 @@ key.register({
 key.register({
     z = {
         name = "zettelkasten",
-        c = { '<cmd>Telekasten find_COG_notes<cr>',   'COG'},
-        d = { '<cmd>Telekasten find_daily_notes<cr>', 'journal'},
+        b = { '<cmd>Telekasten show_backlinks<cr>',   'back link'},
+        d = { '<cmd>Telekasten goto_today<cr>',       'today'},
         f = { '<cmd>Telekasten find_friends<cr>',     'related'},
+        j = { '<cmd>Telekasten find_daily_notes<cr>', 'journal'},
         i = { '<cmd>Telekasten insert_link<cr>',      'insert link'},
         n = { '<cmd>Telekasten find_notes<cr>',       'find notes'},
-        p = { '<cmd>Telekasten preview_img<cr>',      'view image'},
-        s = { '<cmd>Telekasten show_tags<cr>',        'tags'},
+        s = { '<cmd>Telekasten search_notes<cr>',     'search'},
+        t = { '<cmd>Telekasten show_tags<cr>',        'tags'},
+        x = { '<cmd>Telekasten toggle_todo<cr>',      'toggle todo'},
+        y = { '<cmd>Telekasten yank_notelink<cr>',    'yank link'},
         z = { '<cmd>Telekasten follow_link<cr>',      'follow link'},
+    },
+}, { prefix = "<leader>" })
+
+-- ----------------------------- R Studio Keymaps -------------------------------
+key.register({
+    r = {
+        name = "RStudio",
+        r = { '<Plug>RStart',         'Start Terminal'},
+        l = { '<Plug>RSendLine',      'Send line'},
+        s = { '<Plug>RSendParagraph', 'Send selection'},
+        k = { '<Plug>RMakePDF',       'Make PDF'},
+        o = { '<Plug>ROpenLists',     'Vew Objects'},
     },
 }, { prefix = "<leader>" })
 
