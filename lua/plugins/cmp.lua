@@ -21,7 +21,6 @@ cmp.setup {
         { name = 'calc' },
         { name = "ultisnips" },
         { name = "nvim_lsp", max_item_count = 10 },
-        { name = 'treesitter' },
         { name = "luasnip" },
         { name = "nvim_lua" },
         { name = "path" },
@@ -48,7 +47,6 @@ cmp.setup {
                 luasnip = "[LLL]",
                 calc = "[CAL]",
                 look = "[SPL]",
-                treesitter = "[TRE]",
             })[entry.source.name]
 
             return vim_item
@@ -78,7 +76,7 @@ cmp.setup {
             if vim.fn.pumvisible() == 1 then
                 vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-p>", true, true, true), "n")
             elseif vim.fn.complete_info()["selected"] == -1 and vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
-                press("<C-R>=UltiSnips#ExpandSnippet()<CR>")
+                -- press("<C-R>=UltiSnips#ExpandSnippet()<CR>")
                 -- elseif require("luasnip").jumpable(-1) then
                 --    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
             else

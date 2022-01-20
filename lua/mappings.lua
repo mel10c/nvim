@@ -83,6 +83,8 @@ map('i', '<C-d>', '<Esc>ls')
 -- ===============================================================================
 map('n', '<leader>t', '<cmd>NvimTreeToggle <CR>')
 map('n', '<leader>x', '<cmd>VimtexCompile<cr>')
+vim.cmd[[nmap <leader>; <plug>(matchup-%)]]
+vim.cmd[[xmap <leader>r <plug>RSendSelection]]
 
 -- buffers
 map('n', ',1', '<cmd>BufferLineGoToBuffer 1 <cr>zz')
@@ -92,12 +94,12 @@ map('n', ',4', '<cmd>BufferLineGoToBuffer 4 <cr>zz')
 map('n', ',x', '<cmd>BufferLinePickClose <cr>')
 
 -- ------------------------------ Lsp mappings -----------------------------------
-map('n', '<C-n>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
-map('n', '<C-p>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+map('n', '<C-n>', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+map('n', '<C-p>', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 
 -- ---------------------------- Surround Shortcuts ------------------------------
 vim.cmd[[xmap <leader>i <Plug>VSurround*E]]
 vim.cmd[[xmap <leader>b <Plug>VSurround*gv<Plug>VSurround*E]]
 vim.cmd[[xmap <leader>u <Plug>VSurround<u>E]]
 vim.cmd[[xmap <leader>l <Plug>VSurround]gv<Plug>VSurround]E]]
-vim.cmd[[nmap <leader>; <plug>(matchup-%)]]
+vim.cmd[[xmap <leader>h <Plug>VSurround=gv<Plug>VSurround=E]]

@@ -8,16 +8,16 @@ local opt = vim.opt
 -- ------------------------------ Interface Settings -----------------------------
 opt.syntax = 'on'
 opt.mouse = 'a'
-opt.number = true
+opt.number = false
 opt.numberwidth = 2
-opt.relativenumber = true
+opt.relativenumber = false
 opt.cursorline = true
 opt.scrolloff = 5
 opt.showmode = false
 opt.showcmd = true
 opt.wildmenu = true
 opt.foldenable = false
-opt.signcolumn = 'number'
+opt.signcolumn = 'yes'
 
 -- --------------------------------- Editor Settings -----------------------------
 opt.tabstop = 4

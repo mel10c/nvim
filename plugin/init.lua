@@ -146,14 +146,6 @@ return require('packer').startup(function(use)
         config = function() require('plugins.telescope') end,
     }
 
-    -- clipboard
-    use {
-        "AckslD/nvim-neoclip.lua",
-        requires = "nvim-telescope/telescope.nvim",
-        after = "telescope.nvim",
-        config = function() require('plugins.misc').clip() end,
-    }
-
     -- code outline
     use {
         'simrat39/symbols-outline.nvim',
@@ -185,7 +177,7 @@ return require('packer').startup(function(use)
     use {
         'mel10c/telekasten.nvim',
         cmd = "Telekasten",
-        config = function () require('plugins.note') end,
+        ft = "Telekasten",
     }
 
     -- ---------------------------- Editing Tools ------------------------------------
@@ -244,6 +236,14 @@ return require('packer').startup(function(use)
         'stevearc/dressing.nvim',
         event = "BufRead",
         config = function() require('plugins.misc').ui() end,
+    }
+
+    -- RStudio
+    use {
+        'jalvesaq/Nvim-R',
+        ft = {"R", "Rmd"},
+        event = "BufRead",
+        config = function() require('plugins.misc').rstudio() end,
     }
 
     -- ---------------------------- Auto completion ----------------------------------

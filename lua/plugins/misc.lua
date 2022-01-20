@@ -20,6 +20,7 @@ M.nightfox = function()
             TelescopeSelection = { fg = "${cyan}", bg = "${bg}"},
         }
     }
+    -- vim.cmd[[colorscheme nordfox]]
 
 end
 
@@ -311,6 +312,11 @@ M.imp = function()
     if not present then
         return
     end
+end
+
+-- ---------------------------- RStudio in Nvim ----------------------------------
+M.rstudio = function()
+    g.R_auto_start = 0 -- does not auto start
 end
 
 return M
