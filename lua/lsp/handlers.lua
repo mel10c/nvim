@@ -36,14 +36,6 @@ M.setup = function()
 
     vim.diagnostic.config(config)
 
-    -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    --     border = "rounded",
-    -- })
-    --
-    -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    --     border = "rounded",
-    -- })
-
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
         virtual_text = {
             prefix = '❯', -- Could be '●', '▎', 'x', '■',
@@ -68,10 +60,14 @@ local function lsp_highlight_document(client)
 end
 
 M.on_attach = function(client, bufnr)
-    if client.name == "tsserver" then
-        client.resolved_capabilities.document_formatting = false
-    end
+    -- if client.name == "tsserver" then
+    -- end
+    client.resolved_capabilities.document_formatting = false
     -- lsp_keymaps(bufnr)
+    -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+    -- Enable completion triggered by <c-x><c-o>
+    -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
     lsp_highlight_document(client)
 end
 
