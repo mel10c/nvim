@@ -22,12 +22,6 @@ g.dashboard_custom_header = {
     ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
     ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
     ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
-    -- ' ███╗   ██╗  ██████╗  ██████╗  ██████╗  ██╗ ███╗   ███╗',
-    -- ' ████╗  ██║ ██╔═══██╗ ██╔══██╗ ██╔══██╗ ██║ ████╗ ████║',
-    -- ' ██╔██╗ ██║ ██║   ██║ ██████╔╝ ██║  ██║ ██║ ██╔████╔██║',
-    -- ' ██║╚██╗██║ ██║   ██║ ██╔══██╗ ██║  ██║ ██║ ██║╚██╔╝██║',
-    -- ' ██║ ╚████║ ╚██████╔╝ ██║  ██║ ██████╔╝ ██║ ██║ ╚═╝ ██║',
-    -- ' ╚═╝  ╚═══╝  ╚═════╝  ╚═╝  ╚═╝ ╚═════╝  ╚═╝ ╚═╝     ╚═╝',
     '',
     '',
     '',
@@ -36,10 +30,9 @@ g.dashboard_custom_header = {
 
 g.dashboard_custom_section = {
     a = { description = { "  Packer Update               ...  " }, command = "PackerSync" },
-    b = { description = { "  Packer Status               ...  " }, command = "PackerStatus" },
-    c = { description = { "  LSP INFO                    ...  " }, command = "LspInstallInfo" },
-    d = { description = { "洛 New File                    ...  " }, command = "DashboardNewFile" },
-    e = { description = { "  Change Color Scheme       SPC f a" }, command = "Telescope colorscheme" },
-    f = { description = { "  Recents                   SPC f o" }, command = "Telescope oldfiles" },
-    g = { description = { "  Change Config             SPC f c" }, command = "Telescope find_files cwd=~/.config/nvim" },
+    b = { description = { "  Go To Today                SPC g  " }, command = function() vim.cmd[[Telekasten goto_today]] vim.cmd[[call feedkeys("\<CR>")]] end },
+    c = { description = { "  Packer Status               ...  " }, command = "PackerStatus" },
+    d = { description = { "  LSP INFO                    ...  " }, command = "LspInstallInfo" },
+    e = { description = { "洛 New File                    ...  " }, command = "DashboardNewFile" },
+    h = { description = { "  Change Config             SPC f c" }, command = "Telescope find_files cwd=~/.config/nvim" },
 }

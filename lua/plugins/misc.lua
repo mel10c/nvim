@@ -239,7 +239,7 @@ M.clip = function ()
         enable_persistant_history = false,
         db_path = vim.fn.stdpath("data") .. "/databases/neoclip.sqlite3",
         filter = nil,
-        preview = false,
+        preview = true,
         default_register = '"',
         content_spec_column = true,
         on_paste = {
@@ -317,6 +317,12 @@ end
 -- ---------------------------- RStudio in Nvim ----------------------------------
 M.rstudio = function()
     g.R_auto_start = 0 -- does not auto start
+end
+
+-- ----------------------------- Load headings  ----------------------------------
+M.heading = function()
+    local ft = vim.bo.filetype
+
 end
 
 return M

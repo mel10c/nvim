@@ -11,23 +11,19 @@ return require('packer').startup(function(use)
     -- lua plugin
     use { 'nvim-lua/plenary.nvim', }
 
-    -- packer can manage itself
-    use {
-        'wbthomason/packer.nvim',
-        event = "VimEnter",
-    }
-
     -- faster start up time
-    use {
-        'nathom/filetype.nvim',
-        config = function()
-            vim.g.did_load_filetypes = 1
-        end,
-    }
+    use { 'nathom/filetype.nvim', }
+
     use {
         'lewis6991/impatient.nvim',
         config = function() require('plugins.misc').imp() end,
         after = 'filetype.nvim',
+    }
+
+    -- packer can manage itself
+    use {
+        'wbthomason/packer.nvim',
+        event = "VimEnter",
     }
 
     -- better code color
@@ -35,17 +31,6 @@ return require('packer').startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         run = ':TSUpdate',
         event = "BufRead",
-        cmd = {
-            "TSInstall",
-            "TSInstallSync",
-            "TSBufEnable",
-            "TSBufToggle",
-            "TSEnableAll",
-            "TSInstallFromGrammer",
-            "TSToggleAll",
-            "TSUpdate",
-            "TSUpdateSync"
-        },
         config = function() require('plugins.treesitter') end,
     }
 
@@ -96,7 +81,7 @@ return require('packer').startup(function(use)
     -- indent line
     use {
         'lukas-reineke/indent-blankline.nvim',
-        event = "VimEnter",
+        event = "BufRead",
         config = function() require('plugins.misc').indent() end,
     }
 
@@ -142,8 +127,27 @@ return require('packer').startup(function(use)
                 run = "make",
             },
         },
+        module = "telescope",
         cmd = "Telescope",
         config = function() require('plugins.telescope') end,
+    }
+
+    -- zettelkasten note taking
+    use {
+        'mel10c/telekasten.nvim',
+        cmd = "Telekasten",
+    }
+
+    -- markdown header
+    use {
+        "crispgm/telescope-heading.nvim",
+        ft = {"markdown", "pandoc", "telekasten"},
+    }
+
+    use {
+        "AckslD/nvim-neoclip.lua",
+        event = "BufRead",
+        config = function() require('plugins.misc').clip() end,
     }
 
     -- code outline
@@ -171,13 +175,6 @@ return require('packer').startup(function(use)
         'lervag/vimtex',
         cmd = "VimtexCompile",
         config = function () require('plugins.misc').vimtex() end,
-    }
-
-    -- zettelkasten note taking
-    use {
-        'mel10c/telekasten.nvim',
-        cmd = "Telekasten",
-        ft = "Telekasten",
     }
 
     -- ---------------------------- Editing Tools ------------------------------------
@@ -229,6 +226,7 @@ return require('packer').startup(function(use)
         requires = {'williamboman/nvim-lsp-installer'},
         config = function() require('lsp') end,
         event = "BufRead",
+        module = "lspconfig"
     }
 
     -- better rename

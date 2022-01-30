@@ -1,17 +1,27 @@
---           ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗
---           ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║
---           ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║
---           ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║
---           ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║
---           ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝
---
---                           BY MELANEY ZHU
---                         mel10njyhc@gmail.com
---                          github.com/mel10c
---
+local present, impatient = pcall(require, "impatient")
 
-require('settings')
-require('mappings')
-require('autocmd')
+if present then
+   impatient.enable_profile()
+end
+
+local core_modules = {
+    "settings",
+    "mappings",
+    "autocmd",
+    "util",
+}
+
+for _, module in ipairs(core_modules) do
+    local ok, err = pcall(require, module)
+    if not ok then
+        error("Error loading " .. module .. "\n\n" .. err)
+    end
+end
+
 require('util').disable()
-pcall(require, "impatient")
+
+-- require('settings')
+-- require('mappings')
+-- require('autocmd')
+-- require('util').disable()
+-- pcall(require, "impatient")

@@ -69,6 +69,14 @@ map('n', '<leader>q', ':q<cr>')
 map('n', 'Q', ':q!<cr>')
 map('n', '<leader>w', ':w<cr>')
 map('i', '<C-l>', '<c-g>u<Esc>[s1z=`]a<c-g>u')
+map("n",  "x", '"_x')
+
+map('n', 'i', 'zzi')
+map('n', 'I', 'zzI')
+map('n', 'a', 'zza')
+map('n', 'A', 'zzA')
+map('n', 'o', 'zzo')
+map('n', 'O', 'zzO')
 
 -- ------------------------ Insert Mode Emacs-style mapping ----------------------
 map('i', '<C-a>', '<Home>')
@@ -85,6 +93,7 @@ map('n', '<leader>t', '<cmd>NvimTreeToggle <CR>')
 map('n', '<leader>x', '<cmd>VimtexCompile<cr>')
 vim.cmd[[nmap <leader>; <plug>(matchup-%)]]
 vim.cmd[[xmap <leader>r <plug>RSendSelection]]
+vim.cmd[[nmap <leader>g <cmd>Telekasten goto_today<cr><cr>]]
 
 -- buffers
 map('n', ',1', '<cmd>BufferLineGoToBuffer 1 <cr>zz')

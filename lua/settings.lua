@@ -24,7 +24,8 @@ opt.tabstop = 4
 opt.shiftwidth = 4
 opt.softtabstop = 4
 opt.expandtab = true
-opt.smarttab = true
+-- opt.smarttab = true
+opt.smartindent = true
 opt.autoindent = true
 opt.indentexpr = ''
 opt.backspace = {'indent', 'eol', 'start'}
@@ -38,6 +39,9 @@ vim.cmd [[autocmd FileType markdown,tex set spell]]
 vim.cmd [[set whichwrap+=<,>,[,],h,l]]
 
 -- -- ---------------------------------- Files Settings -----------------------------
+opt.title = true
+opt.fillchars = { eob = " " }
+opt.shortmess:append "sI"
 opt.hidden = true
 opt.list = true
 opt.shortmess = opt.shortmess + { I = true }
