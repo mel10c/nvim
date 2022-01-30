@@ -54,28 +54,28 @@ key.setup {
 -- ---------------------------- Telescope window ---------------------------------
 -- shortcuts
 local conf = " cwd=~/.config/nvim"
-local setting = " theme=dropdow n prompt_title=false"
 local kb = " cwd=~/melaneyroot.github.io"
+local load = "<cmd>lua require'telescope'.load_extension('heading')<cr>"
 
 -- shotcut
 key.register({
     f = {
         name = "telescope",
-        a = { "<cmd>Telescope colorscheme<cr>",                            'colorscheme'},
-        b = { "<cmd>Telescope buffers<cr>",                                'buffers'},
-        c = { "<cmd>Telescope find_files"..conf.." <cr>",                  'config'},
-        d = { "<cmd>Telescope find_files"..kb.." <cr>",                    'knowledge base'},
-        e = { "<cmd>Telescope registers<cr>",                              'registers'},
-        f = { "<cmd>Telescope fd<cr>",                                     'find file' },
-        i = { "<cmd>Telescope file_browser<cr>",                           'file browse' },
-        g = { "<cmd>Telescope git_status<cr>",                             'git status'},
-        k = { "<cmd>Telescope keymaps<cr>",                                'keymaps'},
-        z = { "<cmd>Telescope current_buffer_fuzzy_find<cr>",              'buffer find'},
-        o = { "<cmd>Telescope oldfiles<cr>",                               'recents'},
-        p = { "<cmd>Telescope neoclip"..setting.."<cr>",                 'clipboard'},
-        r = { "<cmd>Telescope lsp_references<cr>",                         'reference'},
-        t = { "<cmd>Telescope treesitter<cr>",                             'treesitter'},
-        w = { "<cmd>Telescope live_grep<cr>",                              'search word'},
+        a = { "<cmd>Telescope colorscheme<cr>",                                 'colorscheme'},
+        b = { "<cmd>Telescope buffers<cr>",                                     'buffers'},
+        c = { "<cmd>Telescope find_files"..conf.." <cr>",                       'config'},
+        d = { "<cmd>Telescope find_files"..kb.." <cr>",                         'knowledge base'},
+        e = { "<cmd>Telescope registers<cr>",                                   'registers'},
+        f = { "<cmd>Telescope fd<cr>",                                          'find file' },
+        h = { load.."<cmd>Telescope heading<cr>",                               'heading' },
+        g = { "<cmd>Telescope git_status<cr>",                                  'git status'},
+        k = { "<cmd>Telescope keymaps<cr>",                                     'keymaps'},
+        z = { "<cmd>Telescope current_buffer_fuzzy_find<cr>",                   'buffer find'},
+        o = { "<cmd>Telescope oldfiles<cr>",                                    'recents'},
+        p = { "<cmd>lua require('telescope').extensions.neoclip.default()<cr>", 'clipboard'},
+        r = { "<cmd>Telescope lsp_references<cr>",                              'reference'},
+        t = { "<cmd>Telescope treesitter<cr>",                                  'treesitter'},
+        w = { "<cmd>Telescope live_grep<cr>",                                   'search word'},
     },
 }, { prefix = "<leader>" })
 

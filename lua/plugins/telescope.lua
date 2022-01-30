@@ -9,8 +9,20 @@ end
 telescope.setup {
     defaults = {
 
-        prompt_prefix = "   ",
-        selection_caret = " ",
+      vimgrep_arguments = {
+         "rg",
+         "--color=never",
+         "--no-heading",
+         "--with-filename",
+         "--line-number",
+         "--column",
+         "--smart-case",
+      },
+
+        prompt_prefix = "   ",
+        -- selection_caret = " ",
+        selection_caret = "  ",
+        entry_prefix = "  ",
         initial_mode = "insert",
         selection_strategy = "reset",
         sorting_strategy = "ascending",
@@ -35,6 +47,7 @@ telescope.setup {
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
         path_display = { "smart" },
         winblend = 0,
+        border = {},
 
         borderchars = {
             { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
@@ -48,6 +61,7 @@ telescope.setup {
         preview_title = false,
         -- previewer = false,
         color_devicons = true,
+        use_less = true,
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
@@ -58,111 +72,47 @@ telescope.setup {
 
     pickers = {
 
-        current_buffer_fuzzy_find = {
-            -- previewer = false,
-            layout_strategy = "horizontal",
-            prompt_prefix = "   ",
-            prompt_title = false,
-            results_title = false,
-            preview_title = false,
-            borderchars = {
-                { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-                prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
-                results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
-                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-            },
-        },
-
-        treesitter = {
-            theme = "ivy",
-            prompt_prefix = "   ",
-            prompt_title = false,
-            results_title = false,
-            preview_title = false,
-            borderchars = {
-                { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-            }
-        },
-
-        oldfiles = {
-            prompt_prefix = " 羽  ",
-            prompt_title = false,
-            results_title = false,
-            preview_title = false,
-            borderchars = {
-                { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-                prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
-                results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
-                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-            },
-        },
-
-        fd = {
-            prompt_title = false,
-            results_title = false,
-            preview_title = false,
-        },
-
-        find_files = {
-            theme = "dropdown",
-            prompt_prefix = "   ",
-            previewer = false,
-            prompt_title = false,
-            results_title = false,
-            preview_title = false,
-            layout_config = {
-                width = 0.60,
-                height = 0.50,
-            },
-            borderchars = {
-                { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-                prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
-                results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
-            },
-        },
-
-        buffers = {
-            theme = "dropdown",
-            prompt_prefix = "   ",
-            previewer = false,
-            -- layout_strategy = "horizontal",
-            prompt_title = false,
-            results_title = false,
-            preview_title = false,
-            borderchars = {
-                { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-                prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
-                results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
-            },
-            layout_config = { width = 0.60, height = 0.30, },
-        },
-
         colorscheme = {
-            prompt_title = false,
-            theme = "dropdown",
             prompt_prefix = "   ",
-            borderchars = {
-                { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-                prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
-                results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
-                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-            },
             layout_config = { width = 0.30, height = 0.30, },
         },
 
-        lsp_references = {
-            prompt_title = false,
-            theme = "dropdown",
-            prompt_prefix = "   ",
-            borderchars = {
-                { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-                prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
-                results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
-                preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+        buffers = {
+            prompt_prefix = "   ",
+            previewer = false,
+            layout_config = { width = 0.40, height = 0.30, },
+        },
+
+        find_files = {
+            prompt_prefix = "   ",
+            previewer = false,
+            layout_config = {
+                width = 0.50,
+                height = 0.50,
             },
-            layout_config = { width = 0.60, height = 0.50, },
-        }
+        },
+
+        oldfiles = {
+            prompt_prefix = " ﭾ  ",
+        },
+
+        lsp_references = {
+            layout_strategy = "center",
+            prompt_prefix = "   ",
+            layout_config = {
+                preview_cutoff = 40,
+                width = 0.50,
+                height = 0.40,
+            },
+        },
+
+        current_buffer_fuzzy_find = {
+            prompt_prefix = "   ",
+        },
+
+        live_grep = {
+            prompt_prefix = "   ",
+        },
 
     },
     extensions = {
@@ -181,7 +131,7 @@ telescope.setup {
 }
 
 -- local extensions = { "themes", "terms", "fzf", "coc", "ultisnips" }
-local extensions = { "fzf",  }
+local extensions = { "fzf", }
 -- local packer_repos = [["extensions", "telescope-fzf-native.nvim"]]
 
 pcall(function()
