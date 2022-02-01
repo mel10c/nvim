@@ -13,7 +13,6 @@ return require('packer').startup(function(use)
 
     -- faster start up time
     use { 'nathom/filetype.nvim', }
-
     use {
         'lewis6991/impatient.nvim',
         config = function() require('plugins.misc').imp() end,
@@ -48,13 +47,6 @@ return require('packer').startup(function(use)
         "mel10c/onenord.nvim",
         event = "VimEnter",
         config = function() require('plugins.misc').onenord() end,
-    }
-
-    -- alternative color scheme
-    use {
-        "EdenEast/nightfox.nvim",
-        event = "VimEnter",
-        config = function() require('plugins.misc').nightfox() end,
     }
 
     -- nerd icons
@@ -144,17 +136,17 @@ return require('packer').startup(function(use)
         ft = {"markdown", "pandoc", "telekasten"},
     }
 
-    use {
-        "AckslD/nvim-neoclip.lua",
-        event = "BufRead",
-        config = function() require('plugins.misc').clip() end,
-    }
+    -- use {
+    --     "AckslD/nvim-neoclip.lua",
+    --     event = "BufRead",
+    --     config = function() require('plugins.misc').clip() end,
+    -- }
 
-    -- code outline
-    use {
-        'simrat39/symbols-outline.nvim',
-        cmd = "SymbolsOutline",
-    }
+    -- -- code outline
+    -- use {
+    --     'simrat39/symbols-outline.nvim',
+    --     cmd = "SymbolsOutline",
+    -- }
 
     -- preview colors
     use {
@@ -241,6 +233,7 @@ return require('packer').startup(function(use)
         'jalvesaq/Nvim-R',
         ft = {"R", "Rmd"},
         event = "BufRead",
+        cmd = { "RStart", "RMakePDF", "ROpenLists" },
         config = function() require('plugins.misc').rstudio() end,
     }
 
@@ -250,7 +243,7 @@ return require('packer').startup(function(use)
     use {
         "hrsh7th/nvim-cmp",
         config = function() require('plugins.cmp') end,
-        event = "InsertEnter",
+        event = "BufRead",
     }
 
     -- -- snips

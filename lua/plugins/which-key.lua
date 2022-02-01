@@ -24,7 +24,7 @@ key.setup {
     key_labels = {},
     icons = {
         breadcrumb = "+",
-        separator = "➜",
+        separator = "",
         group = "» ",
     },
     window = {

@@ -10,7 +10,7 @@ end
 bufferline.setup {
     options = {
         offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
-        indicator_icon = '▎',
+        indicator_icon = '',
         buffer_close_icon = "·",
         modified_icon = "",
         close_icon = '',
@@ -24,7 +24,8 @@ bufferline.setup {
         view = "multiwindow",
         show_buffer_icons = false,
         show_buffer_close_icons = false,
-        separator_style = "thin",
+        -- separator_style = "thin",
+        separator_style = { '', '' },
         always_show_bufferline = true,
         diagnostics = false, -- "or nvim_lsp"
         custom_filter = function(buf_number)
@@ -62,7 +63,7 @@ bufferline.setup {
         buffer_selected = {
             guifg = {attribute='fg',highlight='TabLineSel'},
             guibg = {attribute='bg',highlight='TabLineSel'},
-            gui = 'none'
+            gui = "none"
         },
         buffer_visible = {
             guifg = {attribute='fg',highlight='TabLine'},

@@ -39,14 +39,14 @@ cmp.setup {
             )
 
             vim_item.menu = ({
-                nvim_lsp = "[LSP]",
-                nvim_lua = "[API]",
-                buffer = "[BUF]",
-                path = "[PAT]",
-                ultisnips = "[SNI]",
-                luasnip = "[LLL]",
-                calc = "[CAL]",
-                look = "[SPL]",
+                nvim_lsp = "LSP",
+                nvim_lua = "API",
+                buffer = "BUF",
+                path = "PAT",
+                ultisnips = "SNI",
+                luasnip = "LLL",
+                calc = "CAL",
+                look = "SPL",
             })[entry.source.name]
 
             return vim_item

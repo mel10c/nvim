@@ -19,9 +19,3 @@ for _, module in ipairs(core_modules) do
 end
 
 require('util').disable()
-
--- require('settings')
--- require('mappings')
--- require('autocmd')
--- require('util').disable()
--- pcall(require, "impatient")

@@ -5,25 +5,6 @@ local M = {}
 local g = vim.g
 
 -- ------------------------------- Colorschemes ----------------------------------
-M.nightfox = function()
-    local present, nightfox = pcall(require, "nightfox")
-    if not present then
-        nightfox.setup()
-    end
-    nightfox.setup{
-        hlgroups = {
-            CursorLineNr = { fg = "${blue_br}", style = "bold" },
-            TabLine = { bg = "${bg}", fg = "${fg}" },
-            TabLineFill = { bg = "${bg}" },
-            TabLineSel = { fg = "${bg}", bg = "${blue}" },
-
-            TelescopeSelection = { fg = "${cyan}", bg = "${bg}"},
-        }
-    }
-    -- vim.cmd[[colorscheme nordfox]]
-
-end
-
 M.onenord = function()
     local colorscheme = "onenord"
 
@@ -35,7 +16,6 @@ M.onenord = function()
     end
 
     vim.cmd[[colorscheme onenord]]
-
 end
 
 -- ----------------------------- Indentline Setup --------------------------------
