@@ -93,7 +93,7 @@ telescope.setup {
         },
 
         oldfiles = {
-            prompt_prefix = " ﭾ  ",
+            prompt_prefix = "   ",
         },
 
         lsp_references = {

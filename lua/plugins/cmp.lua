@@ -33,7 +33,7 @@ cmp.setup {
         format = function(entry, vim_item)
             -- load lspkind icons
             vim_item.kind = string.format(
-            "%s %s",
+            -- "%s %s",
             require("plugins.lspkind_icons").icons[vim_item.kind],
             vim_item.kind
             )
@@ -85,7 +85,8 @@ cmp.setup {
         end,
     },
     documentation = {
-        border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+        -- border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+        border = { " ", " ", " ", " ", " ", " ", " ", " " },
     },
     experimental = {
         native_menu = false,

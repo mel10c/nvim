@@ -72,7 +72,7 @@ key.register({
         k = { "<cmd>Telescope keymaps<cr>",                                     'keymaps'},
         z = { "<cmd>Telescope current_buffer_fuzzy_find<cr>",                   'buffer find'},
         o = { "<cmd>Telescope oldfiles<cr>",                                    'recents'},
-        p = { "<cmd>lua require('telescope').extensions.neoclip.default()<cr>", 'clipboard'},
+        -- p = { "<cmd>lua require('telescope').extensions.neoclip.default()<cr>", 'clipboard'},
         r = { "<cmd>Telescope lsp_references<cr>",                              'reference'},
         t = { "<cmd>Telescope treesitter<cr>",                                  'treesitter'},
         w = { "<cmd>Telescope live_grep<cr>",                                   'search word'},
@@ -137,7 +137,7 @@ key.register({
         r = { '<Plug>RStart',         'Start Terminal'},
         l = { '<Plug>RSendLine',      'Send line'},
         s = { '<Plug>RSendParagraph', 'Send selection'},
-        k = { '<Plug>RMakePDF',       'Make PDF'},
+        k = { '<Plug>RMakePDFK',       'Make PDF'},
         o = { '<Plug>ROpenLists',     'Vew Objects'},
     },
 }, { prefix = "<leader>" })
