@@ -13,11 +13,7 @@ return require('packer').startup(function(use)
 
     -- faster start up time
     use { 'nathom/filetype.nvim', }
-    use {
-        'lewis6991/impatient.nvim',
-        config = function() require('plugins.misc').imp() end,
-        after = 'filetype.nvim',
-    }
+    use { 'lewis6991/impatient.nvim', }
 
     -- packer can manage itself
     use {
@@ -158,7 +154,7 @@ return require('packer').startup(function(use)
     -- easy table vim
     use {
         'dhruvasagar/vim-table-mode',
-        ft = {"markdown", "pandoc", "telekasten"},
+        ft = {"markdown", "pandoc", "telekasten", "Rmd" },
         cmd = "TableModeEnable",
     }
 
