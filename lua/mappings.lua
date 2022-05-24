@@ -78,6 +78,8 @@ map('n', 'A', 'zzA')
 map('n', 'o', 'zzo')
 map('n', 'O', 'zzO')
 
+map('i', ',n', '<esc>"npa')
+
 -- ------------------------ Insert Mode Emacs-style mapping ----------------------
 map('i', '<C-a>', '<Home>')
 map('i', '<C-e>', '<End><End>')
@@ -93,7 +95,8 @@ map('n', '<leader>t', '<cmd>NvimTreeToggle <CR>')
 map('n', '<leader>x', '<cmd>VimtexCompile<cr>')
 vim.cmd[[nmap <leader>; <plug>(matchup-%)]]
 vim.cmd[[xmap <leader>r <plug>RSendSelection]]
-vim.cmd[[nmap <leader>g <cmd>Telekasten goto_today<cr><cr>]]
+vim.cmd[[nmap <leader>g <cmd>call Spawn_note_window()<cr>]]
+vim.cmd[[nmap <leader><cr> <cmd>Telekasten toggle_todo<cr>]]
 
 -- buffers
 map('n', ',1', '<cmd>BufferLineGoToBuffer 1 <cr>zz')
@@ -112,3 +115,12 @@ vim.cmd[[xmap <leader>b <Plug>VSurround*gv<Plug>VSurround*E]]
 vim.cmd[[xmap <leader>u <Plug>VSurround<u>E]]
 vim.cmd[[xmap <leader>l <Plug>VSurround]gv<Plug>VSurround]E]]
 vim.cmd[[xmap <leader>h <Plug>VSurround=gv<Plug>VSurround=E]]
+vim.cmd[[xmap <leader>m <Plug>VSurround$E]]
+
+-- --------------------------- Markdown Syntax Shortcuts -------------------------
+vim.cmd[[nmap <leader>cq <cmd>%s/ \*Highlight \[page \d\]:\*/-/g<cr>]]
+vim.cmd[[nmap <leader>cn <cmd>%s/ \*and Note \[page \d\]:\*/>/g<cr>]]
+vim.cmd[[nmap <leader>cp yi(o<img src="link" width="300"><esc>Fkviwpkdd]]
+vim.cmd[[nmap <leader>ci g^vUi- <esc>l]]
+vim.cmd[[nmap <leader>cr va]yGo<esc>pa: ]]
+vim.cmd[[nmap <leader>ct :!/Applications/Typora.app/Contents/MacOS/Typora %<cr>]]
