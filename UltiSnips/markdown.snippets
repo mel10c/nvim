@@ -185,11 +185,11 @@ snippet dm "Math" wA
 $$ $0 $$
 endsnippet
 
-snippet sr "^2" iA
+snippet sr "^2" i
 ^2
 endsnippet
 
-snippet cb "^3" iA
+snippet cb "^3" i
 ^3
 endsnippet
 
@@ -278,9 +278,9 @@ snippet ZZ "integers" iA
 \mathbb{Z}
 endsnippet
 
-snippet OO "empty set" iA
-\emptyset
-endsnippet
+# snippet OO "empty set" iA
+# \emptyset
+# endsnippet
 
 snippet faa "for all" iA
 \forall
@@ -367,9 +367,30 @@ snippet intS "intergral" w
 endsnippet
 
 snippet hpic "HTML pic" w
-<img src="${1:link}" width="${2:500}">
+<img src="${1:${VISUAL}}" width="${2:300}">
 endsnippet
 
-snippet htag "HTML pic" w
-<span style="font-variant: small-caps;color:#81a1c1">$1</span>
+snippet htog "HTML toggle" w
+<details>
+	<summary>${1:Title}</summary>
+$2
+</details>
+endsnippet
+
+snippet rrr "reference" iA
+[^$1]
+endsnippet
+
+snippet ch; "chemistry formula" iA
+$\ce{$1}$2$
+endsnippet
+
+snippet dia "diagram tables" w
+| Diagram | Structure Importance |
+|---------|----------------------|
+| $1 | $2 |
+endsnippet
+
+snippet br; "Table line break" iA
+ <br> $1
 endsnippet
