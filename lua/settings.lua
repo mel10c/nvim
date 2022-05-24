@@ -18,6 +18,7 @@ opt.showcmd = true
 opt.wildmenu = true
 opt.foldenable = false
 opt.signcolumn = 'yes'
+opt.laststatus = 3
 
 -- --------------------------------- Editor Settings -----------------------------
 opt.tabstop = 4
@@ -35,16 +36,15 @@ opt.smartcase= true
 opt.hlsearch = true
 opt.incsearch = true
 opt.conceallevel = 2
-vim.cmd [[autocmd FileType markdown,tex,telekasten,Rmd set spell]]
 vim.cmd [[set whichwrap+=<,>,[,],h,l]]
 
 -- -- ---------------------------------- Files Settings -----------------------------
 opt.title = true
 opt.fillchars = { eob = " " }
-opt.shortmess:append "sI"
+opt.shortmess:append "TWIca"
 opt.hidden = true
 opt.list = true
-opt.shortmess = opt.shortmess + { I = true }
+-- opt.shortmess = opt.shortmess + { c = true, F = true, W = true, I = true }
 opt.timeoutlen = 200
 opt.compatible = false
 opt.completeopt = {'menuone', 'noselect'}
