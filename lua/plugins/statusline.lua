@@ -84,13 +84,13 @@ end
 
 -- ------------------------------------ Left -------------------------------------
 
-ins_left({
-    function()
-        return '▊'
-    end,
-    color = { fg = colors.lightgray },
-    padding = { left = 0, right = 0 },
-})
+-- ins_left({
+--     function()
+--         return '▊'
+--     end,
+--     color = { fg = colors.lightgray },
+--     padding = { left = 0, right = 0 },
+-- })
 
 ins_left({
     -- mode component
@@ -195,24 +195,24 @@ ins_left({
 
 -- ----------------------------------- Right -------------------------------------
 
-ins_right({
-    'branch',
-    icon = '',
-    color = { fg = colors.violet, gui = 'bold' },
-})
-
-ins_right({
-    'diff',
-    -- Is it me or the symbol for modified us really weird
-    symbols = { added = ' ', modified = '柳', removed = ' ' },
-    diff_color = {
-        added = { fg = colors.green },
-        modified = { fg = colors.orange },
-        removed = { fg = colors.red },
-    },
-    cond = conditions.hide_in_width,
-    padding = { left = 0, right = 1 },
-})
+-- ins_right({
+--     'branch',
+--     icon = '',
+--     color = { fg = colors.violet, gui = 'bold' },
+-- })
+--
+-- ins_right({
+--     'diff',
+--     -- Is it me or the symbol for modified us really weird
+--     symbols = { added = ' ', modified = '柳', removed = ' ' },
+--     diff_color = {
+--         added = { fg = colors.green },
+--         modified = { fg = colors.orange },
+--         removed = { fg = colors.red },
+--     },
+--     cond = conditions.hide_in_width,
+--     padding = { left = 0, right = 1 },
+-- })
 
 ins_right({
     'progress',

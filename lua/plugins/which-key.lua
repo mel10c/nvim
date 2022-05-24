@@ -106,8 +106,9 @@ key.register({
         g = { '<cmd>TermExec cmd="g"<CR>',                         'lazygit'},
         h = { '<cmd>ToggleTerm direction=horizontal<CR>',          'terminal below'},
         l = { ':TermExec cmd="zh <c-r><c-w>" dir="~/"<CR>exit',    'translate'},
+        r = { ':TermExec cmd="zh" dir="~/"<CR>',                   'translation'},
         s = { '<cmd>ToggleTerm<CR>',                               'terminal'},
-        t = { ':TermExec cmd="zh" dir="~/"<CR>',                   'translation'},
+        t = { ':TermExec cmd="tty-clock -c"~/" dir="~/"<CR>',      'time'},
         w = { '<cmd>ToggleTerm direction=tab<CR>',                 'terminal window'},
     },
 }, { prefix = "<leader>" })
@@ -124,7 +125,6 @@ key.register({
         n = { '<cmd>Telekasten find_notes<cr>',       'find notes'},
         s = { '<cmd>Telekasten search_notes<cr>',     'search'},
         t = { '<cmd>Telekasten show_tags<cr>',        'tags'},
-        x = { '<cmd>Telekasten toggle_todo<cr>',      'toggle todo'},
         y = { '<cmd>Telekasten yank_notelink<cr>',    'yank link'},
         z = { '<cmd>Telekasten follow_link<cr>',      'follow link'},
     },

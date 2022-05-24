@@ -48,14 +48,13 @@ telescope.setup {
         path_display = { "smart" },
         winblend = 0,
         border = {},
-
-        borderchars = {
-            { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-            prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
-            results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
-            preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-        },
-
+        -- borderchars = {
+        --     { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+        --     prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
+        --     results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
+        --     preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+        -- },
+        borderchars = { "" },
         prompt_title = false,
         results_title = false,
         preview_title = false,
@@ -84,7 +83,7 @@ telescope.setup {
         },
 
         find_files = {
-            prompt_prefix = "   ",
+            prompt_prefix = "   ",
             previewer = false,
             layout_config = {
                 width = 0.50,
@@ -93,7 +92,7 @@ telescope.setup {
         },
 
         oldfiles = {
-            prompt_prefix = "   ",
+            prompt_prefix = "   ",
         },
 
         lsp_references = {

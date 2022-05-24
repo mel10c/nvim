@@ -171,10 +171,11 @@ end
 M.vimtex = function ()
     g.vimtex_compiler_progname = 'nvr'
     g.vimtex_quickfix_mode = 0
-    g.vimtex_view_general_viewer = 'zathura'
+    -- g.vimtex_view_general_viewer = 'zathura'
     -- g.vimtex_view_general_viewer = true
-    -- g.vimtex_view_general_viewer = "open"
+    g.vimtex_view_general_viewer = "open"
     g.tex_conceal = "abdmg"
+    g.tex_flavor= "latex"
     vim.opt.conceallevel=2
 end
 
@@ -263,6 +264,19 @@ M.terminal = function()
         -- open_mapping = [[<leader>s]],
         hide_numbers = true,
         shade_filetypes = {},
+        highlights = {
+            Normal = {
+                guibg = "active",
+            },
+            NormalFloat = {
+                guifg = "#353B49",
+                guibg = "#353B49",
+            },
+            FloatBorder = {
+                guifg = '#353B49',
+                guibg = '#353B49',
+            },
+        },
         shade_terminals = false,
         shading_factor = '3', -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
         start_in_insert = true,
@@ -274,15 +288,11 @@ M.terminal = function()
         close_on_exit = true, -- close the terminal window when the process exits
         float_opts = {
             -- border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
-            border = 'single',
+            border = 'none',
             -- width = <value>,
             -- height = <value>,
-            winblend = 3,
-            highlights = {
-                border = "ToggleTermBorder",
-                background = "ToggleTerm",
-            }
-        }
+            -- winblend = 3,
+        },
     }
 end
 

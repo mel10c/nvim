@@ -9,7 +9,7 @@ end
 
 bufferline.setup {
     options = {
-        offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
+        offsets = { { filetype = "NvimTree", "", text = "", padding = 1 } },
         indicator_icon = '',
         buffer_close_icon = "·",
         modified_icon = "",
@@ -17,7 +17,7 @@ bufferline.setup {
         show_close_icon = false,
         left_trunc_marker = "",
         right_trunc_marker = "",
-        max_name_length = 14,
+        max_name_length = 30,
         max_prefix_length = 13,
         show_tab_indicators = true,
         enforce_regular_tabs = false,
@@ -63,7 +63,7 @@ bufferline.setup {
         buffer_selected = {
             guifg = {attribute='fg',highlight='TabLineSel'},
             guibg = {attribute='bg',highlight='TabLineSel'},
-            gui = "none"
+            gui = "bold"
         },
         buffer_visible = {
             guifg = {attribute='fg',highlight='TabLine'},
@@ -124,14 +124,14 @@ bufferline.setup {
             gui = "bold,italic"
         },
 
-        duplicate_selected = {
-            guifg = {attribute='fg',highlight='TabLineSel'},
-            guibg = {attribute='bg',highlight='TabLineSel'},
-            gui = 'none'
-        },
-        duplicate_visible = {
-            guifg = {attribute='fg',highlight='TabLine'},
-            guibg = {attribute='bg',highlight='TabLine'},
-        },
+        -- duplicate_selected = {
+        --     guifg = {attribute='fg',highlight='TabLineSel'},
+        --     guibg = {attribute='bg',highlight='TabLineSel'},
+        --     gui = 'none'
+        -- },
+        -- duplicate_visible = {
+        --     guifg = {attribute='fg',highlight='TabLine'},
+        --     guibg = {attribute='bg',highlight='TabLine'},
+        -- },
     }
 }
