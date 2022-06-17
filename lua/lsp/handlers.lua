@@ -21,7 +21,7 @@ M.setup = function()
             active = signs,
         },
         update_in_insert = true,
-        underline = false,
+        underline = true,
         severity_sort = true,
         float = {
             focusable = false,

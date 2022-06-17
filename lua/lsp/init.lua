@@ -1,5 +1,4 @@
--- ------------------------------ LSP Config -------------------------------------
--- ===============================================================================
+-- ------------------------------ LSP Config ------------------------------------- ===============================================================================
 local present, lspconfig = pcall(require, "lspconfig")
 if not present then
     return
@@ -25,6 +24,11 @@ lsp_installer.on_server_ready(function(server)
     if server.name == "css_lua" then
         local css_opts = require('lsp.servers.css')
         opts = vim.tbl_deep_extend("force", css_opts, opts)
+    end
+
+    if server.name == "ltex" then
+        local ltex_opts = require('lsp.servers.ltex')
+        opts = vim.tbl_deep_extend("force", ltex_opts, opts)
     end
 
     server:setup(opts)
