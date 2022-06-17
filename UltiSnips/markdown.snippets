@@ -73,36 +73,8 @@ snippet studies "study in line" b
 	- $2
 endsnippet
 
-snippet theory "theory page" b
-#Tool/Psych
-
----
-==${1:Name}==
-
-- **${2:Purpose}**
-
----
-
-# Detail
-
-# Application
-
-# Reference
->
-endsnippet
-
-snippet theories "theory in line" b
-> ${1:who}
-- <u>Overview</u>
-	- $2
-- <u>Detail</u>
-	- $3
-- <u>Application</u>
-	- $4
-endsnippet
-
 snippet ==T "h1" iA
-==Theory==: [[$1]]
+==$1==
 endsnippet
 
 snippet ;1 "h1" iA
@@ -388,9 +360,15 @@ endsnippet
 snippet dia "diagram tables" w
 | Diagram | Structure Importance |
 |---------|----------------------|
-| $1 | $2 |
+| $1
 endsnippet
 
 snippet br; "Table line break" iA
  <br> $1
+endsnippet
+
+snippet theory "h1" w
+\`\`\`ad-theorem
+$1
+\`\`\`
 endsnippet

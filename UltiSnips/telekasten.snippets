@@ -66,43 +66,19 @@ snippet study "study page" b
 >
 endsnippet
 
-snippet studies "study in line" b
-- <u>Method</u>
-	- $1
-- <u>Result</u>
-	- $2
+snippet stu "study in line" i
+\`$1\`
+	- <u>Method</u>
+		- $2
+	- <u>Result</u>
+		- $3
 endsnippet
 
-snippet theory "theory page" b
-#Tool/Psych
-
----
-==${1:Name}==
-
-- **${2:Purpose}**
-
----
-
-# Detail
-
-# Application
-
-# Reference
->
-endsnippet
-
-snippet theories "theory in line" b
-> ${1:who}
-- <u>Overview</u>
-	- $2
-- <u>Detail</u>
-	- $3
-- <u>Application</u>
-	- $4
-endsnippet
-
-snippet ==T "h1" iA
-==Theory==: [[$1]]
+snippet ==; "h1" iA
+==$1==
+	- <u>Argues</u> $2
+	- <u>Evidence</u> $3
+	- <u>Problem</u> $3
 endsnippet
 
 snippet ;1 "h1" iA
@@ -255,7 +231,7 @@ snippet im "impies" i
 \quad \implies \quad
 endsnippet
 
-snippet inn "in" iA
+snippet inn "in" i
 \in
 endsnippet
 
@@ -387,11 +363,17 @@ $\ce{$1}$2$
 endsnippet
 
 snippet dia "diagram tables" w
-| Diagram | Structure Importance |
+| ${1:Diagram} | ${2:Details} |
 |---------|----------------------|
-| $1 | $2 |
+| $0
 endsnippet
 
 snippet br; "Table line break" iA
  <br> $0
+endsnippet
+
+snippet theory "h1" w
+\`\`\`ad-theorem
+$1
+\`\`\`
 endsnippet
