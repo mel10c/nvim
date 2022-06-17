@@ -82,7 +82,7 @@ map('i', ',n', '<esc>"npa')
 
 -- ------------------------ Insert Mode Emacs-style mapping ----------------------
 map('i', '<C-a>', '<Home>')
-map('i', '<C-e>', '<End><End>')
+map('i', '<C-e>', '<End>')
 map('i', '<C-p>', '<Up>')
 map('i', '<C-n>', '<Down>')
 map('i', '<C-b>', '<Left>')
@@ -123,4 +123,7 @@ vim.cmd[[nmap <leader>cn <cmd>%s/ \*and Note \[page \d\]:\*/>/g<cr>]]
 vim.cmd[[nmap <leader>cp yi(o<img src="link" width="300"><esc>Fkviwpkdd]]
 vim.cmd[[nmap <leader>ci g^vUi- <esc>l]]
 vim.cmd[[nmap <leader>cr va]yGo<esc>pa: ]]
-vim.cmd[[nmap <leader>ct :!/Applications/Typora.app/Contents/MacOS/Typora %<cr>]]
+vim.cmd[[nmap <leader>ct :!/Applications/Typora.app/Contents/MacOS/Typora "%"<cr>]]
+vim.cmd[[nmap <leader>ch /^#/ %<cr><c-l>]]
+vim.cmd[[vmap <c-s> y:!say '<c-r>"'<cr>]]
+map('n', '<leader>cu', '<cmd>UploadClipboard<cr>')

@@ -5,6 +5,7 @@
 -- shortcuts
 local opt = vim.opt
 
+
 -- ------------------------------ Interface Settings -----------------------------
 opt.syntax = 'on'
 opt.mouse = 'a'
@@ -22,8 +23,8 @@ opt.laststatus = 3
 
 -- --------------------------------- Editor Settings -----------------------------
 opt.tabstop = 4
-opt.shiftwidth = 4
 opt.softtabstop = 4
+opt.shiftwidth = 4
 opt.expandtab = true
 -- opt.smarttab = true
 opt.smartindent = true
@@ -39,9 +40,10 @@ opt.conceallevel = 2
 vim.cmd [[set whichwrap+=<,>,[,],h,l]]
 
 -- -- ---------------------------------- Files Settings -----------------------------
+opt.confirm = true
 opt.title = true
 opt.fillchars = { eob = " " }
-opt.shortmess:append "TWIca"
+opt.shortmess:append "sTWIca"
 opt.hidden = true
 opt.list = true
 -- opt.shortmess = opt.shortmess + { c = true, F = true, W = true, I = true }

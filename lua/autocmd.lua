@@ -36,6 +36,13 @@ autocmd("FileType", {
    end,
 })
 
+autocmd("FileType", {
+   pattern = { "tex", "tex", },
+   callback = function()
+       vim.cmd[[set ft=latex]]
+   end,
+})
+
 -- ----------------------------- DASHBOARD or TREE -------------------------------
 vim.cmd
 [[
@@ -46,21 +53,6 @@ elseif len(argv()) == 0
   autocmd VimEnter * Dashboard
 endif
 ]]
-
--- Disable statusline in dashboard
--- autocmd("FileType", {
---    pattern = "dashboard",
---    callback = function()
---       vim.opt.laststatus = 0
---    end,
--- })
---
--- autocmd("BufUnload", {
---    buffer = 0,
---    callback = function()
---       vim.opt.laststatus = 3
---    end,
--- })
 
 -- ---------------------------- Highlight Yank Area ------------------------------
 autocmd("TextYankPost", {
