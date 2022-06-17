@@ -87,19 +87,19 @@ M.autopairs = function()
 end
 
 -- -------------------------- LuaSnip Setup (unused) -----------------------------
-M.luasnip = function()
-    local present, luasnip = pcall(require, "luasnip")
-    if not present then
-        return
-    end
-
-    luasnip.config.set_config {
-        history = true,
-        updateevents = "TextChanged,TextChangedI",
-    }
-    -- require("luasnip/loaders/from_vscode").load { path = { chadrc_config.plugins.options.luasnip.snippet_path } }
-    require("luasnip/loaders/from_vscode").load { path = { {} } }
-end
+-- M.luasnip = function()
+--     local present, luasnip = pcall(require, "luasnip")
+--     if not present then
+--         return
+--     end
+--
+--     luasnip.config.set_config {
+--         history = true,
+--         updateevents = "TextChanged,TextChangedI",
+--     }
+--     -- require("luasnip/loaders/from_vscode").load { path = { chadrc_config.plugins.options.luasnip.snippet_path } }
+--     require("luasnip/loaders/from_vscode").load { path = { {} } }
+-- end
 
 -- ------------------------------- Packer Setup ----------------------------------
 M.packer = function()
@@ -148,25 +148,6 @@ M.packer = function()
 
 end
 
--- ----------------------------- Lsp Error Display -------------------------------
-M.trouble = function()
-    local present, trouble = pcall(require, "trouble")
-    if not present then
-        return
-    end
-
-    trouble.setup {
-        height = 15,
-        -- "workspace_diagnostics", "lsp_document_diagnostics", "quickfix", "lsp_references", "loclist"
-        mode = "workspace_diagnostics",
-        action_keys = {
-            toggle_fold = {"zH", "zh"},
-        },
-        auto_fold = true,
-        use_diagnostic_signs = true
-    }
-end
-
 -- ------------------------------- LaTex for Nvim --------------------------------
 M.vimtex = function ()
     g.vimtex_compiler_progname = 'nvr'
@@ -208,43 +189,6 @@ M.icon = function()
     }
 end
 
--- ----------------------------- Clipboard Helper --------------------------------
-M.clip = function ()
-    local present, clip = pcall(require, "neoclip")
-    if not present then
-        return
-    end
-
-    clip.setup{
-        history = 20,
-        enable_persistant_history = false,
-        db_path = vim.fn.stdpath("data") .. "/databases/neoclip.sqlite3",
-        filter = nil,
-        preview = true,
-        default_register = '"',
-        content_spec_column = true,
-        on_paste = {
-            set_reg = false,
-        },
-        keys = {
-            telescope = {
-                i = {
-                    select = '<cr>',
-                    paste = 'p',
-                    paste_behind = 'P',
-                    custom = {},
-                },
-                n = {
-                    select = '<cr>',
-                    paste = 'p',
-                    paste_behind = 'P',
-                    custom = {},
-                },
-            },
-        },
-    }
-end
-
 -- ----------------------------- Terminal Setting --------------------------------
 M.terminal = function()
     local present, terminal = pcall(require, "toggleterm")
@@ -269,7 +213,7 @@ M.terminal = function()
                 guibg = "active",
             },
             NormalFloat = {
-                guifg = "#353B49",
+                guifg = "#C8D0E0",
                 guibg = "#353B49",
             },
             FloatBorder = {
@@ -310,8 +254,23 @@ M.rstudio = function()
 end
 
 -- ----------------------------- Load headings  ----------------------------------
-M.heading = function()
-    local ft = vim.bo.filetype
+-- M.heading = function()
+--     local ft = vim.bo.filetype
+--
+-- end
+
+-- ---------------------------------- PicGo  -------------------------------------
+M.picgo = function()
+    local present, picgo = pcall(require, "nvim-picgo")
+    if not present then
+        return
+    end
+
+    picgo.setup {
+        notice = "echo",
+        image_name = false,
+        debug = true
+    }
 
 end
 

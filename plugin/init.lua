@@ -91,12 +91,11 @@ return require('packer').startup(function(use)
     }
 
     -- git stuff
-    use {
-        "lewis6991/gitsigns.nvim",
-        event = "BufRead",
-        config = function() require('plugins.gitsigns') end,
-        disable = true
-    }
+    -- use {
+    --     "lewis6991/gitsigns.nvim",
+    --     event = "BufRead",
+    --     config = function() require('plugins.gitsigns') end,
+    -- }
 
     -- file tree
     use {
@@ -233,6 +232,12 @@ return require('packer').startup(function(use)
         cmd = { "RStart", "RMakePDF", "ROpenLists" },
         config = function() require('plugins.misc').rstudio() end,
     }
+
+    -- use {
+    --     "askfiy/nvim-picgo",
+    --     config = function() require('plugins.misc').picgo() end,
+    --     cmd = { "UploadClipboard", "UploadImagefile" },
+    -- }
 
     -- ---------------------------- Auto completion ----------------------------------
 
