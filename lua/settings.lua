@@ -20,6 +20,7 @@ opt.wildmenu = true
 opt.foldenable = false
 opt.signcolumn = 'yes'
 opt.laststatus = 3
+opt.showtabline = 2
 
 -- --------------------------------- Editor Settings -----------------------------
 opt.tabstop = 4
@@ -46,7 +47,6 @@ opt.fillchars = { eob = " " }
 opt.shortmess:append "sTWIca"
 opt.hidden = true
 opt.list = true
--- opt.shortmess = opt.shortmess + { c = true, F = true, W = true, I = true }
 opt.timeoutlen = 200
 opt.compatible = false
 opt.completeopt = {'menuone', 'noselect'}

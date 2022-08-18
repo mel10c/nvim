@@ -6,29 +6,13 @@ local exec = vim.api.nvim_exec
 local autocmd = vim.api.nvim_create_autocmd
 
 -- ------------------------------ Trim White Space -------------------------------
-local NoWhitespace = exec(
-    [[
-    function! NoWhitespace()
-        let l:save = winsaveview()
-        keeppatterns %s/\s\+$//e
-        call winrestview(l:save)
-    endfunction
-    call NoWhitespace()
-    ]],
-    true
-)
-exec([[au BufWritePre * call NoWhitespace()]], false)
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})
 
 -- ------------------------------ Filetype Setting -------------------------------
 --- Set spelling
-autocmd("FileType", {
-   pattern = { "markdown", "tex", "telekasten", "Rmd" },
-   callback = function()
-      vim.opt_local.spell = true
-   end,
-})
-
--- set git lines
 autocmd("FileType", {
    pattern = { "markdown", "tex", "telekasten", "Rmd" },
    callback = function()

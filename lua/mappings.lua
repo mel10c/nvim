@@ -118,12 +118,12 @@ vim.cmd[[xmap <leader>h <Plug>VSurround=gv<Plug>VSurround=E]]
 vim.cmd[[xmap <leader>m <Plug>VSurround$E]]
 
 -- --------------------------- Markdown Syntax Shortcuts -------------------------
-vim.cmd[[nmap <leader>cq <cmd>%s/ \*Highlight \[page \d\]:\*/-/g<cr>]]
-vim.cmd[[nmap <leader>cn <cmd>%s/ \*and Note \[page \d\]:\*/>/g<cr>]]
+-- vim.cmd[[nmap <leader>cq <cmd>%s/ \*Highlight \[page \d\]:\*/-/g<cr>]]
+-- vim.cmd[[nmap <leader>cn <cmd>%s/ \*and Note \[page \d\]:\*/>/g<cr>]]
 vim.cmd[[nmap <leader>cp yi(o<img src="link" width="300"><esc>Fkviwpkdd]]
 vim.cmd[[nmap <leader>ci g^vUi- <esc>l]]
 vim.cmd[[nmap <leader>cr va]yGo<esc>pa: ]]
 vim.cmd[[nmap <leader>ct :!/Applications/Typora.app/Contents/MacOS/Typora "%"<cr>]]
 vim.cmd[[nmap <leader>ch /^#/ %<cr><c-l>]]
-vim.cmd[[vmap <c-s> y:!say '<c-r>"'<cr>]]
+vim.cmd[[vmap <c-s> y:!say -v Kate '<c-r>"'<cr>]]
 map('n', '<leader>cu', '<cmd>UploadClipboard<cr>')
