@@ -10,8 +10,8 @@ end
 -- ----------------------------------- Set Up ------------------------------------
 
 local colors = {
-    -- bg        = '#2E3440',
-    bg        = 'NONE',
+    bg        = '#2E3440',
+    -- bg        = 'NONE',
     fg        = '#C8D0E0',
     yellow    = '#EBCB8B',
     cyan      = '#8FBCBB',
@@ -65,8 +65,8 @@ local config = {
         -- these are to remove the defaults
         lualine_a = {},
         lualine_b = {},
-        lualine_y = {},
         lualine_z = {},
+        lualine_y = {},
         lualine_c = {},
         lualine_x = {},
     },
@@ -118,39 +118,51 @@ ins_left({
             ['!'] = colors.red,
             t = colors.red,
         }
-        vim.api.nvim_command('hi! LualineMode guifg=' .. mode_color[vim.fn.mode()] .. ' guibg=' .. colors.bg)
-        return ''
+        local mode_icons = {
+            ['n'] = '    ',
+            ['i'] = '    ',
+            ['s'] = '    ',
+            ['v'] = '    ',
+            ['V'] = '    ',
+            ['\x16'] = '    ',
+            ['r'] = '    ',
+            ['c'] = '    ',
+            ['t'] = '    ',
+        }
+        vim.api.nvim_command('hi! LualineMode guibg=' .. mode_color[vim.fn.mode()] .. ' guifg=' .. colors.bg)
+        -- return '   '
+        return mode_icons [vim.fn.mode()]
     end,
     color = 'LualineMode',
+    padding = { left = 0, right = 1 },
 })
 
 
 ins_left({
     function()
         local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-        return " ".. " " .. dir_name .. " "
+        return "  ".. " " .. dir_name .. " "
     end,
     color = { fg = colors.lightgray, gui = 'bold' },
     cond = conditions.hide_in_width,
     padding = { left = 0, right = 0 },
 })
-
-ins_left({
-    'filetype',
-    cond = conditions.buffer_not_empty,
-    color = { fg = colors.darkblue, gui = 'bold' },
-    colored = false,
-    icon_only = true,
-    padding = { left = 1, right = 0 },
-})
-
-ins_left({
-    'filename',
-    cond = conditions.buffer_not_empty,
-    color = { fg = colors.darkblue, gui = 'bold' },
-    padding = { left = 1, right = 0 },
-})
-
+--
+-- ins_left({
+--     'filetype',
+--     cond = conditions.buffer_not_empty,
+--     color = { fg = colors.darkblue, gui = 'bold' },
+--     colored = false,
+--     icon_only = true,
+--     padding = { left = 1, right = 0 },
+-- })
+--
+-- ins_left({
+--     'filename',
+--     cond = conditions.buffer_not_empty,
+--     color = { fg = colors.darkblue, gui = 'bold' },
+--     padding = { left = 1, right = 0 },
+-- })
 
 ins_left({
     'diagnostics',
@@ -188,19 +200,18 @@ ins_left({
 --         end
 --         return msg
 --     end,
---     icon = ' LSP:',
 --     color = { fg = colors.fg, },
 --     cond = conditions.hide_in_width,
 -- })
 
 -- ----------------------------------- Right -------------------------------------
-
+--
 -- ins_right({
 --     'branch',
 --     icon = '',
 --     color = { fg = colors.violet, gui = 'bold' },
 -- })
---
+
 -- ins_right({
 --     'diff',
 --     -- Is it me or the symbol for modified us really weird
@@ -215,29 +226,28 @@ ins_left({
 -- })
 
 ins_right({
-    'progress',
-    color = { fg = colors.lightgray, gui = 'bold' },
-    icon = "",
-    padding = { left = 1, right = 0 },
-})
-
-ins_right({
     function()
         return 'ω:' ..vim.fn.wordcount().words
     end,
     color = { fg = colors.lightgray, gui = "bold" },
     cond = conditions.hide_in_width,
-    padding = { left = 1, right = 1 },
+    padding = { left = 1, right = 2 },
 })
 
--- ins_right({
---     function()
---         return '▊'
---     end,
---     color = { fg = colors.lightgray },
---     padding = { left = 1, right = 0 },
--- })
+ins_right({
+    function()
+        return ' '
+    end,
+    color = { bg = colors.lightgray },
+    padding = { left = 0, right = 0 },
+})
 
+ins_right({
+    'progress',
+    icon = "",
+    color = { fg = colors.bg, bg = colors.lightgray, gui = 'bold' },
+    padding = { left = 0, right = 1 },
+})
 
 -- Now don't forget to initialize lualine
 lualine.setup(config)
