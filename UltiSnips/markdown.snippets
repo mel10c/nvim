@@ -97,11 +97,11 @@ snippet ;5 "h4" iA
 ##### $0
 endsnippet
 
-snippet pic "picture" b
+snippet pic "picture" i
 ![${1:descirption}](${2:link})
 endsnippet
 
-snippet link_web "picture" b
+snippet link_web "link" i
 [${1:descirption}](${2:link})
 endsnippet
 
@@ -271,7 +271,7 @@ snippet qq "quad" iA
 endsnippet
 
 snippet ,, "space" iA
-\,
+&emsp;
 endsnippet
 
 snippet floor "floor" i
@@ -371,4 +371,10 @@ snippet theory "h1" w
 \`\`\`ad-theorem
 $1
 \`\`\`
+endsnippet
+
+snippet callout "callout" w
+<div style="padding: 15px; border: 1px solid transparent; border-color: transparent; margin-bottom: 20px; border-radius: 4px; color: #31708f; background-color: #d9edf7; border-color: #bce8f1;">
+$1
+</div>
 endsnippet
