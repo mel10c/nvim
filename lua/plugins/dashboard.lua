@@ -26,10 +26,9 @@ db.custom_header = {
     '',
     '',
     '',
-    '',
 }
 
-db.hide_tabline = true
+db.hide_tabline = false
 db.hide_statusline = false
 
 db.custom_center = {

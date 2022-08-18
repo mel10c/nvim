@@ -181,6 +181,11 @@ M.icon = function()
                 icon = "",
                 color = "#428850",
                 name = "Zsh"
+            },
+            md = {
+                icon = " ",
+                color = "#81A1C1",
+                name = "md"
             }
         };
         -- globally enable default icons (default to false)

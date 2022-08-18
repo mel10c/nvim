@@ -50,88 +50,91 @@ bufferline.setup {
 
     highlights = {
         fill = {
-            guibg = {attribute='bg',highlight='TabLine'}
+            bg = {attribute='bg',highlight='TabLine'}
         },
         background = {
-            guibg = {attribute='bg',highlight='TabLine'}
+            bg = {attribute='bg',highlight='TabLine'}
         },
 
         tab = {
-            guibg = {attribute='bg',highlight='TabLine'}
+            bg = {attribute='bg',highlight='TabLine'},
         },
 
         buffer_selected = {
-            guifg = {attribute='fg',highlight='TabLineSel'},
-            guibg = {attribute='bg',highlight='TabLineSel'},
-            gui = "bold"
+            fg = {attribute='fg',highlight='TabLineSel'},
+            bg = {attribute='bg',highlight='TabLineSel'},
+            bold = true,
+            italic = false
         },
         buffer_visible = {
-            guifg = {attribute='fg',highlight='TabLine'},
-            guibg = {attribute='bg',highlight='TabLine'},
+            fg = {attribute='fg',highlight='TabLine'},
+            bg = {attribute='bg',highlight='TabLine'},
         },
 
         close_button_visible = {
-            guifg = {attribute='fg',highlight='TabLine'},
-            guibg = {attribute='bg',highlight='TabLine'}
+            fg = {attribute='fg',highlight='TabLine'},
+            bg = {attribute='bg',highlight='TabLine'}
         },
         close_button_selected = {
-            guifg = {attribute='fg',highlight='TabLineSel'},
-            guibg = {attribute='bg',highlight='TabLineSel'},
+            fg = {attribute='fg',highlight='TabLineSel'},
+            bg = {attribute='bg',highlight='TabLineSel'},
         },
 
         info = {
-            guifg = {attribute='fg',highlight='TabLineSel'},
+            fg = {attribute='fg',highlight='TabLineSel'},
         },
 
         modified_selected = {
-            guifg = {attribute='fg',highlight='TabLineSel'},
-            guibg = {attribute='bg',highlight='TabLineSel'},
+            fg = {attribute='fg',highlight='TabLineSel'},
+            bg = {attribute='bg',highlight='TabLineSel'},
         },
         modified_visible = {
-            guifg = {attribute='fg',highlight='TabLine'},
-            guibg = {attribute='bg',highlight='TabLine'}
+            fg = {attribute='fg',highlight='TabLine'},
+            bg = {attribute='bg',highlight='TabLine'}
         },
 
         modified = {
-            guifg = {attribute='fg',highlight='TabLine'},
-            guibg = {attribute='bg',highlight='TabLine'}
+            fg = {attribute='fg',highlight='TabLine'},
+            bg = {attribute='bg',highlight='TabLine'}
         },
 
         separator = {
-            guibg = {attribute='bg',highlight='TabLine'}
+            bg = {attribute='bg',highlight='TabLine'}
         },
         separator_selected = {
-            guifg = {attribute='fg',highlight='TabLine'},
-            guibg = {attribute='bg',highlight='TabLine'},
+            fg = {attribute='fg',highlight='TabLine'},
+            bg = {attribute='bg',highlight='TabLine'},
         },
         separator_visible = {
-            guibg = {attribute='bg',highlight='TabLine'}
+            bg = {attribute='bg',highlight='TabLine'}
         },
         indicator_selected = {
-            guibg = {attribute='bg',highlight='TabLine'}
+            bg = {attribute='bg',highlight='TabLine'}
         },
 
         pick_selected = {
-            guibg = {attribute='bg',highlight='TabLineSel'},
-            gui = "bold"
+            bg = {attribute='bg',highlight='TabLineSel'},
+            bold = true,
+            italic = false
         },
         pick_visible = {
-            guibg = {attribute='bg',highlight='TabLine'},
-            gui = "bold,italic"
+            bg = {attribute='bg',highlight='TabLine'},
+            bold = true,
+            italic = false
         },
         pick = {
-            guibg = {attribute='bg',highlight='TabLine'},
-            gui = "bold,italic"
+            bg = {attribute='bg',highlight='TabLine'},
+            bold = true,
+            italic = false
         },
 
         -- duplicate_selected = {
-        --     guifg = {attribute='fg',highlight='TabLineSel'},
-        --     guibg = {attribute='bg',highlight='TabLineSel'},
-        --     gui = 'none'
+        --     fg = {attribute='fg',highlight='TabLineSel'},
+        --     bg = {attribute='bg',highlight='TabLineSel'},
         -- },
         -- duplicate_visible = {
-        --     guifg = {attribute='fg',highlight='TabLine'},
-        --     guibg = {attribute='bg',highlight='TabLine'},
+        --     fg = {attribute='fg',highlight='TabLine'},
+        --     bg = {attribute='bg',highlight='TabLine'},
         -- },
     }
 }

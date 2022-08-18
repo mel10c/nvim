@@ -27,7 +27,6 @@ cmp.setup {
         { name = "buffer", keyword_length = 3, max_item_count = 3, },
         { name = 'look', keyword_length=4, max_item_count = 3,
             options={ convert_case=true, loud=true } },
-        { name = 'flypy' },
     },
     formatting = {
         fields = { "abbr", "kind", "menu", },
@@ -46,7 +45,6 @@ cmp.setup {
                 luasnip = "LLL",
                 calc = "CAL",
                 look = "SPL",
-                flypy = "CHI"
             }) [entry.source.name]
             return vim_item
         end,
