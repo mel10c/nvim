@@ -4,15 +4,14 @@ A nvim configuration template with nord colorscheme, written in lua
 
 ![home](image/homepage.png)
 
-![java](image/show_java.png)
+![telescope](image/show_files.png)
 
-![markdown](image/show_markdown.png)
+![markdown](image/show_time.png)
 
 <details>
 <summary>Click to See More Showcases</summary>
-    <img src="image/show_files.png" alt="show_files" width="500">
-    <img src="image/show_reference.png" alt="Reference" width="500">
-    <img src="image/show_markdownSimple.png" alt="markdown" width="500">
+    <img src="image/show_heading.png" alt="show_files" width="500">
+    <img src="image/latex.png" alt="Reference" width="500">
     <img src="image/show_plugins.png" alt="Plugins" width="500">
 </details>
 
