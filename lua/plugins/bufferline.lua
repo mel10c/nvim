@@ -10,7 +10,10 @@ end
 bufferline.setup {
     options = {
         offsets = { { filetype = "NvimTree", "", text = "", padding = 1 } },
-        indicator_icon = '',
+        indicator = {
+            -- icon = '▎', -- this should be omitted if indicator style is not 'icon'
+            style = 'none',
+        },
         buffer_close_icon = "·",
         modified_icon = "",
         close_icon = '',
