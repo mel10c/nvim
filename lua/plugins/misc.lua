@@ -215,7 +215,7 @@ M.terminal = function()
         shade_filetypes = {},
         highlights = {
             Normal = {
-                guibg = "active",
+                guibg = "#2E3440",
             },
             NormalFloat = {
                 guifg = "#C8D0E0",

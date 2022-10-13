@@ -33,6 +33,8 @@ map('n', '<C-u>', '<C-u>zz')
 map('n', '<C-d>', '<C-d>zz')
 map('n', '<C-o>', '<C-o>zz')
 map('n', '<leader>o', '<C-^>zz')
+map('n', 'gj', 'j')
+map('n', 'gk', 'k')
 map("", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
 map("", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 map("", "H", 'v:count || mode(1)[0:1] == "no" ? "^" : "g^"', { expr = true })
@@ -67,7 +69,7 @@ map('i', '{', '{<C-g>u')
 map('i', '}', '}<C-g>u')
 map('n', '<leader>q', ':q<cr>')
 map('n', 'Q', ':q!<cr>')
-map('n', '<leader>w', ':w<cr>')
+map('n', '<leader>w', '<cmd>w<cr>')
 map('i', '<C-l>', '<c-g>u<Esc>[s1z=`]a<c-g>u')
 map("n",  "x", '"_x')
 
@@ -117,11 +119,15 @@ vim.cmd[[xmap <leader>l <Plug>VSurround]gv<Plug>VSurround]E]]
 vim.cmd[[xmap <leader>h <Plug>VSurround=gv<Plug>VSurround=E]]
 vim.cmd[[xmap <leader>m <Plug>VSurround$E]]
 
+vim.cmd[[nmap <leader>i viw<Plug>VSurround*E]]
+vim.cmd[[nmap <leader>b viw<Plug>VSurround*gv<Plug>VSurround*E]]
+vim.cmd[[nmap <leader>9 viw<Plug>VSurround)E]]
+
 -- --------------------------- Markdown Syntax Shortcuts -------------------------
 -- vim.cmd[[nmap <leader>cq <cmd>%s/ \*Highlight \[page \d\]:\*/-/g<cr>]]
 -- vim.cmd[[nmap <leader>cn <cmd>%s/ \*and Note \[page \d\]:\*/>/g<cr>]]
-vim.cmd[[nmap <leader>cp yi(o<img src="link" width="300"><esc>Fkviwpkdd]]
-vim.cmd[[nmap <leader>ci g^vUi- <esc>l]]
+vim.cmd[[nmap <leader>cp yi(o<img src="link" width="300"><esc>Fkviwpgkdd]]
+vim.cmd[[nmap <leader>ci ^vUi- <esc>l]]
 vim.cmd[[nmap <leader>cr va]yGo<esc>pa: ]]
 vim.cmd[[nmap <leader>ct :!/Applications/Typora.app/Contents/MacOS/Typora "%"<cr>]]
 vim.cmd[[nmap <leader>ch /^#/ %<cr><c-l>]]

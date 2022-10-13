@@ -21,13 +21,15 @@ opt.foldenable = false
 opt.signcolumn = 'yes'
 opt.laststatus = 3
 opt.showtabline = 2
+opt.ls = 0
+opt.ch = 0
 
 -- --------------------------------- Editor Settings -----------------------------
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
--- opt.smarttab = true
+opt.smarttab = true
 opt.smartindent = true
 opt.autoindent = true
 opt.indentexpr = ''

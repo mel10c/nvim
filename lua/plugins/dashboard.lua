@@ -16,14 +16,13 @@ db.custom_header = {
     -- ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
     -- ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
     -- ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
-     '        ▄▄▄▄▄▄▄  ▄▄▄▄▄        ',
-     '        █    ██      █        ',
-     '        █      ██    █        ',
-     '  ███  █  ██    ██  █  ███  ',
-     '        █    ██      █        ',
-     '        █      ██    █        ',
-     '        ▀▀▀▀▀  ▀▀▀▀▀▀▀        ',
-    '',
+     '         ▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄         ',
+     '         █     ██       █         ',
+     '         █       ██     █         ',
+     '  ████  █   ██    ██   █  ████  ',
+     '         █     ██       █         ',
+     '         █       ██     █         ',
+     '         ▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀         ',
     '',
     '',
 }
@@ -47,7 +46,9 @@ local function make_custom_footer()
 	if packer_plugins ~= nil then
 		local count = #vim.tbl_keys(packer_plugins)
         local time = os.date("%H:%M")
-		default_footer[1] = " |  Loaded: " .. count .. "  |  " .. time .. "  |  "
+		default_footer[1] = "   ••• " .. count .. " •••   "
+		default_footer[2] = " "
+		-- default_footer[3] = "  " .. time
 	end
 	return default_footer
 end
