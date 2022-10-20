@@ -59,7 +59,28 @@ local config = {
         lualine_z = {},
         -- These will be filled later
         lualine_c = {},
-        lualine_x = {},
+        lualine_x = {
+            -- {
+            --     require("noice").api.status.message.get_hl,
+            --     cond = require("noice").api.status.message.has,
+            --     color = { fg = "#6C7A96" }
+            -- },
+            -- {
+            --     require("noice").api.status.command.get,
+            --     cond = require("noice").api.status.command.has,
+            --     color = { fg = "#6C7A96" }
+            -- },
+            {
+                require("noice").api.status.mode.get,
+                cond = require("noice").api.status.mode.has,
+                color = { fg = "#6C7A96" }
+            },
+            {
+                require("noice").api.status.search.get,
+                cond = require("noice").api.status.search.has,
+                color = { fg = "#6C7A96" }
+            },
+        },
     },
     inactive_sections = {
         -- these are to remove the defaults

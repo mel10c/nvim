@@ -22,7 +22,7 @@ opt.signcolumn = 'yes'
 opt.laststatus = 3
 opt.showtabline = 2
 opt.ls = 0
-opt.ch = 0
+opt.ch = 1
 
 -- --------------------------------- Editor Settings -----------------------------
 opt.tabstop = 4
@@ -31,6 +31,7 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.smarttab = true
 opt.smartindent = true
+opt.breakindent = true
 opt.autoindent = true
 opt.indentexpr = ''
 opt.backspace = {'indent', 'eol', 'start'}

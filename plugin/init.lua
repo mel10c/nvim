@@ -132,12 +132,6 @@ return require('packer').startup(function(use)
         ft = {"markdown", "pandoc", "telekasten"},
     }
 
-    -- use {
-    --     "AckslD/nvim-neoclip.lua",
-    --     event = "BufRead",
-    --     config = function() require('plugins.misc').clip() end,
-    -- }
-
     -- -- code outline
     -- use {
     --     'simrat39/symbols-outline.nvim',
@@ -164,6 +158,18 @@ return require('packer').startup(function(use)
         cmd = "VimtexCompile",
         config = function () require('plugins.misc').vimtex() end,
     }
+
+    --cmdline
+    -- Packer
+    use({
+        "folke/noice.nvim",
+        event = "VimEnter",
+        config = function () require('plugins.cmdline') end,
+        requires = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+        }
+    })
 
     -- ---------------------------- Editing Tools ------------------------------------
 
@@ -206,6 +212,12 @@ return require('packer').startup(function(use)
         cmd = 'EasyAlign'
     }
 
+    -- json file fixer
+    -- use {
+    --     'ennaro-tedesco/nvim-jqx',
+    --     cmd = 'JqxList'
+    -- }
+
     -- ------------------------------ Lsp configs ------------------------------------
 
     -- lsp config
@@ -225,18 +237,12 @@ return require('packer').startup(function(use)
     }
 
     -- RStudio
-    use {
-        'jalvesaq/Nvim-R',
-        ft = {"R", "Rmd"},
-        event = "BufRead",
-        cmd = { "RStart", "RMakePDF", "ROpenLists" },
-        config = function() require('plugins.misc').rstudio() end,
-    }
-
     -- use {
-    --     "askfiy/nvim-picgo",
-    --     config = function() require('plugins.misc').picgo() end,
-    --     cmd = { "UploadClipboard", "UploadImagefile" },
+    --     'jalvesaq/Nvim-R',
+    --     ft = {"R", "Rmd"},
+    --     event = "BufRead",
+    --     cmd = { "RStart", "RMakePDF", "ROpenLists" },
+    --     config = function() require('plugins.misc').rstudio() end,
     -- }
 
     -- ---------------------------- Auto completion ----------------------------------
