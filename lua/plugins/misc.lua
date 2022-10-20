@@ -39,7 +39,7 @@ M.indent = function()
         buftype_exclude = {
             "terminal", "prompt", "nofile", "help"
         },
-        show_first_indent_level = false,
+        show_first_indent_level = true,
         show_trailing_blankline_indent = false,
     }
 end

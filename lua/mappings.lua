@@ -97,7 +97,9 @@ map('n', '<leader>t', '<cmd>NvimTreeToggle <CR>')
 map('n', '<leader>x', '<cmd>VimtexCompile<cr>')
 vim.cmd[[nmap <leader>; <plug>(matchup-%)]]
 vim.cmd[[xmap <leader>r <plug>RSendSelection]]
-vim.cmd[[nmap <leader>g <cmd>call Spawn_note_window()<cr>]]
+-- vim.cmd[[nmap <leader>g <cmd>call Spawn_note_window()<cr>]]
+vim.cmd[[nmap <leader>j <cmd>call GoToNextIndent(1)<cr>zz]]
+vim.cmd[[nmap <leader>k <cmd>call GoToNextIndent(-1)<cr>zz]]
 vim.cmd[[nmap <leader><cr> <cmd>Telekasten toggle_todo<cr>]]
 
 -- buffers
