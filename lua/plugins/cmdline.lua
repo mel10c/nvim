@@ -7,17 +7,16 @@ if not present then
 end
 
 cmd.setup({
-    icons = {
-        ["/"] = { icon = " ", hl_group = "NoiceCmdlineIconSearch" },
-        ["?"] = { icon = " ", hl_group = "NoiceCmdlineIconSearch" },
-        [":"] = { icon = " ", hl_group = "NoiceCmdlineIcon" },
-    },
-    cmdline = {
-        view = "cmdline_popup",
-        opts = { buf_options = { filetype = "vim" } },
-        icons = {
-            [":"] = { icon = " ", hl_group = "NoiceCmdlineIcon" },
-        },
+    format = {
+        -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
+        -- view: (default is cmdline view)
+        -- opts: any options passed to the view
+        -- icon_hl_group: optional hl_group for the icon
+        cmdline = { pattern = "^:", icon = "" },
+        search_down = { kind = "search", pattern = "^/", icon = " ", ft = "regex" },
+        search_up = { kind = "search", pattern = "^%?", icon = " ", ft = "regex" },
+        filter = { pattern = "^:%s*!", icon = "$", ft = "sh" },
+        lua = { pattern = "^:%s*lua%s+", icon = "", ft = "lua" },
     },
     views = {
         cmdline_popup = {
@@ -29,6 +28,13 @@ cmd.setup({
                 width = 60,
                 height = "auto",
             },
+            -- border = {
+            --     style = "none",
+            --     padding = { 1, 2 },
+            -- },
+            -- win_options = {
+            --     winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+            -- },
         },
         popupmenu = {
             relative = "editor",

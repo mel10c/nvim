@@ -159,8 +159,7 @@ return require('packer').startup(function(use)
         config = function () require('plugins.misc').vimtex() end,
     }
 
-    --cmdline
-    -- Packer
+    -- cmdline
     use({
         "folke/noice.nvim",
         event = "VimEnter",

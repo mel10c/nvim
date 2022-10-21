@@ -31,11 +31,11 @@ db.hide_tabline = false
 db.hide_statusline = false
 
 db.custom_center = {
-  { icon = '    ', desc = ' Packer Update       ', action = 'PackerSync', shortcut = "...  " },
-  { icon = '    ', desc = ' Go To Today         ', action = function() vim.cmd[[Telekasten goto_today]] vim.cmd[[call feedkeys("\<CR>")]] end, shortcut = "SPC g" },
-  { icon = '    ', desc = ' Packer Status       ', action = 'PackerStatus', shortcut = "...  " },
-  { icon = '    ', desc = ' LSP INFO            ', action = 'LspInstallInfo', shortcut = "...  "},
-  { icon = '    ', desc = ' New File            ', action = 'DashboardNewFile', shortcut = "...  "},
+  { icon = '    ', desc = ' Packer Update      ', action = 'PackerSync', shortcut = " <cr> " },
+  { icon = '    ', desc = ' Go To Today        ', action = function() vim.cmd[[Telekasten goto_today]] vim.cmd[[call feedkeys("\<CR>")]] end, shortcut = "SPC ZD" },
+  { icon = '    ', desc = ' Packer Status       ', action = 'PackerStatus', shortcut = " ... " },
+  { icon = '    ', desc = ' LSP INFO            ', action = 'LspInstallInfo', shortcut = " ... "},
+  { icon = '    ', desc = ' New File            ', action = 'DashboardNewFile', shortcut = " ... "},
   { icon = '    ', desc = '             ', action = 'DashboardNewFile', shortcut = " "},
 }
 --     e = { description = { "  New File                    ...  " }, command = "DashboardNewFile" },
@@ -46,7 +46,7 @@ local function make_custom_footer()
 	if packer_plugins ~= nil then
 		local count = #vim.tbl_keys(packer_plugins)
         local time = os.date("%H:%M")
-		default_footer[1] = "   ••• " .. count .. " •••   "
+		default_footer[1] = "   ••••• " .. count .. " •••••   "
 		default_footer[2] = " "
 		-- default_footer[3] = "  " .. time
 	end
