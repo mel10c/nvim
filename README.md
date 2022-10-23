@@ -8,13 +8,13 @@ A nvim configuration template with nord colorscheme, written in `lua`, designed 
 
 ![homepage](image/show_files.png)
 
-![homepage](image/show_heading.png)
+![homepage](image/latex.png)
 
 <details>
 <summary>Click to See More Showcases</summary>
-    <img src="image/show_time.png" width="500">
-    <img src="image/latex.png" alt="Reference" width="500">
-    <img src="image/show_plugin.png" alt="Plugins" width="500">
+    <img src="image/show_time.png" width="800">
+    <img src="image/show_heading.png" alt="Reference" width="800">
+    <img src="image/show_plugin.png" alt="Plugins" width="800">
 </details>
 
 # Key Features
