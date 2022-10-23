@@ -9,11 +9,11 @@ return require('packer').startup(function(use)
 -- --------------------------- Basic System Plugs---------------------------------
 
     -- lua plugin
-    use { 'nvim-lua/plenary.nvim', }
+    use { "nvim-lua/plenary.nvim", module = "plenary" }
 
     -- faster start up time
-    use { 'nathom/filetype.nvim', }
-    use { 'lewis6991/impatient.nvim', }
+    -- use { "nathom/filetype.nvim", }
+    use { "lewis6991/impatient.nvim", }
 
     -- packer can manage itself
     use {
@@ -49,6 +49,7 @@ return require('packer').startup(function(use)
     use {
         "kyazdani42/nvim-web-devicons",
         after = "onenord.nvim",
+        module = "nvim-web-devicons",
         config = function() require('plugins.misc').icon() end,
     }
 
