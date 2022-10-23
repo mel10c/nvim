@@ -263,20 +263,6 @@ end
 --     local ft = vim.bo.filetype
 --
 -- end
-
--- ---------------------------------- PicGo  -------------------------------------
-M.picgo = function()
-    local present, picgo = pcall(require, "nvim-picgo")
-    if not present then
-        return
-    end
-
-    picgo.setup {
-        notice = "echo",
-        image_name = false,
-        debug = true
-    }
-
-end
+--
 
 return M

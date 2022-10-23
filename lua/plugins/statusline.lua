@@ -70,6 +70,7 @@ local config = {
             --     cond = require("noice").api.status.command.has,
             --     color = { fg = "#6C7A96" }
             -- },
+
             {
                 require("noice").api.status.mode.get,
                 cond = require("noice").api.status.mode.has,

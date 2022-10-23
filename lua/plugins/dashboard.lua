@@ -28,7 +28,7 @@ db.custom_header = {
 }
 
 db.hide_tabline = false
-db.hide_statusline = false
+db.hide_statusline = true
 
 db.custom_center = {
   { icon = '    ', desc = ' Packer Update      ', action = 'PackerSync', shortcut = " <cr> " },

@@ -131,13 +131,15 @@ bufferline.setup {
             italic = false
         },
 
-        -- duplicate_selected = {
-        --     fg = {attribute='fg',highlight='TabLineSel'},
-        --     bg = {attribute='bg',highlight='TabLineSel'},
-        -- },
-        -- duplicate_visible = {
-        --     fg = {attribute='fg',highlight='TabLine'},
-        --     bg = {attribute='bg',highlight='TabLine'},
-        -- },
+        duplicate_selected = {
+            fg = {attribute='fg',highlight='TabLineSel'},
+            bg = {attribute='bg',highlight='TabLineSel'},
+            italic = false,
+        },
+        duplicate_visible = {
+            fg = {attribute='fg',highlight='TabLine'},
+            bg = {attribute='bg',highlight='TabLine'},
+            italic = false,
+        },
     }
 }
