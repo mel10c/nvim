@@ -25,8 +25,6 @@ A nvim configuration template with nord colorscheme, written in `lua`, designed 
     - I used my personal fork for UI and some small adjustment, a little out dated with main's functionality
 - Lazy loading (Under 50 msec startup time).
 
----
-
 ## Plugins
 
 - Syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
