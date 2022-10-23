@@ -1,16 +1,14 @@
 <h1 align="center"> &#9961 nvim &#9961 </h1>
 
-> Disclaimer: this set up is my personal set up, mostly for the purpose of note taking (`markdown`) and writing (`latex`). I use this along [obsidian](https://obsidian.md/) as my personal note taking tool.
->
-> I personally don't code as much, thus lsp configuration are very limited.
+> Disclaimer: this set up is my personal set up, mostly for the purpose of note taking (in markdown) and writing (in latex). I use this along [obsidian](https://obsidian.md/) as my personal note taking tool.
 
-A nvim configuration template with nord colorscheme, written in `lua`, designed for note taking
+A nvim configuration template with nord colorscheme, written in `lua`, designed for note taking.
 
-<img src="image/homepage.png" width="500">
+![homepage](image/homepage.png)
 
-<img src="image/show_files.png" width="500">
+![homepage](image/show_files.png)
 
-<img src="image/show_heading.png" alt="show_files" width="500">
+![homepage](image/show_heading.png)
 
 <details>
 <summary>Click to See More Showcases</summary>
