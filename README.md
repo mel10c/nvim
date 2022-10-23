@@ -1,32 +1,36 @@
 <h1 align="center"> &#9961 nvim &#9961 </h1>
 
-A nvim configuration template with nord colorscheme, written in lua
+> Disclaimer: this set up is my personal set up, mostly for the purpose of note taking (`markdown`) and writing (`latex`). I use this along [obsidian](https://obsidian.md/) as my personal note taking tool.
+>
+> I personally don't code as much, thus lsp configuration are very limited.
 
-![home](image/homepage.png)
+A nvim configuration template with nord colorscheme, written in `lua`, designed for note taking
 
-![telescope](image/show_files.png)
+<img src="image/homepage.png" width="500">
 
-![markdown](image/show_time.png)
+<img src="image/show_files.png" width="500">
+
+<img src="image/show_heading.png" alt="show_files" width="500">
 
 <details>
 <summary>Click to See More Showcases</summary>
-    <img src="image/show_heading.png" alt="show_files" width="500">
+    <img src="image/show_time.png" width="500">
     <img src="image/latex.png" alt="Reference" width="500">
     <img src="image/show_plugin.png" alt="Plugins" width="500">
 </details>
-
-> Disclaimer: this set up is my personal set up, mostly for the purpose of note taking  and writing. I use this along [obsidian](https://obsidian.md/) as my personal note taking tool.
->
-> I personally don't code as much, thus lsp configuration are very limited (potentially problematic).
-
 
 # Key Features
 
 - Contrasting while still Nordic colorscheme!
     - My personal fork for the [onenord.nvim](https://github.com/rmehri01/onenord.nvim) theme, some adjustment are inspired by [nightfox.nvim](https://github.com/EdenEast/nightfox.nvim).
-- Lazy loading (Under 50 msec startup time).
 - Zettelkasten note taking tool with [telekasten.nvim](https://github.com/renerocksai/telekasten.nvim)
-    - I used my personal fork for UI and some small adjustment, might be out dated with functionality
+    - I used my personal fork for UI and some small adjustment, a little out dated with main's functionality
+- Lazy loading (Under 50 msec startup time).
+
+---
+
+## Plugins
+
 - Syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 - Keymap reminder with [which-key.nvim](https://github.com/folke/which-key.nvim).
 - Pretty icons with [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons).
@@ -47,7 +51,7 @@ A nvim configuration template with nord colorscheme, written in lua
 
 ## Details
 
-For video demo of the setup, view this:
+<!-- For video demo of the setup, view this: -->
 
 For more details regarding the configuration and setup, view the wiki page.
 
