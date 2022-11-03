@@ -12,7 +12,7 @@ return require('packer').startup(function(use)
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
     -- faster start up time
-    -- use { "nathom/filetype.nvim", }
+    use { "nathom/filetype.nvim", }
     use { "lewis6991/impatient.nvim", }
 
     -- packer can manage itself

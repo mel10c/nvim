@@ -46,7 +46,7 @@ vim.cmd [[set whichwrap+=<,>,[,],h,l]]
 opt.confirm = true
 opt.title = true
 opt.fillchars = { eob = " " }
-opt.shortmess:append "sTWIca"
+opt.shortmess:append "asTWIc"
 opt.hidden = true
 opt.list = true
 opt.timeoutlen = 200
