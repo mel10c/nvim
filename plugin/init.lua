@@ -218,6 +218,13 @@ return require('packer').startup(function(use)
     --     cmd = 'JqxList'
     -- }
 
+    -- Better markdown
+    use {
+        "vim-pandoc/vim-pandoc-syntax",
+        ft = {"markdown", "pandoc"},
+        -- event = "BufRead",
+    }
+
     -- ------------------------------ Lsp configs ------------------------------------
 
     -- lsp config
@@ -229,21 +236,21 @@ return require('packer').startup(function(use)
         module = "lspconfig"
     }
 
-    -- better rename
-    use {
-        'stevearc/dressing.nvim',
-        event = "BufRead",
-        config = function() require('plugins.misc').ui() end,
-    }
+    -- -- better rename
+    -- use {
+    --     'stevearc/dressing.nvim',
+    --     event = "BufRead",
+    --     config = function() require('plugins.misc').ui() end,
+    -- }
 
     -- RStudio
-    -- use {
-    --     'jalvesaq/Nvim-R',
-    --     ft = {"R", "Rmd"},
-    --     event = "BufRead",
-    --     cmd = { "RStart", "RMakePDF", "ROpenLists" },
-    --     config = function() require('plugins.misc').rstudio() end,
-    -- }
+    use {
+        'jalvesaq/Nvim-R',
+        ft = {"R", "Rmd"},
+        event = "BufRead",
+        cmd = { "RStart", "RMakePDF", "ROpenLists" },
+        config = function() require('plugins.misc').rstudio() end,
+    }
 
     -- ---------------------------- Auto completion ----------------------------------
 

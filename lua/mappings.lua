@@ -128,6 +128,8 @@ vim.cmd[[nmap <leader>9 viw<Plug>VSurround)E]]
 -- --------------------------- Markdown Syntax Shortcuts -------------------------
 -- vim.cmd[[nmap <leader>cq <cmd>%s/ \*Highlight \[page \d\]:\*/-/g<cr>]]
 -- vim.cmd[[nmap <leader>cn <cmd>%s/ \*and Note \[page \d\]:\*/>/g<cr>]]
+map('n', '<leader>cd', '<cmd>set ft=markdown.pandoc<cr>')
+vim.cmd[[inoremap <tab> <c-t>]]
 vim.cmd[[nmap <leader>cp yi(o<img src="link" width="300"><esc>Fkviwpgkdd]]
 vim.cmd[[nmap <leader>ci ^vUi- <esc>l]]
 vim.cmd[[nmap <leader>cr va]yGo<esc>pa: ]]

@@ -38,6 +38,12 @@ elseif len(argv()) == 0
 endif
 ]]
 
+vim.cmd
+[[
+autocmd filetype markdown syn region match start=/\\$\\$/ end=/\\$\\$/
+autocmd filetype markdown syn match math '\\$[^$].\{-}\$'
+]]
+
 -- ---------------------------- Highlight Yank Area ------------------------------
 autocmd("TextYankPost", {
    callback = function()
