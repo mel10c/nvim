@@ -22,10 +22,6 @@ $0
 \`\`\`
 endsnippet
 
-# snippet [[ "bold" iA
-# [[${1:name}${2:#${3:heading}}${4:|${5:alias}}
-# endsnippet
-
 snippet def "definition" b
 ##### ${1:definition}
 > ------------------------------------------------------------
@@ -40,41 +36,11 @@ $0
 \`\`\`
 endsnippet
 
-snippet template "template" b
-#${1:Knowledge/${2:Stats, MAT, CS, Psych}}
-
----
-$0
-endsnippet
-
-snippet study "study page" b
-#Reflection/Study
-
----
-\`${1:Name}\`
-
-- **${2:Purpose}**
-
----
-
-# Method
-
-1. $0
-
-# Result
-# Reference
->
-endsnippet
-
 snippet studies "study in line" b
 - <u>Method</u>
 	- $1
 - <u>Result</u>
 	- $2
-endsnippet
-
-snippet ==T "h1" iA
-==$1==
 endsnippet
 
 snippet ;1 "h1" iA
@@ -105,8 +71,42 @@ snippet link_web "link" i
 [${1:descirption}](${2:link})
 endsnippet
 
+snippet htog "HTML toggle" w
+<details>
+	<summary>${1:Title}</summary>
+$2
+</details>
+endsnippet
 
-# ----------------------------- Math Shortcuts -------------------------------
+snippet rrr "reference" iA
+[^$1]
+endsnippet
+
+snippet ch; "chemistry formula" iA
+$\ce{$1}$2$
+endsnippet
+
+snippet dia "diagram tables" w
+| Diagram | Structure Importance |
+|---------|----------------------|
+| $1
+endsnippet
+
+snippet br; "Table line break" iA
+ <br> $1
+endsnippet
+
+snippet theory "h1" w
+\`\`\`ad-theorem
+$1
+\`\`\`
+endsnippet
+
+snippet hpic "HTML pic" w
+<img src="${1:${VISUAL}}" width="${2:300}">
+endsnippet
+
+# ================================= Math =====================================
 snippet eq "equation" b
 \left\{\begin{matrix}
 ${1:y_1} & =${2:x} \\
@@ -114,29 +114,27 @@ ${3:y_2} & =${4:x}
 \end{matrix}\right.
 endsnippet
 
-# snippet '([A-Za-z])(\d)' "auto subscript" wrA
-# `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
-# endsnippet
-#
-# snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
-# `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
-# endsnippet
+snippet '([A-Za-z])(\d)' "auto subscript" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
 
-# =============================== Shortcuts ==================================
+snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+endsnippet
 
-snippet brs "left( \right)" iA
+snippet brs; "left( \right)" iA
 \left( $0 \right)
 endsnippet
 
-snippet brm "left[ \right]" iA
+snippet brm; "left[ \right]" iA
 \left[ $0 \right]
 endsnippet
 
-snippet brl "left{ \right}" iA
+snippet brl; "left{ \right}" iA
 \left{ $0 \right}
 endsnippet
 
-snippet brll "curly brackt" iA
+snippet brll; "curly brackt" iA
 \\{ $0 \\}
 endsnippet
 
@@ -144,7 +142,6 @@ snippet << "langle" iA
 \langle $0 \rangle
 endsnippet
 
-priority 100
 snippet ... "ldots" i
 \ldots
 endsnippet
@@ -157,7 +154,7 @@ snippet dm "Math" wA
 $$ $0 $$
 endsnippet
 
-snippet sr "^2" i
+snippet sr "^2" iA
 ^2
 endsnippet
 
@@ -169,15 +166,15 @@ snippet frr "Fraction" iA
 \\frac{$1}{$2}
 endsnippet
 
-# snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
-# \\frac{`!p snip.rv = match.group(1)`}{$1}
-# endsnippet
-#
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
+\\frac{`!p snip.rv = match.group(1)`}{$1}
+endsnippet
+
 # snippet "(\\?\w+)(;\;|\;;)" "Vector postfix" riA
 # \vec{`!p snip.rv=match.group(1)`}
 # endsnippet
 
-snippet tt "code" i
+snippet tt; "code" iA
 \text{$0}
 endsnippet
 
@@ -185,39 +182,19 @@ snippet ttt "code" iA
 \textttt{$0}
 endsnippet
 
-snippet sin\ "sin" iA
-\sin
-endsnippet
-
-snippet cos\ "cos" iA
-\cos
-endsnippet
-
-snippet tan\ "tan" iA
-\tan
-endsnippet
-
-snippet the\ "theta" iA
+snippet 00; "theta" iA
 \theta
 endsnippet
 
-snippet Omega\ "Omega" iA
-\Omega
-endsnippet
-
-snippet mu\ "mu" iA
+snippet uu; "mu" iA
 \mu
-endsnippet
-
-snippet pi\ "pi" iA
-\pi
 endsnippet
 
 snippet lam\ "lambda" iA
 \lambad
 endsnippet
 
-snippet pop\ "population" iA
+snippet pp; "population" iA
 \hat{p}
 endsnippet
 
@@ -228,14 +205,17 @@ endsnippet
 snippet sam\ "sample" iA
 \bar{x}
 endsnippet
-# ================================= Math =====================================
 
-snippet iff "iff" i
+snippet iff; "iff" i
 \iff
 endsnippet
 
 snippet im "impies" i
 \quad \implies \quad
+endsnippet
+
+snippet =; "long equal" iA
+\quad = \quad
 endsnippet
 
 snippet inn "in" i
@@ -286,19 +266,11 @@ snippet ,, "space" iA
 &emsp;
 endsnippet
 
-snippet floor "floor" i
-\left\lfloor $1 \right\rfloor <++>
-endsnippet
-
 snippet sum "sum" w
 \sum_{${1:n=1}}${2:^\{${3:\infty}\}} $0
 endsnippet
 
-snippet taylor "taylor" w
-\sum_{${1:k}=${2:0}}^{${3:\infty}} ${4:c_$1} (x-a)^$1 $0
-endsnippet
-
-snippet sqq "\sqrt{}" iA
+snippet sqr "\sqrt{}" iA
 \sqrt{${1:${VISUAL}}}
 endsnippet
 
@@ -306,7 +278,7 @@ snippet td "to the ... power" iA
 ^{$1}
 endsnippet
 
-snippet al "alpha" i
+snippet al; "alpha" iA
 \alpha
 endsnippet
 
@@ -334,66 +306,6 @@ snippet *** "cdot" iA
 \cdot
 endsnippet
 
-snippet norm "norm" i
-\| $1 \|
-endsnippet
-
 snippet dx "d/dx" w
 \frac{\mathrm{d}$1}{\mathrm{d} ${2:x}} \,
-endsnippet
-
-snippet lim "limit" w
-\lim_{${1:n} \to ${2:\infty}}
-endsnippet
-
-snippet intS "intergral" w
-\int${1:_{$2}^{$3}} \,$0
-endsnippet
-
-snippet hpic "HTML pic" w
-<img src="${1:${VISUAL}}" width="${2:300}">
-endsnippet
-
-snippet htog "HTML toggle" w
-<details>
-	<summary>${1:Title}</summary>
-$2
-</details>
-endsnippet
-
-snippet rrr "reference" iA
-[^$1]
-endsnippet
-
-snippet ch; "chemistry formula" iA
-$\ce{$1}$2$
-endsnippet
-
-snippet dia "diagram tables" w
-| Diagram | Structure Importance |
-|---------|----------------------|
-| $1
-endsnippet
-
-snippet br; "Table line break" iA
- <br> $1
-endsnippet
-
-snippet theory "h1" w
-\`\`\`ad-theorem
-$1
-\`\`\`
-endsnippet
-
-snippet callout "callout" w
-<div style="padding: 15px; border: 1px solid transparent; border-color: transparent; margin-bottom: 20px; border-radius: 4px; color: #31708f; background-color: #d9edf7; border-color: #bce8f1;">
-$1
-</div>
-endsnippet
-
-snippet disorder "disorder tem" w
-- ==Symptoms==:
-- ==Diagnostic==:
-- ==Etiology==:
-- ==Treatment==:
 endsnippet
