@@ -7,6 +7,11 @@ if not present then
     return
 end
 
+-- local function png_or_markdown_files(path)
+--     return string.match(path, '.*%.png') or string.match(path, '.*%.md')
+-- end
+--
+
 vim.opt.completeopt = "menuone,noselect"
 
 -- ----------------------------- Formating Config --------------------------------
@@ -17,7 +22,6 @@ cmp.setup {
             vim.fn["UltiSnips#Anon"](args.body)
         end, },
     sources = {
-        { name = 'markdown-link' },
         { name = 'calc' },
         { name = "ultisnips" },
         { name = "nvim_lsp", max_item_count = 10 },
@@ -27,6 +31,18 @@ cmp.setup {
         { name = "buffer", keyword_length = 3, max_item_count = 3, },
         { name = 'look', keyword_length=4, max_item_count = 3,
             options={ convert_case=true, loud=true } },
+        { name = "latex_symbols", option = {strategy = 0}, max_item_count = 3 },
+        { name = 'markdown-link',
+            option = {
+                -- reference_link_location = 'top',
+                searched_depth = 5,
+                searched_dirs = { '%:h', '~/melaneyroot.github.io', },
+                --only offer links to .png or .md files
+                -- search_pattern = png_or_markdown_files,
+                wiki_base_url = '',
+                wiki_end_url = '',
+            }, max_item_count = 3
+        },
     },
     formatting = {
         fields = { "abbr", "kind", "menu", },
@@ -45,6 +61,8 @@ cmp.setup {
                 luasnip = "LLL",
                 calc = "CAL",
                 look = "SPL",
+                latex_symbols = "TEX",
+                markdown_link = "LIK",
             }) [entry.source.name]
             return vim_item
         end,

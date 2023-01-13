@@ -65,7 +65,7 @@ M.on_attach = function(client, bufnr)
    end
 
    -- Enable completion triggered by <c-x><c-o>
-   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+   -- buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- if client.name == "tsserver" then
     -- end

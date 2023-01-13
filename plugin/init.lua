@@ -113,6 +113,7 @@ return require('packer').startup(function(use)
             {
                 -- telescope order
                 "nvim-telescope/telescope-fzf-native.nvim",
+                event = "BufRead",
                 run = "make",
             },
         },
@@ -127,11 +128,18 @@ return require('packer').startup(function(use)
         cmd = "Telekasten",
     }
 
-    -- markdown header
-    use {
-        "crispgm/telescope-heading.nvim",
-        ft = {"markdown", "pandoc", "telekasten"},
-    }
+    -- -- obsidian!!!
+    -- use {
+    --     "epwalsh/obsidian.nvim",
+    --     ft = {"markdown", "pandoc", "telekasten"},
+    --     config = function() require('plugins.obsidian') end,
+    -- }
+
+    -- -- markdown header
+    -- use {
+    --     "crispgm/telescope-heading.nvim",
+    --     ft = {"markdown", "pandoc", "telekasten"},
+    -- }
 
     -- -- code outline
     -- use {
@@ -168,6 +176,7 @@ return require('packer').startup(function(use)
         requires = {
             -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
             "MunifTanjim/nui.nvim",
+            event = "BufRead",
         }
     })
 
@@ -183,7 +192,8 @@ return require('packer').startup(function(use)
     -- change surrand types
     use {
         "tpope/vim-surround",
-        event = "BufRead",
+        -- event = "BufRead",
+        after = "nvim-cmp",
     }
 
     -- easy comment
@@ -206,11 +216,11 @@ return require('packer').startup(function(use)
         event = "VimEnter",
     }
 
-    -- easier alignment
-    use {
-        'junegunn/vim-easy-align',
-        cmd = 'EasyAlign'
-    }
+    -- -- easier alignment
+    -- use {
+    --     'junegunn/vim-easy-align',
+    --     cmd = 'EasyAlign'
+    -- }
 
     -- json file fixer
     -- use {
@@ -222,7 +232,6 @@ return require('packer').startup(function(use)
     use {
         "vim-pandoc/vim-pandoc-syntax",
         ft = {"markdown", "pandoc"},
-        -- event = "BufRead",
     }
 
     -- ------------------------------ Lsp configs ------------------------------------
@@ -247,7 +256,6 @@ return require('packer').startup(function(use)
     use {
         'jalvesaq/Nvim-R',
         ft = {"R", "Rmd"},
-        event = "BufRead",
         cmd = { "RStart", "RMakePDF", "ROpenLists" },
         config = function() require('plugins.misc').rstudio() end,
     }
@@ -258,7 +266,8 @@ return require('packer').startup(function(use)
     use {
         "hrsh7th/nvim-cmp",
         config = function() require('plugins.cmp') end,
-        event = "BufRead",
+        -- event = "BufRead",
+        event = "InsertEnter",
     }
 
     -- -- snips
@@ -324,6 +333,18 @@ return require('packer').startup(function(use)
     -- word suggestion
     use {
         "octaltree/cmp-look",
+        after = "cmp-buffer"
+    }
+
+    -- latex
+    use {
+        "kdheepak/cmp-latex-symbols",
+        after = "cmp-buffer"
+    }
+
+    -- markdown
+    use {
+        "dburian/cmp-markdown-link",
         after = "cmp-buffer"
     }
 
