@@ -31,16 +31,21 @@ lsp_installer.on_server_ready(function(server)
         opts = vim.tbl_deep_extend("force", ltex_opts, opts)
     end
 
+    if server.name == "r_language_server" then
+        local r_opts = require('lsp.servers.r_language_server')
+        opts = vim.tbl_deep_extend("force", r_opts, opts)
+    end
+
     server:setup(opts)
 end)
 
-lspconfig.r_language_server.setup({
-        -- on_attach = require('lsp.handlers').on_attach,
-        -- capabilities = require('lsp.handlers').capabilities,
-        -- Debounce "textDocument/didChange" notifications because they are slowly
-        -- processed (seen when going through completion list with `<C-N>`)
-        flags = { debounce_text_changes = 150 },
-})
+-- lspconfig.r_language_server.setup({
+--         on_attach = require('lsp.handlers').on_attach,
+--         capabilities = require('lsp.handlers').capabilities,
+--         -- Debounce "textDocument/didChange" notifications because they are slowly
+--         -- processed (seen when going through completion list with `<C-N>`)
+--         flags = { debounce_text_changes = 150 },
+-- })
 
 -- ---------------------------- LSP Settings -------------------------------------
 require('lsp.handlers').setup()
