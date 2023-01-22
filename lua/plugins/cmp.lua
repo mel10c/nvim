@@ -32,17 +32,6 @@ cmp.setup {
         { name = 'look', keyword_length=4, max_item_count = 3,
             options={ convert_case=true, loud=true } },
         { name = "latex_symbols", option = {strategy = 0}, max_item_count = 3 },
-        { name = 'markdown-link',
-            option = {
-                -- reference_link_location = 'top',
-                searched_depth = 5,
-                searched_dirs = { '%:h', '~/melaneyroot.github.io', },
-                --only offer links to .png or .md files
-                -- search_pattern = png_or_markdown_files,
-                wiki_base_url = '',
-                wiki_end_url = '',
-            }, max_item_count = 3
-        },
     },
     formatting = {
         fields = { "abbr", "kind", "menu", },
@@ -62,7 +51,6 @@ cmp.setup {
                 calc = "CAL",
                 look = "SPL",
                 latex_symbols = "TEX",
-                markdown_link = "LIK",
             }) [entry.source.name]
             return vim_item
         end,

@@ -259,10 +259,24 @@ M.rstudio = function()
 end
 
 -- ----------------------------- Load headings  ----------------------------------
--- M.heading = function()
---     local ft = vim.bo.filetype
---
--- end
---
+M.notify = function()
+    local present, notify = pcall(require, "notify")
+    if not present then
+        return
+    end
+
+    vim.notify = notify
+    notify.setup{
+        icons = {
+            DEBUG = "",
+            ERROR = "",
+            INFO = "",
+            WARN = "",
+            TRACE = "פּ",
+        },
+        render = "compact",
+        stages = "slide"
+    }
+end
 
 return M

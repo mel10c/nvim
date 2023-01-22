@@ -92,6 +92,7 @@ key.register({
         -- i = { "<cmd>lua vim.lsp.buf.implementation()<CR>",                  'implementation'},
         -- k = { "<cmd>lua vim.lsp.buf.hover()<CR>",                           'hover doc'},
         n = { "<cmd>lua vim.lsp.buf.rename()<CR>",                          'rename'},
+        m = { "<cmd>lua vim.lsp.buf.format()<CR>",                          'format'},
         r = { "<cmd>lua vim.lsp.buf.references()<CR>",                      'reference'},
         s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>",                  'signature help'},
         t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>",                 'type definition'},
