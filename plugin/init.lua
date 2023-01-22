@@ -123,8 +123,13 @@ return require('packer').startup(function(use)
     }
 
     -- zettelkasten note taking
+    -- use {
+    --     'mel10c/telekasten.nvim',
+    --     cmd = "Telekasten",
+    -- }
     use {
-        'mel10c/telekasten.nvim',
+        'renerocksai/telekasten.nvim',
+        config = function() require('plugins.telekasten') end,
         cmd = "Telekasten",
     }
 
@@ -168,13 +173,18 @@ return require('packer').startup(function(use)
         config = function () require('plugins.misc').vimtex() end,
     }
 
+    -- use {
+    --     "rcarriga/nvim-notify",
+    --     event = "VimEnter",
+    --     config = function () require('plugins.misc').notify() end,
+    -- }
+
     -- cmdline
     use({
         "folke/noice.nvim",
         event = "VimEnter",
         config = function () require('plugins.cmdline') end,
         requires = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
             "MunifTanjim/nui.nvim",
             event = "BufRead",
         }
@@ -255,7 +265,7 @@ return require('packer').startup(function(use)
     -- RStudio
     use {
         'jalvesaq/Nvim-R',
-        ft = {"R", "Rmd"},
+        ft = {"R", "Rmd", "md"},
         cmd = { "RStart", "RMakePDF", "ROpenLists" },
         config = function() require('plugins.misc').rstudio() end,
     }
@@ -268,6 +278,7 @@ return require('packer').startup(function(use)
         config = function() require('plugins.cmp') end,
         -- event = "BufRead",
         event = "InsertCharPre",
+        module = "cmp"
     }
 
     -- -- snips
@@ -339,12 +350,6 @@ return require('packer').startup(function(use)
     -- latex
     use {
         "kdheepak/cmp-latex-symbols",
-        after = "cmp-buffer"
-    }
-
-    -- markdown
-    use {
-        "dburian/cmp-markdown-link",
         after = "cmp-buffer"
     }
 
