@@ -22,6 +22,7 @@ opt.signcolumn = 'yes'
 opt.showtabline = 2
 opt.ls = 0
 opt.ch = 1
+opt.termguicolors = true
 
 -- --------------------------------- Editor Settings -----------------------------
 opt.tabstop = 4
@@ -46,7 +47,8 @@ vim.cmd [[set whichwrap+=<,>,[,],h,l]]
 opt.confirm = true
 opt.title = true
 opt.fillchars = { eob = " " }
-opt.shortmess:append "asTWIc"
+opt.shortmess:append "asTIc"
+-- opt.shortmess:append "asTWIc"
 opt.hidden = true
 opt.list = true
 opt.timeoutlen = 200
