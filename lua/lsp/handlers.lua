@@ -16,18 +16,17 @@ M.setup = function()
     end
 
     local config = {
-        virtual_text = true,
+        virtual_text = false,
+        underline = false,
         signs = {
             active = signs,
         },
         update_in_insert = true,
-        underline = true,
         severity_sort = true,
         float = {
             focusable = false,
             style = "minimal",
             -- border = "rounded",
-
             -- source = "always",
             header = "",
             prefix = " ",
@@ -36,11 +35,11 @@ M.setup = function()
 
     vim.diagnostic.config(config)
 
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = {
-            prefix = '❯', -- Could be '●', '▎', 'x', '■',
-        }
-    })
+    -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    --     virtual_text = {
+    --         prefix = '❯', -- Could be '●', '▎', 'x', '■',
+    --     }
+    -- })
 end
 
 local function lsp_highlight_document(client)
