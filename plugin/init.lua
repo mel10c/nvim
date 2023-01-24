@@ -92,11 +92,12 @@ return require('packer').startup(function(use)
     }
 
     -- git stuff
-    -- use {
-    --     "lewis6991/gitsigns.nvim",
-    --     event = "BufRead",
-    --     config = function() require('plugins.gitsigns') end,
-    -- }
+    use {
+        "lewis6991/gitsigns.nvim",
+        -- event = "BufRead",
+        ft = {"lua", "css", "snippet", "R", "JS", "vim"},
+        config = function() require('plugins.gitsigns') end,
+    }
 
     -- file tree
     use {
@@ -254,13 +255,6 @@ return require('packer').startup(function(use)
         event = "BufRead",
         module = "lspconfig"
     }
-
-    -- -- better rename
-    -- use {
-    --     'stevearc/dressing.nvim',
-    --     event = "BufRead",
-    --     config = function() require('plugins.misc').ui() end,
-    -- }
 
     -- RStudio
     use {
