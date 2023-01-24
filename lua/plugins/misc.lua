@@ -160,14 +160,6 @@ M.vimtex = function ()
     vim.opt.conceallevel=2
 end
 
--- ---------------------------- nvim UI interface --------------------------------
-M.ui = function()
-    local present, ui = pcall(require, "dressing")
-    if present then
-        ui.setup()
-    end
-end
-
 -- ----------------------------- Nvim Icons Setup --------------------------------
 M.icon = function()
     local present, icons = pcall(require, "nvim-web-devicons")

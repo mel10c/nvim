@@ -6,44 +6,6 @@ if not present then
     return
 end
 
--- cmd.setup({
---     cmdline = {
---         enabled = true, -- enables the Noice cmdline UI
---         view = "cmdline_popup",
---         opts = {}, -- extra opts for the cmdline view. See section on views
---     },
---     views = {
---         cmdline_popup = {
---             position = {
---                 row = 5,
---                 col = "50%",
---             },
---             size = {
---                 width = 60,
---                 height = "auto",
---             },
---         },
---         popupmenu = {
---             relative = "editor",
---             position = {
---                 row = 8,
---                 col = "55%",
---             },
---             size = {
---                 width = 62,
---                 height = 10,
---             },
---             border = {
---                 style = "rounded",
---                 padding = { 0, 1 },
---             },
---             win_options = {
---                 winhighlight = { Normal = "Active" },
---             },
---         },
---     },
--- })
-
 cmd.setup {
     cmdline = {
         enabled = true, -- enables the Noice cmdline UI
@@ -62,9 +24,9 @@ cmd.setup {
     },
     messages = {
         enabled = true, -- enables the Noice messages UI
-        -- view = "notify", -- default view for messages
-        -- view_error = "notify", -- view for errors
-        -- view_warn = "notify", -- view for warnings
+        view = "mini", -- default view for messages
+        view_error = "virtualtext", -- view for errors
+        view_warn = "virtualtext", -- view for warnings
         view_history = "messages", -- view for :messages
         view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
     },
@@ -116,10 +78,10 @@ cmd.setup {
             filter_opts = { reverse = true },
         },
     },
-    -- notify = {
-    --     enabled = true,
-    --     view = "notify",
-    -- },
+    notify = {
+        enabled = false,
+        view = "notify",
+    },
     lsp = {
         progress = {
             enabled = true,
@@ -155,7 +117,7 @@ cmd.setup {
         message = {
             -- Messages shown by lsp servers
             enabled = true,
-            -- view = "notify",
+            view = "mini",
             opts = {},
         },
         -- defaults for hover and signature help
@@ -194,15 +156,13 @@ cmd.setup {
         excluded_filetypes = { "cmp_menu", "cmp_docs", "notify" },
     },
     presets = {
-        -- you can enable a preset by setting it to true, or a table that will override the preset config
-        -- you can also add custom presets that you can enable/disable with enabled=true
         bottom_search = false, -- use a classic bottom cmdline for search
         command_palette = false, -- position the cmdline and popupmenu together
         long_message_to_split = false, -- long messages will be sent to a split
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
         lsp_doc_border = false, -- add a border to hover docs and signature help
     },
-    throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
+    throttle = 10000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
     views = {}, ---@see section on views
     routes = {
         {

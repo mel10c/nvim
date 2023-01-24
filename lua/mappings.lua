@@ -13,8 +13,8 @@ end
 local g = vim.g
 
 g.mapleader = " "
-g.UltiSnipsJumpForwardTrigger="<c-f>"
 g.UltiSnipsJumpBackwardTrigger="<c-b>"
+g.UltiSnipsJumpForwardTrigger="<c-f>"
 
 -- ------------------------------ Navigation -------------------------------------
 map('n', '<C-j>', ':m .+1<cr>==')
