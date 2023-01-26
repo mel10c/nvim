@@ -130,6 +130,7 @@ vim.cmd[[nmap <leader>9 viw<Plug>VSurround)E]]
 -- vim.cmd[[nmap <leader>cn <cmd>%s/ \*and Note \[page \d\]:\*/>/g<cr>]]
 map('n', '<leader>cd', '<cmd>set ft=markdown.pandoc<cr>')
 map('n', '<leader>cs', '<cmd>%s/<cr>')
+map('n', '<leader>cl', '<cmd>LspStop<cr>')
 vim.cmd[[inoremap <tab> <c-t>]]
 vim.cmd[[nmap <leader>cp yi(o<img src="link" width="300"><esc>Fkviwpgkdd]]
 vim.cmd[[nmap <leader>ci ^vUi- <esc>l]]

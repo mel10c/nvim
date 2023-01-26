@@ -7,7 +7,8 @@ end
 
 return {
     cmd = {"ltex-ls"};
-    filetypes = {'tex', 'bib', 'latex', "markdown"};
+    -- filetypes = {'tex', 'bib', 'latex', "markdown"};
+    filetypes = {'tex', 'bib', 'latex',};
     settings = {
         ltex = {
             enabled= {"latex", "tex", "bib", "markdown"},

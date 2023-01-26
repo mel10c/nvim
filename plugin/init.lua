@@ -55,7 +55,7 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-lualine/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons',},
+        requires = {'kyazdani42/nvim-web-devicons'},
         after = "nvim-web-devicons",
         config = function() require('plugins.statusline') end,
     }
@@ -76,17 +76,11 @@ return require('packer').startup(function(use)
 
     -- dashboard
     use {
-        "glepnir/dashboard-nvim",
+        "mel10c/dashboard",
+        branch = "Old",
         cmd = {
             "Dashboard",
-            "DashboardChangeColorscheme",
-            "DashboardFindFile",
-            "DashboardFindHistory",
-            "DashboardFindWord",
             "DashboardNewFile",
-            "DashboardJumpMarks",
-            "SessionLoad",
-            "SessionSave"
         },
         config = function() require('plugins.dashboard') end,
     }
@@ -95,7 +89,7 @@ return require('packer').startup(function(use)
     use {
         "lewis6991/gitsigns.nvim",
         -- event = "BufRead",
-        ft = {"lua", "css", "snippet", "R", "JS", "vim"},
+        ft = {"lua", "css", "snippet", "JS", "vim"},
         config = function() require('plugins.gitsigns') end,
     }
 
@@ -184,6 +178,7 @@ return require('packer').startup(function(use)
     use({
         "folke/noice.nvim",
         event = "VimEnter",
+        module = "noice",
         config = function () require('plugins.cmdline') end,
         requires = {
             "MunifTanjim/nui.nvim",
