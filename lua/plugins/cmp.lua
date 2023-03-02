@@ -32,6 +32,7 @@ cmp.setup {
         { name = 'look', keyword_length=4, max_item_count = 3,
             options={ convert_case=true, loud=true } },
         { name = "latex_symbols", option = {strategy = 0}, max_item_count = 3 },
+        { name = 'cmp_nvim_r' },
     },
     formatting = {
         fields = { "abbr", "kind", "menu", },
@@ -47,10 +48,11 @@ cmp.setup {
                 buffer = "BUF",
                 path = "PAT",
                 ultisnips = "SNI",
-                luasnip = "LLL",
+                -- luasnip = "LLL",
                 calc = "CAL",
                 look = "SPL",
                 latex_symbols = "TEX",
+                cmp_nvim_r = "R",
             }) [entry.source.name]
             return vim_item
         end,
@@ -97,19 +99,19 @@ cmp.setup {
     }
 }
 
--- ------------------------------ cmdline Config ---------------------------------
-cmp.setup.cmdline("/", {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = "buffer" },
-    },
-})
-
-cmp.setup.cmdline(":", {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-        { name = "path" },
-    }, {
-        { name = "cmdline" },
-    }),
-})
+-- -- ------------------------------ cmdline Config ---------------------------------
+-- cmp.setup.cmdline("/", {
+--     mapping = cmp.mapping.preset.cmdline(),
+--     sources = {
+--         { name = "buffer" },
+--     },
+-- })
+--
+-- cmp.setup.cmdline(":", {
+--     mapping = cmp.mapping.preset.cmdline(),
+--     sources = cmp.config.sources({
+--         { name = "path" },
+--     }, {
+--         { name = "cmdline" },
+--     }),
+-- })

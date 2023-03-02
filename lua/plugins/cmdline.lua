@@ -6,6 +6,7 @@ if not present then
     return
 end
 
+-- cmd.setup()
 cmd.setup {
     cmdline = {
         enabled = true, -- enables the Noice cmdline UI

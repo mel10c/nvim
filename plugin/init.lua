@@ -13,19 +13,19 @@ return require('packer').startup(function(use)
 
     -- faster start up time
     -- use { "nathom/filetype.nvim", }
-    use { "lewis6991/impatient.nvim", }
+    -- use { "lewis6991/impatient.nvim", }
 
     -- packer can manage itself
     use {
         'wbthomason/packer.nvim',
-        event = "VimEnter",
+        event = "BufRead",
     }
 
     -- better code color
     use {
         "nvim-treesitter/nvim-treesitter",
         run = ':TSUpdate',
-        event = "BufRead",
+        event = "VimEnter",
         config = function() require('plugins.treesitter') end,
     }
 
@@ -44,6 +44,10 @@ return require('packer').startup(function(use)
         event = "VimEnter",
         config = function() require('plugins.misc').onenord() end,
     }
+    -- use {
+    --     "AlexvZyl/nordic.nvim",
+    --     event = "VimEnter",
+    -- }
 
     -- nerd icons
     use {
@@ -182,9 +186,28 @@ return require('packer').startup(function(use)
         config = function () require('plugins.cmdline') end,
         requires = {
             "MunifTanjim/nui.nvim",
-            event = "BufRead",
+            event = "VimEnter",
         }
     })
+
+    -- ChatGPT for OpenAI
+    use({
+        "jackMort/ChatGPT.nvim",
+        -- event = "VimEnter",
+        -- config = function () require('plugins.misc').AI() end,
+        cmd = "ChatGPT",
+        config = function()
+            vim.fn.setenv("OPENAI_API_KEY", "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")
+            require("chatgpt").setup({
+                -- optional configuration
+            })
+        end,
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim"
+        }
+   })
 
     -- ---------------------------- Editing Tools ------------------------------------
 
@@ -245,7 +268,7 @@ return require('packer').startup(function(use)
     -- lsp config
     use {
         "neovim/nvim-lspconfig",
-        requires = {'williamboman/nvim-lsp-installer'},
+        requires = {'williamboman/mason.nvim'},
         config = function() require('lsp') end,
         event = "BufRead",
         module = "lspconfig"
@@ -259,13 +282,13 @@ return require('packer').startup(function(use)
         config = function() require('plugins.misc').rstudio() end,
     }
 
-    -- ---------------------------- Auto completion ----------------------------------
-
+    -- -- ---------------------------- Auto completion ----------------------------------
+    --
     -- completion engine
     use {
         "hrsh7th/nvim-cmp",
         config = function() require('plugins.cmp') end,
-        -- event = "BufRead",
+        -- event = "VimEnter",
         event = "InsertCharPre",
         module = "cmp"
     }
@@ -301,20 +324,22 @@ return require('packer').startup(function(use)
     -- soruce for build-in lsp clients
     use {
         "hrsh7th/cmp-nvim-lsp",
-        event = "InsertEnter",
+        -- event = "InsertEnter",
+        after = "nvim-cmp",
     }
 
     -- source for lua api
     use {
         "hrsh7th/cmp-nvim-lua",
         ft = "lua",
+        -- event = "InsertEnter",
         after = "nvim-cmp",
     }
 
     -- source for buffer words
     use {
         "hrsh7th/cmp-buffer",
-        event = "InsertEnter",
+        -- event = "InsertEnter",
         after = "nvim-cmp",
     }
 

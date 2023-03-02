@@ -271,4 +271,15 @@ M.notify = function()
     }
 end
 
+-- ----------------------------- OpenAI ChatGPTOpenAI  ----------------------------------
+M.AI = function()
+    local present, AI = pcall(require, "chatgpt")
+    if not present then
+        return
+    end
+    vim.fn.setenv("OPENAI_API_KEY", "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")
+
+    AI.setup({})
+end
+
 return M
