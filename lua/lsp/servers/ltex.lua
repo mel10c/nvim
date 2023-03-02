@@ -11,7 +11,8 @@ return {
     filetypes = {'tex', 'bib', 'latex',};
     settings = {
         ltex = {
-            enabled= {"latex", "tex", "bib", "markdown"},
+            -- enabled= {"latex", "tex", "bib", "markdown"},
+            enabled= {"latex", "tex", "bib",},
             checkFrequency="save",
             language="en-us",
             diagnosticSeverity="information",

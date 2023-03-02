@@ -58,32 +58,34 @@ local function lsp_highlight_document(client)
     end
 end
 
-M.on_attach = function(client, bufnr)
-   local function buf_set_option(...)
-      vim.api.nvim_buf_set_option(bufnr, ...)
-   end
+-- M.on_attach = function(client, bufnr)
+    -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+   -- local function buf_set_option(...)
+   --    vim.api.nvim_buf_set_option(bufnr, ...)
+   -- end
 
    -- Enable completion triggered by <c-x><c-o>
    -- buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- if client.name == "tsserver" then
     -- end
-    client.server_capabilities.document_formatting = false
+    -- client.server_capabilities.document_formatting = false
     -- lsp_keymaps(bufnr)
     -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
     -- Enable completion triggered by <c-x><c-o>
     -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    lsp_highlight_document(client)
-end
+    -- lsp_highlight_document(client)
+-- end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
     return
 end
 
-M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+-- M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M
