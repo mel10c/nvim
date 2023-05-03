@@ -283,7 +283,7 @@ return require('packer').startup(function(use)
     }
 
     -- -- ---------------------------- Auto completion ----------------------------------
-    --
+
     -- completion engine
     use {
         "hrsh7th/nvim-cmp",
