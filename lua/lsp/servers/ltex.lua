@@ -8,11 +8,11 @@ end
 return {
     cmd = {"ltex-ls"};
     -- filetypes = {'tex', 'bib', 'latex', "markdown"};
-    filetypes = {'tex', 'bib', 'latex',};
+    filetypes = {'tex', 'bib', 'latex', 'rmd',};
     settings = {
         ltex = {
-            -- enabled= {"latex", "tex", "bib", "markdown"},
-            enabled= {"latex", "tex", "bib",},
+            enabled= {"latex", "tex", "bib", "rmd"},
+            -- enabled= {"latex", "tex", "bib",},
             checkFrequency="save",
             language="en-us",
             diagnosticSeverity="information",
