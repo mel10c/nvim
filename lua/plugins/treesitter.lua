@@ -12,7 +12,7 @@ ts_config.setup {
         "java",
         "python",
         "r",
-        "latex",
+        -- "latex",
         "css"
     },
     highlight = {

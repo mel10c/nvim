@@ -46,7 +46,7 @@ db.custom_center = {
   { icon = '    ', desc = ' Packer Update      ', action = 'PackerSync', shortcut = " <cr> " },
   { icon = '    ', desc = ' Go To Today        ', action = function() vim.cmd[[Telekasten goto_today]] vim.cmd[[call feedkeys("\<CR>")]] end, shortcut = "SPC ZD" },
   { icon = '    ', desc = ' Packer Status       ', action = 'PackerStatus', shortcut = " ... " },
-  { icon = '    ', desc = ' LSP INFO            ', action = 'LspInstallInfo', shortcut = " ... "},
+  { icon = '    ', desc = ' LSP INFO            ', action = 'Mason', shortcut = " ... "},
   { icon = '    ', desc = ' New File            ', action = 'DashboardNewFile', shortcut = " ... "},
   { icon = '    ', desc = '             ', action = 'DashboardNewFile', shortcut = " "},
 }
