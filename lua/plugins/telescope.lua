@@ -77,7 +77,7 @@ telescope.setup {
         },
 
         buffers = {
-            prompt_prefix = "   ",
+            prompt_prefix = " 󰈙  ",
             previewer = false,
             layout_config = { width = 0.40, height = 0.30, },
         },
@@ -92,7 +92,7 @@ telescope.setup {
         },
 
         oldfiles = {
-            prompt_prefix = "   ",
+            prompt_prefix = " 󱑂  ",
         },
 
         lsp_references = {

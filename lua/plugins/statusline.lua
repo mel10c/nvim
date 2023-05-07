@@ -141,15 +141,15 @@ ins_left({
             t = colors.red,
         }
         local mode_icons = {
-            ['n'] = '    ',
+            ['n'] = '  󰀘  ',
             ['i'] = '    ',
-            ['s'] = '    ',
+            ['s'] = '  󰘳  ',
             ['v'] = '    ',
             ['V'] = '    ',
             ['\x16'] = '    ',
-            ['r'] = '    ',
-            ['c'] = '    ',
-            ['t'] = '    ',
+            ['r'] = '    ',
+            ['c'] = '    ',
+            ['t'] = '    ',
         }
         vim.api.nvim_command('hi! LualineMode guibg=' .. mode_color[vim.fn.mode()] .. ' guifg=' .. colors.bg)
         -- return '   '
@@ -163,7 +163,7 @@ ins_left({
 ins_left({
     function()
         local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-        return "  ".. " " .. dir_name .. " "
+        return "  ".. " " .. dir_name .. " "
     end,
     color = { fg = colors.lightgray, gui = 'bold' },
     cond = conditions.hide_in_width,
