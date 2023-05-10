@@ -26,7 +26,7 @@ local setup = function()
             focusable = false,
             style = "minimal",
             header = "",
-            prefix = " ",
+            prefix = "󰋽 ",
         },
     }
 
@@ -64,12 +64,12 @@ lspconfig['lua_ls'].setup{
 --     flags = lsp_flags,
 --     settings = require('lsp.servers.css')
 -- }
-lspconfig['ltex'].setup{
-    on_attach = on_attach,
-    -- capabilities =-capabilities,
-    flags = lsp_flags,
-    settings = require('lsp.servers.ltex')
-}
+-- lspconfig['ltex'].setup{
+--     on_attach = on_attach,
+--     -- capabilities =-capabilities,
+--     flags = lsp_flags,
+--     settings = require('lsp.servers.ltex')
+-- }
 lspconfig['r_language_server'].setup{
     on_attach = on_attach,
     -- capabilities = capabilities,
