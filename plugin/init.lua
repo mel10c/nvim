@@ -48,6 +48,10 @@ return require('packer').startup(function(use)
     --     "AlexvZyl/nordic.nvim",
     --     event = "VimEnter",
     -- }
+    use {
+          "neanias/everforest-nvim",
+        event = "VimEnter",
+    }
 
     -- nerd icons
     use {
@@ -145,12 +149,6 @@ return require('packer').startup(function(use)
     --     ft = {"markdown", "pandoc", "telekasten"},
     -- }
 
-    -- -- code outline
-    -- use {
-    --     'simrat39/symbols-outline.nvim',
-    --     cmd = "SymbolsOutline",
-    -- }
-
     -- preview colors
     use {
         "norcalli/nvim-colorizer.lua",
@@ -190,24 +188,24 @@ return require('packer').startup(function(use)
         }
     })
 
-    -- ChatGPT for OpenAI
-    use({
-        "jackMort/ChatGPT.nvim",
-        -- event = "VimEnter",
-        -- config = function () require('plugins.misc').AI() end,
-        cmd = "ChatGPT",
-        config = function()
-            vim.fn.setenv("OPENAI_API_KEY", "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")
-            require("chatgpt").setup({
-                -- optional configuration
-            })
-        end,
-        requires = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim"
-        }
-   })
+   --  -- ChatGPT for OpenAI
+   --  use({
+   --      "jackMort/ChatGPT.nvim",
+   --      -- event = "VimEnter",
+   --      -- config = function () require('plugins.misc').AI() end,
+   --      cmd = "ChatGPT",
+   --      config = function()
+   --          vim.fn.setenv("OPENAI_API_KEY", "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")
+   --          require("chatgpt").setup({
+   --              -- optional configuration
+   --          })
+   --      end,
+   --      requires = {
+   --          "MunifTanjim/nui.nvim",
+   --          "nvim-lua/plenary.nvim",
+   --          "nvim-telescope/telescope.nvim"
+   --      }
+   -- })
 
     -- ---------------------------- Editing Tools ------------------------------------
 
