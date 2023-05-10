@@ -138,4 +138,5 @@ vim.cmd[[nmap <leader>cr va]yGo<esc>pa: ]]
 vim.cmd[[nmap <leader>ct :!/Applications/Typora.app/Contents/MacOS/Typora "%"<cr>]]
 vim.cmd[[nmap <leader>ch /^#/ %<cr><c-l>]]
 vim.cmd[[vmap <c-s> y:!say -v Kate '<c-r>"'<cr>]]
+vim.cmd[[nmap <leader>ca <cmd>set foldmethod=indent<cr>]]
 map('n', '<leader>cu', '<cmd>UploadClipboard<cr>')

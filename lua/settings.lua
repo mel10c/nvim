@@ -19,6 +19,7 @@ opt.showcmd = true
 opt.wildmenu = true
 opt.foldenable = true
 opt.foldlevel=3
+-- opt.foldcolumn = "1"
 opt.signcolumn = 'yes'
 opt.showtabline = 2
 opt.ls = 0

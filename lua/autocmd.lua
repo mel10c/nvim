@@ -14,9 +14,12 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 -- ------------------------------ Filetype Setting -------------------------------
 --- Set spelling
 autocmd("FileType", {
-   pattern = { "markdown", "tex", "telekasten", "Rmd" },
+   pattern = { "markdown", "tex", "telekasten", "Rmd", "markdown.pandoc" },
    callback = function()
       vim.opt_local.spell = true
+      -- vim.opt_local.foldmethod="indent"
+      -- vim.opt_local.foldlevel=0
+      vim.opt_local.foldtext=""
    end,
 })
 
@@ -43,6 +46,7 @@ vim.cmd
     [[
     autocmd filetype markdown syn region match start=/\\$\\$/ end=/\\$\\$/
     autocmd filetype markdown syn match math '\\$[^$].\{-}\$'
+    " autocmd filetype markdown let&l:fdl=indent('.')/&sw
     ]]
 
 -- ---------------------------- Highlight Yank Area ------------------------------
@@ -81,4 +85,27 @@ vim.cmd
             call setpos('.', currentPos)
         endif
     endfunction
+    ]]
+
+-- ------------------------------Go to Next indent -------------------------------
+vim.cmd
+    [[
+    function! OpenPDFCitekey()
+    let kcmd = 'kitty --single-instance --instance-group=1 '
+    let kcmd = kcmd . 'termpdf.py --nvim-listen-address '
+    let kcmd = kcmd . $NVIM_LISTEN_ADDRESS . ' '
+    let key=expand('<cword>')
+    keepjumps normal! ww
+    let page=expand('<cword>')
+    if page ==? 'p'
+        keepjumps normal! ww
+        let page=expand('<cword>')
+        endif
+        keepjumps normal! bbb
+        let kcmd = kcmd . '--open ' . key . ' '
+        if page
+            let kcmd = kcmd . '-p ' . page
+            endif
+            exe "!" . kcmd
+            endfunction
     ]]
