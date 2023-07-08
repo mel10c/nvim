@@ -19,7 +19,7 @@ autocmd("FileType", {
       vim.opt_local.spell = true
       -- vim.opt_local.foldmethod="indent"
       -- vim.opt_local.foldlevel=0
-      vim.opt_local.foldtext=""
+      -- vim.opt_local.foldtext=""
    end,
 })
 
@@ -46,7 +46,6 @@ vim.cmd
     [[
     autocmd filetype markdown syn region match start=/\\$\\$/ end=/\\$\\$/
     autocmd filetype markdown syn match math '\\$[^$].\{-}\$'
-    " autocmd filetype markdown let&l:fdl=indent('.')/&sw
     ]]
 
 -- ---------------------------- Highlight Yank Area ------------------------------
