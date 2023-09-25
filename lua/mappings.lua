@@ -128,15 +128,17 @@ vim.cmd[[nmap <leader>9 viw<Plug>VSurround)E]]
 -- --------------------------- Markdown Syntax Shortcuts -------------------------
 -- vim.cmd[[nmap <leader>cq <cmd>%s/ \*Highlight \[page \d\]:\*/-/g<cr>]]
 -- vim.cmd[[nmap <leader>cn <cmd>%s/ \*and Note \[page \d\]:\*/>/g<cr>]]
-map('n', '<leader>cd', '<cmd>set ft=markdown.pandoc<cr>')
-map('n', '<leader>cs', '<cmd>%s/<cr>')
-map('n', '<leader>cl', '<cmd>LspStop<cr>')
-vim.cmd[[inoremap <tab> <c-t>]]
-vim.cmd[[nmap <leader>cp yi(o<img src="link" width="300"><esc>Fkviwpgkdd]]
-vim.cmd[[nmap <leader>ci ^vUi- <esc>l]]
-vim.cmd[[nmap <leader>cr va]yGo<esc>pa: ]]
-vim.cmd[[nmap <leader>ct :!/Applications/Typora.app/Contents/MacOS/Typora "%"<cr>]]
-vim.cmd[[nmap <leader>ch /^#/ %<cr><c-l>]]
-vim.cmd[[vmap <c-s> y:!say -v Kate '<c-r>"'<cr>]]
 vim.cmd[[nmap <leader>ca <cmd>set foldmethod=indent<cr>]]
+map('n', '<leader>cd', '<cmd>set ft=markdown.pandoc<cr>')
+vim.cmd[[nmap <leader>ch /^#/ %<cr><c-l>]]
+vim.cmd[[nmap <leader>ci ^vUi- <esc>l]]
+map('n', '<leader>cl', '<cmd>LspStop<cr>')
+vim.cmd[[nmap <leader>cp yi(o<img src="link" width="300"><esc>Fkviwpgkdd]]
+vim.cmd[[nmap <leader>cr va]yGo<esc>pa: ]]
+map('n', '<leader>cs', '<cmd>%s/<cr>')
+vim.cmd[[nmap <leader>ct :!/Applications/Typora.app/Contents/MacOS/Typora "%"<cr>]]
 map('n', '<leader>cu', '<cmd>UploadClipboard<cr>')
+-- vim.cmd[[vmap <leader>cr ]]
+map('v', '<leader>cw', ':w !wc<cr>')
+vim.cmd[[inoremap <tab> <c-t>]]
+vim.cmd[[vmap <c-s> y:!say -v Kate '<c-r>"'<cr>]]

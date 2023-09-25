@@ -21,14 +21,15 @@ cmd.setup {
             help = { pattern = "^:%s*h%s+", icon = "󰋖" },
             -- input = {}, -- Used by input()
             input = { icon = "󰈙" },
+            -- level = { icons = { error = " ", warn = " ", info = " " }, },
         },
     },
     messages = {
         enabled = true, -- enables the Noice messages UI
         view = "mini", -- default view for messages
-        view_error = "mini", -- view for errors
+        view_error = "messages", -- view for errors
         view_warn = "mini", -- view for warnings
-        view_history = "mini", -- view for :messages
+        view_history = "messages", -- view for :messages
         view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
     },
     popupmenu = {
@@ -101,7 +102,8 @@ cmd.setup {
         },
         hover = {
             enabled = true,
-            view = nil, -- when nil, use defaults from documentation
+            slient = false,
+            view = mini, -- when nil, use defaults from documentation
             opts = {}, -- merged with defaults from documentation
         },
         signature = {

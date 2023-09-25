@@ -1,4 +1,5 @@
 -- ------------------------------ Git sings config -------------------------------
+            -- see below for full list of optional dependencies 👇
 -- ===============================================================================
 
 -- initialize
@@ -50,5 +51,5 @@ gitsigns.setup {
     yadm = {
         enable = false
     },
-    keymaps = {}
+    -- keymaps = {}
 }

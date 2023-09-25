@@ -44,14 +44,15 @@ return require('packer').startup(function(use)
         event = "VimEnter",
         config = function() require('plugins.misc').onenord() end,
     }
+
     -- use {
     --     "AlexvZyl/nordic.nvim",
     --     event = "VimEnter",
     -- }
-    use {
-          "neanias/everforest-nvim",
-        event = "VimEnter",
-    }
+    -- use {
+    --       "neanias/everforest-nvim",
+    --     event = "VimEnter",
+    -- }
 
     -- nerd icons
     use {
@@ -135,18 +136,25 @@ return require('packer').startup(function(use)
         config = function() require('plugins.telekasten') end,
         cmd = "Telekasten",
     }
-
-    -- -- obsidian!!!
-    -- use {
-    --     "epwalsh/obsidian.nvim",
-    --     ft = {"markdown", "pandoc", "telekasten"},
-    --     config = function() require('plugins.obsidian') end,
-    -- }
+    -- obsidian!!!
+    use {
+        "epwalsh/obsidian.nvim",
+        -- branch = "petew/limit-completion-suggestions",
+        requires = { "nvim-lua/plenary.nvim", },
+        ft = {"markdown", "pandoc", "telekasten"},
+        config = function() require('plugins.obsidian') end,
+    }
 
     -- -- markdown header
     -- use {
     --     "crispgm/telescope-heading.nvim",
     --     ft = {"markdown", "pandoc", "telekasten"},
+    -- }
+
+    -- use {
+    --     'lukas-reineke/headlines.nvim',
+    --     after = 'nvim-treesitter',
+    --     config = function() require('plugins.misc').head() end,
     -- }
 
     -- preview colors

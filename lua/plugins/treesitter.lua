@@ -13,7 +13,8 @@ ts_config.setup {
         "python",
         "r",
         -- "latex",
-        "css"
+        "css",
+        "markdown", "markdown_inline",
     },
     highlight = {
         enable = true,

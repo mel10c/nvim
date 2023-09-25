@@ -31,8 +31,10 @@ cmp.setup {
         { name = "buffer", keyword_length = 3, max_item_count = 3, },
         { name = 'look', keyword_length=4, max_item_count = 3,
             options={ convert_case=true, loud=true } },
-        { name = "latex_symbols", option = {strategy = 0}, max_item_count = 3 },
-        { name = 'cmp_nvim_r' },
+        { name = "latex_symbols", option = {strategy = 0}, max_item_count = 3, },
+        { name = "cmp_nvim_r" },
+        { name = "obsidian", max_item_count = 5, },
+        { name = "obsidian", max_item_count = 3 }
     },
     formatting = {
         fields = { "abbr", "kind", "menu", },
@@ -53,6 +55,7 @@ cmp.setup {
                 look = "SPL",
                 latex_symbols = "TEX",
                 cmp_nvim_r = "R",
+                obsidian = "OBS"
             }) [entry.source.name]
             return vim_item
         end,

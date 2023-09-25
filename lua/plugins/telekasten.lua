@@ -11,7 +11,7 @@ local home = vim.fn.expand("~/melaneyroot.github.io")
 telekasten.setup({
     home         = home,
     take_over_my_home = true,
-    auto_set_filetype = true,
+    auto_set_filetype = false,
     dailies      = home .. '/' .. 'Journal',
     weeklies     = home .. '/' .. 'Journal',
     templates    = home .. '/' .. '',

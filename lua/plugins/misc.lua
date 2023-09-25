@@ -250,27 +250,6 @@ M.rstudio = function()
     g.R_auto_start = 0 -- does not auto start
 end
 
--- ----------------------------- Load headings  ----------------------------------
-M.notify = function()
-    local present, notify = pcall(require, "notify")
-    if not present then
-        return
-    end
-
-    vim.notify = notify
-    notify.setup{
-        icons = {
-            DEBUG = "",
-            ERROR = "",
-            INFO = "",
-            WARN = "",
-            TRACE = "פּ",
-        },
-        render = "compact",
-        stages = "slide"
-    }
-end
-
 -- ----------------------------- OpenAI ChatGPTOpenAI  ----------------------------------
 -- M.AI = function()
 --     local present, AI = pcall(require, "chatgpt")
