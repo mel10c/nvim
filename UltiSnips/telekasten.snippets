@@ -327,8 +327,12 @@ snippet mbb "mathbb" i
 \mathbb{$1}
 endsnippet
 
-snippet func "function" i
-${1:f}: \\${2:R^${3:2}} \to \\${4:R^${0:2}}
+snippet func; "function" iA
+${1:f}: ${2:R^${3:2}} \to ${4:R^${0:2}}
+endsnippet
+
+snippet f; "function" iA
+f(${1:x})
 endsnippet
 
 snippet *** "cdot" iA

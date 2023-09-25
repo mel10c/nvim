@@ -131,10 +131,10 @@ snippet brm; "left[ \right]" iA
 endsnippet
 
 snippet brl; "left{ \right}" iA
-\left{ $0 \right}
+\left\{ $0 \right\}
 endsnippet
 
-snippet brll; "curly brackt" iA
+snippet set; "curly brackt" iA
 \\{ $0 \\}
 endsnippet
 
@@ -206,12 +206,12 @@ snippet sam\ "sample" iA
 \bar{x}
 endsnippet
 
-snippet iff; "iff" i
+snippet iff "iff" i
 \iff
 endsnippet
 
-snippet im "impies" i
-\quad \implies \quad
+snippet ->> "impies" iA
+\implies
 endsnippet
 
 snippet =; "long equal" iA
@@ -298,8 +298,12 @@ snippet mbb "mathbb" i
 \mathbb{$1}
 endsnippet
 
-snippet func "function" i
-${1:f}: \\${2:R^${3:2}} \to \\${4:R^${0:2}}
+snippet func; "function" iA
+${1:f}: ${2:R^${3:2}} \to ${4:R^${0:2}}
+endsnippet
+
+snippet ff; "function" iA
+f(${1:x})
 endsnippet
 
 snippet *** "cdot" iA
