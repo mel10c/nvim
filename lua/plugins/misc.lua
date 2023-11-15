@@ -20,27 +20,38 @@ end
 
 -- ----------------------------- Indentline Setup --------------------------------
 M.indent = function()
-    local present, indent = pcall(require, "indent_blankline")
+    local present, indent = pcall(require, "ibl")
     if not present then
         return
     end
 
     indent.setup {
-        indentLine_enabled = 1,
-        char = "│",
-        use_treesitter = true,
-        filetype_exclude = {
-            "help",
-            "packer", "terminal",
-            "dashboard", "alpha",
-            "lspinfo", "LspInstallInfo",
-            "TelescopePrompt", "TelescopeResults",
-        },
-        buftype_exclude = {
-            "terminal", "prompt", "nofile", "help"
-        },
-        show_first_indent_level = true,
-        show_trailing_blankline_indent = false,
+        -- debounce = 100,
+        indent = { char = "│" },
+        whitespace = { highlight = { "Whitespace", "NonText" } },
+        scope = {
+            exclude = { },
+            enabled = false,
+            show_start = false,
+            show_end = false,
+            injected_languages = false,
+            -- highlight = { "Function", "Label" },
+            priority = 500,
+    },
+
+    --     -- use_treesitter = true,
+    --     filetype_exclude = {
+    --         "help",
+    --         "packer", "terminal",
+    --         "dashboard", "alpha",
+    --         "lspinfo", "LspInstallInfo",
+    --         "TelescopePrompt", "TelescopeResults",
+    --     },
+    --     buftype_exclude = {
+    --         "terminal", "prompt", "nofile", "help"
+    --     },
+        -- show_first_indent_level = true,
+        -- show_trailing_blankline_indent = false,
     }
 end
 

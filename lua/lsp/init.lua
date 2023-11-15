@@ -49,7 +49,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 local lsp_flags = {
-  debounce_text_changes = 150,
+    debounce_text_changes = 150,
 }
 
 lspconfig['lua_ls'].setup{

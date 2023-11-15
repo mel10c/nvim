@@ -6,7 +6,7 @@ require("plugins.misc").packer()
 
 return require('packer').startup(function(use)
 
--- --------------------------- Basic System Plugs---------------------------------
+    -- --------------------------- Basic System Plugs---------------------------------
 
     -- lua plugin
     use { "nvim-lua/plenary.nvim", module = "plenary" }
@@ -29,7 +29,7 @@ return require('packer').startup(function(use)
         config = function() require('plugins.treesitter') end,
     }
 
--- ------------------------------- Appearance ------------------------------------
+    -- ------------------------------- Appearance ------------------------------------
 
     -- key map reminder
     use {
@@ -79,7 +79,9 @@ return require('packer').startup(function(use)
     -- indent line
     use {
         'lukas-reineke/indent-blankline.nvim',
-        event = "BufRead",
+        -- event = "BufRead",
+        after = "onenord.nvim",
+        main = "ibl",
         config = function() require('plugins.misc').indent() end,
     }
 
@@ -215,41 +217,41 @@ return require('packer').startup(function(use)
    --      }
    -- })
 
-    -- ---------------------------- Editing Tools ------------------------------------
+   -- ---------------------------- Editing Tools ------------------------------------
 
-    -- auto pair
-    use {
-        "windwp/nvim-autopairs",
-        after = "nvim-cmp",
-        config = function() require('plugins.misc').autopairs() end,
-    }
+   -- auto pair
+   use {
+       "windwp/nvim-autopairs",
+       after = "nvim-cmp",
+       config = function() require('plugins.misc').autopairs() end,
+   }
 
-    -- change surrand types
-    use {
-        "tpope/vim-surround",
-        -- event = "BufRead",
-        after = "nvim-cmp",
-    }
+   -- change surrand types
+   use {
+       "tpope/vim-surround",
+       -- event = "BufRead",
+       after = "nvim-cmp",
+   }
 
-    -- easy comment
-    use {
-        'numToStr/Comment.nvim',
-        event = "BufRead",
-        config = function() require('plugins.misc').comment() end,
-    }
+   -- easy comment
+   use {
+       'numToStr/Comment.nvim',
+       event = "BufRead",
+       config = function() require('plugins.misc').comment() end,
+   }
 
-    -- terminal
-    use {
-        "akinsho/toggleterm.nvim",
-        cmd = {"ToggleTerm", "TermExec"},
-        config = function() require('plugins.misc').terminal() end,
-    }
+   -- terminal
+   use {
+       "akinsho/toggleterm.nvim",
+       cmd = {"ToggleTerm", "TermExec"},
+       config = function() require('plugins.misc').terminal() end,
+   }
 
-    -- match under cursor
-    use {
-        "andymass/vim-matchup",
-        event = "VimEnter",
-    }
+   -- match under cursor
+   use {
+       "andymass/vim-matchup",
+       event = "VimEnter",
+   }
 
     -- -- easier alignment
     -- use {
@@ -263,41 +265,41 @@ return require('packer').startup(function(use)
     --     cmd = 'JqxList'
     -- }
 
-    -- Better markdown
-    use {
-        "vim-pandoc/vim-pandoc-syntax",
-        ft = {"markdown", "pandoc"},
-    }
+   -- Better markdown
+   use {
+       "vim-pandoc/vim-pandoc-syntax",
+       ft = {"markdown", "pandoc"},
+   }
 
-    -- ------------------------------ Lsp configs ------------------------------------
+   -- ------------------------------ Lsp configs ------------------------------------
 
-    -- lsp config
-    use {
-        "neovim/nvim-lspconfig",
-        requires = {'williamboman/mason.nvim'},
-        config = function() require('lsp') end,
-        event = "BufRead",
-        module = "lspconfig"
-    }
+   -- lsp config
+   use {
+       "neovim/nvim-lspconfig",
+       requires = {'williamboman/mason.nvim'},
+       config = function() require('lsp') end,
+       event = "BufRead",
+       module = "lspconfig"
+   }
 
-    -- RStudio
-    use {
-        'jalvesaq/Nvim-R',
-        ft = {"R", "Rmd", "md"},
-        cmd = { "RStart", "RMakePDF", "ROpenLists" },
-        config = function() require('plugins.misc').rstudio() end,
-    }
+   -- RStudio
+   use {
+       'jalvesaq/Nvim-R',
+       ft = {"R", "Rmd", "md"},
+       cmd = { "RStart", "RMakePDF", "ROpenLists" },
+       config = function() require('plugins.misc').rstudio() end,
+   }
 
-    -- -- ---------------------------- Auto completion ----------------------------------
+   -- -- ---------------------------- Auto completion ----------------------------------
 
-    -- completion engine
-    use {
-        "hrsh7th/nvim-cmp",
-        config = function() require('plugins.cmp') end,
-        -- event = "VimEnter",
-        event = "InsertCharPre",
-        module = "cmp"
-    }
+   -- completion engine
+   use {
+       "hrsh7th/nvim-cmp",
+       config = function() require('plugins.cmp') end,
+       -- event = "VimEnter",
+       event = "InsertCharPre",
+       module = "cmp"
+   }
 
     -- -- snips
     -- use {
@@ -313,64 +315,64 @@ return require('packer').startup(function(use)
     --     disable = false,
     -- }
 
-    -- snippets
-    use {
-        'SirVer/ultisnips',
-        event = "InsertEnter",
-        config = function ()
-            vim.g.UltiSnipsRemoveSelectModeMappings = 0
-        end,
-    }
-    -- completion for snippets
-    use {
-        'quangnguyen30192/cmp-nvim-ultisnips',
-        after = 'ultisnips',
-    }
+   -- snippets
+   use {
+       'SirVer/ultisnips',
+       event = "InsertEnter",
+       config = function ()
+           vim.g.UltiSnipsRemoveSelectModeMappings = 0
+       end,
+   }
+   -- completion for snippets
+   use {
+       'quangnguyen30192/cmp-nvim-ultisnips',
+       after = 'ultisnips',
+   }
 
-    -- soruce for build-in lsp clients
-    use {
-        "hrsh7th/cmp-nvim-lsp",
-        -- event = "InsertEnter",
-        after = "nvim-cmp",
-    }
+   -- soruce for build-in lsp clients
+   use {
+       "hrsh7th/cmp-nvim-lsp",
+       -- event = "InsertEnter",
+       after = "nvim-cmp",
+   }
 
-    -- source for lua api
-    use {
-        "hrsh7th/cmp-nvim-lua",
-        ft = "lua",
-        -- event = "InsertEnter",
-        after = "nvim-cmp",
-    }
+   -- source for lua api
+   use {
+       "hrsh7th/cmp-nvim-lua",
+       ft = "lua",
+       -- event = "InsertEnter",
+       after = "nvim-cmp",
+   }
 
-    -- source for buffer words
-    use {
-        "hrsh7th/cmp-buffer",
-        -- event = "InsertEnter",
-        after = "nvim-cmp",
-    }
+   -- source for buffer words
+   use {
+       "hrsh7th/cmp-buffer",
+       -- event = "InsertEnter",
+       after = "nvim-cmp",
+   }
 
-    -- source for path
-    use {
-        "hrsh7th/cmp-path",
-        after = "cmp-buffer",
-    }
+   -- source for path
+   use {
+       "hrsh7th/cmp-path",
+       after = "cmp-buffer",
+   }
 
-    -- complete calculation
-    use {
-        "hrsh7th/cmp-calc",
-        after = "cmp-buffer",
-    }
+   -- complete calculation
+   use {
+       "hrsh7th/cmp-calc",
+       after = "cmp-buffer",
+   }
 
-    -- word suggestion
-    use {
-        "octaltree/cmp-look",
-        after = "cmp-buffer"
-    }
+   -- word suggestion
+   use {
+       "octaltree/cmp-look",
+       after = "cmp-buffer"
+   }
 
-    -- latex
-    use {
-        "kdheepak/cmp-latex-symbols",
-        after = "cmp-buffer"
-    }
+   -- latex
+   use {
+       "kdheepak/cmp-latex-symbols",
+       after = "cmp-buffer"
+   }
 
 end)
