@@ -129,7 +129,8 @@ vim.cmd[[nmap <leader>9 viw<Plug>VSurround)E]]
 -- vim.cmd[[nmap <leader>cq <cmd>%s/ \*Highlight \[page \d\]:\*/-/g<cr>]]
 -- vim.cmd[[nmap <leader>cn <cmd>%s/ \*and Note \[page \d\]:\*/>/g<cr>]]
 vim.cmd[[nmap <leader>ca <cmd>set foldmethod=indent<cr>]]
-map('n', '<leader>cd', '<cmd>set ft=markdown.pandoc<cr>')
+-- map('n', '<leader>cd', '<cmd>set ft=markdown.pandoc<cr>')
+vim.cmd[[nmap <leader>cd <cmd>set ft=markdown.pandoc<cr><cmd>TSDisable highlight<cr>]]
 vim.cmd[[nmap <leader>ch /^#/ %<cr><c-l>]]
 vim.cmd[[nmap <leader>ci ^vUi- <esc>l]]
 map('n', '<leader>cl', '<cmd>LspStop<cr>')

@@ -22,11 +22,6 @@ obsidian.setup({
         -- date_format = "%Y-%m-%d"
     },
 
-    mappings = {
-        -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-        ["gf"] = require("obsidian.mapping").gf_passthrough(),
-    },
-
     open_app_foreground = false,
     disable_frontmatter = true,
 

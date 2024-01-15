@@ -46,6 +46,10 @@ mason.setup({ })
 --     capabilities = require('lsp.handlers').capabilities,
 -- }
 local on_attach = function(client, bufnr)
+    local function buf_set_option(name, value)
+        vim.api.nvim_buf_set_option(bufnr, name, value)
+    end
+
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 local lsp_flags = {

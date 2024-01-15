@@ -138,14 +138,14 @@ return require('packer').startup(function(use)
         config = function() require('plugins.telekasten') end,
         cmd = "Telekasten",
     }
-    -- obsidian!!!
-    use {
-        "epwalsh/obsidian.nvim",
-        -- branch = "petew/limit-completion-suggestions",
-        requires = { "nvim-lua/plenary.nvim", },
-        ft = {"markdown", "pandoc", "telekasten"},
-        config = function() require('plugins.obsidian') end,
-    }
+    -- -- obsidian!!!
+    -- use {
+    --     "epwalsh/obsidian.nvim",
+    --     -- branch = "petew/limit-completion-suggestions",
+    --     requires = { "nvim-lua/plenary.nvim", },
+    --     ft = {"markdown", "pandoc", "telekasten"},
+    --     config = function() require('plugins.obsidian') end,
+    -- }
 
     -- -- markdown header
     -- use {
