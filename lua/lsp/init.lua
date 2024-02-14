@@ -8,10 +8,10 @@ end
 -- ------------------------------ LSP Setup --------------------------------------
 local setup = function()
     local signs = {
-        { name = "DiagnosticSignError", text = "" },
-        { name = "DiagnosticSignWarn", text = "" },
-        { name = "DiagnosticSignHint", text = "" },
-        { name = "DiagnosticSignInfo", text = "" },
+        { name = "DiagnosticSignError", text = "󰅚" }, -- 
+        { name = "DiagnosticSignWarn", text = "" }, -- 
+        { name = "DiagnosticSignHint", text = "󰌶" }, -- 
+        { name = "DiagnosticSignInfo", text = "" }, -- 
     }
 
     for _, sign in ipairs(signs) do
@@ -60,7 +60,7 @@ lspconfig['lua_ls'].setup{
     on_attach = on_attach,
     -- capabilities =-capabilities,
     flags = lsp_flags,
-    settings = require('lsp.servers.lua_ls')
+    settings = require('lsp.servers.lua_ls'),
 }
 -- lspconfig['css_lua'].setup{
 --     on_attach = on_attach,
@@ -74,6 +74,18 @@ lspconfig['lua_ls'].setup{
 --     flags = lsp_flags,
 --     settings = require('lsp.servers.ltex')
 -- }
+lspconfig['texlab'].setup{
+    on_attach = on_attach,
+    -- capabilities =-capabilities,
+    flags = lsp_flags,
+    -- settings = require('lsp.servers.ltex')
+}
+lspconfig['jedi_language_server'].setup{
+    on_attach = on_attach,
+    -- capabilities =-capabilities,
+    flags = lsp_flags,
+    settings = require('lsp.servers.jedi'),
+}
 lspconfig['r_language_server'].setup{
     on_attach = on_attach,
     -- capabilities = capabilities,
