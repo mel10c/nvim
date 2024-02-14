@@ -16,8 +16,8 @@ local colors = {
     yellow    = '#EBCB8B',
     cyan      = '#8FBCBB',
     darkblue  = '#5E81AC',
-    green     = '#A3BE8C',
     orange    = '#D08770',
+    green     = '#A3BE8C',
     violet    = '#B48EAD',
     magenta   = '#BF616A',
     blue      = '#81A1C1',
@@ -106,13 +106,13 @@ end
 
 -- ------------------------------------ Left -------------------------------------
 
--- ins_left({
---     function()
---         return '▊'
---     end,
---     color = { fg = colors.lightgray },
---     padding = { left = 0, right = 0 },
--- })
+ins_left({
+    function()
+        return '▊'
+    end,
+    color = { fg = colors.lightgray },
+    padding = { left = 0, right = 0 },
+})
 
 ins_left({
     -- mode component
@@ -141,22 +141,23 @@ ins_left({
             t = colors.red,
         }
         local mode_icons = {
-            ['n'] = '  󰀘  ',
-            ['i'] = '    ',
-            ['s'] = '  󰘳  ',
-            ['v'] = '    ',
-            ['V'] = '    ',
-            ['\x16'] = '    ',
-            ['r'] = '    ',
-            ['c'] = '    ',
-            ['t'] = '    ',
+            ['n'] = ' ', -- 󰀘
+            ['i'] = ' ',
+            ['s'] = ' 󰘳',
+            ['v'] = ' ',
+            ['V'] = ' ',
+            ['\x16'] = ' ',
+            ['r'] = ' ',
+            ['c'] = ' ',
+            ['t'] = ' ',
         }
-        vim.api.nvim_command('hi! LualineMode guibg=' .. mode_color[vim.fn.mode()] .. ' guifg=' .. colors.bg)
+        -- vim.api.nvim_command('hi! LualineMode guibg=' .. mode_color[vim.fn.mode()] .. ' guifg=' .. colors.bg)
+        vim.api.nvim_command('hi! LualineMode guifg=' .. mode_color[vim.fn.mode()] .. ' guibg=' .. colors.bg)
         -- return '   '
         return mode_icons [vim.fn.mode()]
     end,
     color = 'LualineMode',
-    padding = { left = 0, right = 1 },
+    padding = { left = 0, right = 0 },
 })
 
 
@@ -205,26 +206,27 @@ ins_left({
 --     end,
 -- })
 --
--- ins_left({
---     -- Lsp server name .
---     function()
---         local msg = 'No Active Lsp'
---         local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
---         local clients = vim.lsp.get_active_clients()
---         if next(clients) == nil then
---             return msg
---         end
---         for _, client in ipairs(clients) do
---             local filetypes = client.config.filetypes
---             if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
---                 return client.name
---             end
---         end
---         return msg
---     end,
---     color = { fg = colors.fg, },
---     cond = conditions.hide_in_width,
--- })
+ins_left({
+    -- Lsp server name .
+    function()
+        local msg = 'No Active Lsp'
+        local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+        local clients = vim.lsp.get_active_clients()
+        if next(clients) == nil then
+            return msg
+        end
+        for _, client in ipairs(clients) do
+            local filetypes = client.config.filetypes
+            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                return client.name
+            end
+        end
+        return msg
+    end,
+    icon = "",
+    color = { fg = colors.lightgray, },
+    cond = conditions.hide_in_width,
+})
 
 -- ----------------------------------- Right -------------------------------------
 --

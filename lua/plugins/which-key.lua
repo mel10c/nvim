@@ -55,7 +55,6 @@ key.setup {
 -- shortcuts
 local conf = " cwd=~/.config/nvim"
 local kb = " cwd=~/melaneyroot.github.io"
-local load = "<cmd>lua require'telescope'.load_extension('heading')<cr>"
 
 -- shotcut
 key.register({
@@ -68,7 +67,7 @@ key.register({
         e = { "<cmd>Telescope registers<cr>",                                   'registers'},
         f = { "<cmd>Telescope fd<cr>",                                          'find file' },
         g = { "<cmd>Telescope jumplist<cr>",                                    'jump list' },
-        h = { load.."<cmd>Telescope heading<cr>",                               'heading' },
+        h = { "<cmd>Telescope lsp_document_symbols<cr>",                               'symbols' },
         i = { "<cmd>Noice telescope<cr>",                                       'messages'},
         k = { "<cmd>Telescope keymaps<cr>",                                     'keymaps'},
         l = { "<cmd>Telescope highlights<cr>",                                  'highlights'},

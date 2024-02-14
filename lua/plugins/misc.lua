@@ -272,4 +272,46 @@ end
 --     AI.setup({})
 -- end
 
+-- ----------------------------- Winbar  ----------------------------------
+M.winbar = function()
+    local present, winbar = pcall(require, "dropbar")
+    if not present then
+        return
+    end
+
+    winbar.setup({})
+end
+
+-- ----------------------------- status  ----------------------------------
+M.status = function()
+    local present, status = pcall(require, "lsp_status")
+    if not present then
+        return
+    end
+
+    status.config {
+        select_symbol = function(cursor_pos, symbol)
+            if symbol.valueRange then
+                local value_range = {
+                    ["start"] = {
+                        character = 0,
+                        line = vim.fn.byte2line(symbol.valueRange[1])
+                    },
+                    ["end"] = {
+                    character = 0,
+                    line = vim.fn.byte2line(symbol.valueRange[2])
+                }
+            }
+
+            return require("lsp-status.util").in_range(cursor_pos, value_range)
+        end
+    end,
+    -- indicator_errors = 'E',
+    -- indicator_warnings = 'W',
+    -- indicator_info = 'i',
+    -- indicator_hint = '?',
+    -- indicator_ok = 'Ok',
+}
+end
+
 return M
