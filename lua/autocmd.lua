@@ -24,10 +24,20 @@ autocmd("FileType", {
 })
 
 autocmd("FileType", {
-   pattern = { "tex", "tex", },
+   pattern = { "tex", "latex", },
    callback = function()
        -- vim.cmd[[set ft=latex]]
        vim.opt_local.ft = "latex"
+       vim.cmd[[TSDisable highlight]]
+   end,
+})
+
+autocmd("FileType", {
+   pattern = { "python", },
+   callback = function()
+       vim.opt_local.number = true
+       vim.opt_local.relativenumber = true
+       vim.opt_local.signcolumn = "number"
    end,
 })
 

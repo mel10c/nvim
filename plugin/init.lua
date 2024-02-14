@@ -64,7 +64,7 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-lualine/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons'},
+        requires = {'kyazdani42/nvim-web-devicons' },
         after = "nvim-web-devicons",
         config = function() require('plugins.statusline') end,
     }
@@ -100,7 +100,7 @@ return require('packer').startup(function(use)
     use {
         "lewis6991/gitsigns.nvim",
         -- event = "BufRead",
-        ft = {"lua", "css", "snippet", "JS", "vim"},
+        ft = {"lua", "css", "snippet", "JS", "vim", "python"},
         config = function() require('plugins.gitsigns') end,
     }
 
@@ -197,6 +197,14 @@ return require('packer').startup(function(use)
             event = "VimEnter",
         }
     })
+
+    -- -- winbar
+    -- use({
+    --     'Bekaboo/dropbar.nvim',
+    --     requires = { 'nvim-telescope/telescope-fzf-native.nvim' },
+    --     after = "nvim-web-devicons",
+    --    config = function() require('plugins.misc').winbar() end,
+    -- })
 
    --  -- ChatGPT for OpenAI
    --  use({
